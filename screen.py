@@ -105,8 +105,8 @@ class KlipperScreen(Gtk.Window):
         self.connect("key-press-event", self._key_press_event)
         self.connect("configure_event", self.update_size)
         display = Gdk.Display.get_default()
-        #self.display_number = os.environ.get('DISPLAY') or ':0' # FLSUN Changes
-        #logging.debug(f"Display for xset: {self.display_number}") # FLSUN Changes
+        self.display_number = os.environ.get('DISPLAY') or ':0'
+        logging.debug(f"Display for xset: {self.display_number}")
         monitor_amount = Gdk.Display.get_n_monitors(display)
         # Start FLSUN Changes
         #if (monitor_amount):
@@ -646,16 +646,10 @@ class KlipperScreen(Gtk.Window):
         if self._config.get_main_config().get('screen_blanking') != "off":
             logging.debug("Screen wake up")
         try:
-            # Start FLSUN Changes
-            #subprocess.run(
-            #    f"xset -display {self.display_number} dpms force on",
-            #    shell=True, check=True
-            #)
             subprocess.run(
-                f"xset -display :0 dpms force on",
+                f"xset -display {self.display_number} dpms force on",
                 shell=True, check=True
             )
-            # End FLSUN Changes
         except subprocess.CalledProcessError as e:
             self.show_popup_message(f"Error: {e}")
             self.set_dpms(False)
@@ -677,15 +671,15 @@ class KlipperScreen(Gtk.Window):
             if state != functions.DPMS_State.Fail:
                 try:
                     subprocess.run(
-                        f"xset -display :0 dpms 0 0 0",
+                        f"xset -display {self.display_number} dpms 0 0 0",
                         shell=True, check=True
                     )
                     subprocess.run(
-                        f"xset -display :0 -dpms",
+                        f"xset -display {self.display_number} -dpms",
                         shell=True, check=True
                     )
                 except subprocess.CalledProcessError as e:
-                    self.show_popup_message(f"FAILED to turn DPMS off on :0:\n {e}")
+                    self.show_popup_message(f"FAILED to turn DPMS off on {self.display_number}:\n {e}")
                     return
             # End FLSUN Changes
         self.use_dpms = use_dpms
@@ -698,18 +692,11 @@ class KlipperScreen(Gtk.Window):
 
     def set_dpms_timeout(self):
         try:
-            # Start FLSUN Change
-            #subprocess.run(
-            #    f"xset -display {self.display_number} dpms 0 {self.blanking_time} 0",
-            #    shell=True, check=True
-            #)
             subprocess.run(
-                f"xset -display :0 dpms 0 {self.blanking_time} 0",
+                f"xset -display {self.display_number} dpms 0 {self.blanking_time} 0",
                 shell=True, check=True
             )
-            #logging.info(f"DPMS on {self.display_number} set to: {self.blanking_time}")
-            logging.info(f"DPMS on :0 set to: {self.blanking_time}")
-            # End FLSUN Changes
+            logging.info(f"DPMS on {self.display_number} set to: {self.blanking_time}")
         except subprocess.CalledProcessError as e:
             self.show_popup_message(f"DPMS Error:\n {e}")
             self.set_dpms(False)
@@ -725,12 +712,8 @@ class KlipperScreen(Gtk.Window):
     def set_screenblanking_timeout(self, time):
         # disable screensaver we have our own
         if not self.wayland:
-            # Start FLSUN Changes
-            #os.system(f"xset -display {self.display_number} s off")
-            #os.system(f"xset -display {self.display_number} s noblank")
-            os.system(f"xset -display :0 s off")
-            os.system(f"xset -display :0 s noblank")
-            # End FLSUN Changes
+            os.system(f"xset -display {self.display_number} s off")
+            os.system(f"xset -display {self.display_number} s noblank")
         if time == "off":
             self.blanking_time = 0
         else:
