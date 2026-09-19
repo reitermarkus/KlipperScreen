@@ -105,15 +105,17 @@ class KlipperScreen(Gtk.Window):
         self.connect("key-press-event", self._key_press_event)
         self.connect("configure_event", self.update_size)
         display = Gdk.Display.get_default()
-        self.display_number = os.environ.get('DISPLAY') or ':0'
-        logging.debug(f"Display for xset: {self.display_number}")
+        #self.display_number = os.environ.get('DISPLAY') or ':0' # FLSUN Changes
+        #logging.debug(f"Display for xset: {self.display_number}") # FLSUN Changes
         monitor_amount = Gdk.Display.get_n_monitors(display)
-        if (monitor_amount):
-            for i in range(monitor_amount):
-                m = display.get_monitor(i)
-                logging.info(f"Screen {i}: {m.get_geometry().width}x{m.get_geometry().height}")
-        else:
-            logging.warning(f"WARNING: No monitors detected by Gdk")
+        # Start FLSUN Changes
+        #if (monitor_amount):
+            #for i in range(monitor_amount):
+                #m = display.get_monitor(i)
+                #logging.info(f"Screen {i}: {m.get_geometry().width}x{m.get_geometry().height}")
+        #else:
+            #logging.warning(f"WARNING: No monitors detected by Gdk")
+        # End FLSUN Changes
         try:
             mon_n = int(args.monitor)
             if not (-1 < mon_n < monitor_amount):
@@ -155,6 +157,7 @@ class KlipperScreen(Gtk.Window):
         self.base_css = ""
         self.load_base_styles()
         self.set_icon_from_file(os.path.join(klipperscreendir, "styles", "icon.svg"))
+        self.lock_screen = LockScreen(self) # FLSUN Changes
         self.base_panel = BasePanel(self)
         self.change_theme(self.theme)
         self.overlay = Gtk.Overlay()
@@ -178,7 +181,7 @@ class KlipperScreen(Gtk.Window):
         self.use_dpms = self._config.get_main_config().getboolean("use_dpms", fallback=(not self.wayland))
         self.use_dpms &= functions.dpms_loaded
         self.set_dpms(self.use_dpms)
-        self.lock_screen = LockScreen(self)
+        #self.lock_screen = LockScreen(self) # FLSUN Changes
         self.log_notification("KlipperScreen Started", 1)
         self.initial_connection()
 
@@ -643,10 +646,16 @@ class KlipperScreen(Gtk.Window):
         if self._config.get_main_config().get('screen_blanking') != "off":
             logging.debug("Screen wake up")
         try:
+            # Start FLSUN Changes
+            #subprocess.run(
+            #    f"xset -display {self.display_number} dpms force on",
+            #    shell=True, check=True
+            #)
             subprocess.run(
-                f"xset -display {self.display_number} dpms force on",
+                f"xset -display :0 dpms force on",
                 shell=True, check=True
             )
+            # End FLSUN Changes
         except subprocess.CalledProcessError as e:
             self.show_popup_message(f"Error: {e}")
             self.set_dpms(False)
@@ -663,20 +672,22 @@ class KlipperScreen(Gtk.Window):
             if self.check_dpms_timeout is not None:
                 GLib.source_remove(self.check_dpms_timeout)
             self.check_dpms_timeout = None
+            # Start FLSUN Changes
             state = functions.get_DPMS_state()
             if state != functions.DPMS_State.Fail:
                 try:
                     subprocess.run(
-                        f"xset -display {self.display_number} dpms 0 0 0",
+                        f"xset -display :0 dpms 0 0 0",
                         shell=True, check=True
                     )
                     subprocess.run(
-                        f"xset -display {self.display_number} -dpms",
+                        f"xset -display :0 -dpms",
                         shell=True, check=True
                     )
                 except subprocess.CalledProcessError as e:
-                    self.show_popup_message(f"FAILED to turn DPMS off on {self.display_number}:\n {e}")
+                    self.show_popup_message(f"FAILED to turn DPMS off on :0:\n {e}")
                     return
+            # End FLSUN Changes
         self.use_dpms = use_dpms
         self._config.set("main", "use_dpms", use_dpms)
         self._config.save_user_config_options()
@@ -687,11 +698,18 @@ class KlipperScreen(Gtk.Window):
 
     def set_dpms_timeout(self):
         try:
+            # Start FLSUN Change
+            #subprocess.run(
+            #    f"xset -display {self.display_number} dpms 0 {self.blanking_time} 0",
+            #    shell=True, check=True
+            #)
             subprocess.run(
-                f"xset -display {self.display_number} dpms 0 {self.blanking_time} 0",
+                f"xset -display :0 dpms 0 {self.blanking_time} 0",
                 shell=True, check=True
             )
-            logging.info(f"DPMS on {self.display_number} set to: {self.blanking_time}")
+            #logging.info(f"DPMS on {self.display_number} set to: {self.blanking_time}")
+            logging.info(f"DPMS on :0 set to: {self.blanking_time}")
+            # End FLSUN Changes
         except subprocess.CalledProcessError as e:
             self.show_popup_message(f"DPMS Error:\n {e}")
             self.set_dpms(False)
@@ -707,8 +725,12 @@ class KlipperScreen(Gtk.Window):
     def set_screenblanking_timeout(self, time):
         # disable screensaver we have our own
         if not self.wayland:
-            os.system(f"xset -display {self.display_number} s off")
-            os.system(f"xset -display {self.display_number} s noblank")
+            # Start FLSUN Changes
+            #os.system(f"xset -display {self.display_number} s off")
+            #os.system(f"xset -display {self.display_number} s noblank")
+            os.system(f"xset -display :0 s off")
+            os.system(f"xset -display :0 s noblank")
+            # End FLSUN Changes
         if time == "off":
             self.blanking_time = 0
         else:
@@ -773,7 +795,7 @@ class KlipperScreen(Gtk.Window):
     def state_paused(self):
         self.state_printing()
         if self._config.get_main_config().getboolean("auto_open_extrude", fallback=True):
-            self.show_panel("extrude")
+            self.show_panel("pause") # FLSUN Changes
 
     def state_printing(self):
         self.show_panel("job_status", remove_all=True)
@@ -869,6 +891,10 @@ class KlipperScreen(Gtk.Window):
             logging.debug("Power status changed: %s", data)
             self.printer.process_power_update(data)
             self.panels['splash_screen'].check_power_status()
+        # Start FLSUN Changes
+        elif action == "notify_sensor_update":
+            self.printer.process_moon_sensors_update(data)
+        # End FLSUN Changes
         elif action == "notify_gcode_response" and self.printer.state not in ["error", "shutdown"]:
             if re.match('^(?:ok\\s+)?(B|C|T\\d*):', data):
                 return
@@ -880,7 +906,7 @@ class KlipperScreen(Gtk.Window):
             elif "!! Extrude below minimum temp" in data:
                 if self._cur_panels[-1] != "temperature":
                     self.show_panel("temperature", extra=self.printer.get_stat("toolhead", "extruder"))
-                self.show_popup_message(_("Temperature too low to extrude"))
+                self.show_popup_message(_("Temperature too low to extrude") + f"!\n" + _("Please heat the nozzle.")) # FLSUN Changes
                 return
             elif data.startswith("!! "):
                 self.show_popup_message(data[3:], 3, from_ws=True)
@@ -891,14 +917,25 @@ class KlipperScreen(Gtk.Window):
                 and "ACCELEROMETER_QUERY" not in data
             ):
                 self.show_popup_message(data, from_ws=True)
+            # Start FLSUN Changes
+            #elif "SAVE_CONFIG" in data and self.printer.state == "ready":
+            #    script = {"script": "SAVE_CONFIG"}
+            #    self._confirm_send_action(
+            #        None,
+            #        _("Save configuration?") + "\n\n" + _("Klipper will reboot"),
+            #        "printer.gcode.script",
+            #       script
+            #    )
             elif "SAVE_CONFIG" in data and self.printer.state == "ready":
                 script = {"script": "SAVE_CONFIG"}
-                self._confirm_send_action(
+                self._info_action(
                     None,
-                    _("Save configuration?") + "\n\n" + _("Klipper will reboot"),
+                    _("Klipper will reboot to save configurations"),
                     "printer.gcode.script",
                     script
                 )
+                self._ws.klippy.gcode_script("SAVE_CONFIG")
+            # End FLSUN Changes
         self.process_update(action, data)
 
     def process_action(self, action):
@@ -940,23 +977,28 @@ class KlipperScreen(Gtk.Window):
                           halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
                           wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
         grid = Gtk.Grid()
-        grid.attach(label, 0, 3, 2, 1)
+        grid.set_column_homogeneous(True) # FLSUN Changes
+        grid.attach(label, 0, 3, 3, 1) # FLSUN Changes
         offset = self.printer.get_stat("gcode_move", "homing_origin")
         zoffset = float(offset[2]) if offset else 0
         if zoffset != 0:
             sign = "+" if zoffset > 0 else "-"
-            msg = f"Apply {sign}{abs(zoffset)} offset?"
+            msg = f"Apply {sign}{abs(zoffset)} offset to Endstop?" # FLSUN Changes
+            msg = _("Apply %s%.3f offset to Endstop?") % (sign, abs(zoffset)) # FLSUN Changes
             zlabel = Gtk.Label(label=msg, hexpand=True, vexpand=True, wrap=True)
-            grid.attach(zlabel, 0, 1, 2, 1)
-            if "Z_OFFSET_APPLY_PROBE" in self.printer.available_commands:
-                apply_probe = self.gtk.Button(label=_("Save Z") + "\n" + "Probe", style="color1")
-                apply_probe.set_vexpand(False)
-                apply_probe.set_size_request(-1, self.gtk.dialog_buttons_height)
-                apply_probe.connect("clicked", self.save, "Z_OFFSET_APPLY_PROBE")
-                grid.attach(apply_probe, 0, 2, 1, 1)
+            grid.attach(zlabel, 0, 1, 3, 1) # FLSUN Changes
+            # Start FLSUN Changes
+            #if "Z_OFFSET_APPLY_PROBE" in self.printer.available_commands:
+                #apply_probe = self.gtk.Button(label=_("Save Z") + "\n" + "Probe", style="color1")
+                #apply_probe.set_vexpand(False)
+                #apply_probe.set_size_request(-1, self.gtk.dialog_buttons_height)
+                #apply_probe.connect("clicked", self.save, "Z_OFFSET_APPLY_PROBE")
+                #grid.attach(apply_probe, 0, 2, 1, 1)
+            # End FLSUN Changes
             if "Z_OFFSET_APPLY_ENDSTOP" in self.printer.available_commands:
-                apply_end = self.gtk.Button(label=_("Save Z") + "\n" + "Endstop", style="color2")
+                apply_end = self.gtk.Button(label=_("Save") + "\n" + _("Z Offset"), style="color2") # FLSUN Changes
                 apply_end.set_vexpand(False)
+                apply_end.set_hexpand(True)
                 apply_end.set_size_request(-1, self.gtk.dialog_buttons_height)
                 apply_end.connect("clicked", self.save, "Z_OFFSET_APPLY_ENDSTOP")
                 grid.attach(apply_end, 1, 2, 1, 1)
@@ -970,18 +1012,22 @@ class KlipperScreen(Gtk.Window):
         self.gtk.remove_dialog(dialog)
         if response_id == Gtk.ResponseType.OK:
             self._ws.klippy.gcode_script("SAVE_CONFIG")
-        if response_id == "Z_OFFSET_APPLY_PROBE":
-            self._ws.klippy.gcode_script("Z_OFFSET_APPLY_PROBE")
-            self._ws.klippy.gcode_script("SAVE_CONFIG")
+        # Start FLSUN Changes
+        #if response_id == "Z_OFFSET_APPLY_PROBE":
+            #self._ws.klippy.gcode_script("Z_OFFSET_APPLY_PROBE")
+            #self._ws.klippy.gcode_script("SAVE_CONFIG")
+        # End FLSUN Changes
         if response_id == "Z_OFFSET_APPLY_ENDSTOP":
             self._ws.klippy.gcode_script("Z_OFFSET_APPLY_ENDSTOP")
             self._ws.klippy.gcode_script("SAVE_CONFIG")
 
     def _confirm_send_action(self, widget, text, method, params=None):
+        # Start FLSUN Changes
         buttons = [
-            {"name": _("Accept"), "response": Gtk.ResponseType.OK, "style": 'dialog-info'},
-            {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'}
+            {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'},
+            {"name": _("Accept"), "response": Gtk.ResponseType.OK, "style": 'dialog-info'}
         ]
+        # End FLSUN Changes
 
         try:
             j2_temp = self.env.from_string(text)
@@ -998,6 +1044,72 @@ class KlipperScreen(Gtk.Window):
         self.confirm = self.gtk.Dialog(
             "KlipperScreen", buttons, label, self._confirm_send_action_response, method, params
         )
+
+    # Start FLSUN Changes
+    def _confirm_unload_action(self, widget, text, method, params=None):
+        buttons = [
+            {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'},
+            {"name": _("Unload (Retract)"), "response": Gtk.ResponseType.APPLY, "style": 'dialog-info'},
+            {"name": _("Unload (Purge)"), "response": Gtk.ResponseType.OK, "style": 'dialog-info'}
+        ]
+
+        try:
+            j2_temp = self.env.from_string(text)
+            text = j2_temp.render()
+        except Exception as e:
+            logging.debug(f"Error parsing jinja for confirm_unload_action\n{e}\n\n{traceback.format_exc()}")
+
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        vbox.set_margin_top(20)
+        vbox.set_margin_bottom(0)
+        vbox.set_margin_start(0)
+        vbox.set_margin_end(0)
+
+        label = Gtk.Label(hexpand=True, vexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
+                      wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
+        label.set_markup(text)
+        vbox.pack_start(label, True, True, 0)
+
+        image_path = os.path.join(klipperscreendir, "styles", "unload.png")
+        image = Gtk.Image.new_from_file(image_path)
+
+        vbox.pack_start(image, True, True, 0)
+
+        if self.confirm is not None:
+            self.gtk.remove_dialog(self.confirm)
+        self.confirm = self.gtk.Dialog(
+            "KlipperScreen", buttons, vbox, self._confirm_unload_action_response, method, params
+        )
+
+    def _info_action(self, widget, text, method, params=None):
+        buttons = []
+
+        try:
+            j2_temp = self.env.from_string(text)
+            text = j2_temp.render()
+        except Exception as e:
+            logging.debug(f"Error parsing jinja for info_action\n{e}\n\n{traceback.format_exc()}")
+
+        label = Gtk.Label(hexpand=True, vexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
+                          wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
+        label.set_markup(text)
+
+        if self.confirm is not None:
+            self.gtk.remove_dialog(self.confirm)
+        self.confirm = self.gtk.Dialog(
+            "KlipperScreen", buttons, label, self._confirm_send_action_response, method, params
+        )
+
+    def _confirm_unload_action_response(self, dialog, response_id, method, params=None):
+        self.gtk.remove_dialog(dialog)
+        if response_id == Gtk.ResponseType.OK:
+            params = {"script": "_KS_UNLOAD_FILAMENT_PURGE"}
+        elif response_id == Gtk.ResponseType.APPLY:
+            params = {"script": "_KS_UNLOAD_FILAMENT_RETRACT"}
+        else:
+            return
+        self._send_action(None, method, params)
+    # End FLSUN Changes
 
     def _confirm_send_action_response(self, dialog, response_id, method, params):
         self.gtk.remove_dialog(dialog)
@@ -1101,6 +1213,12 @@ class KlipperScreen(Gtk.Window):
             powerdevs = self.apiclient.send_request("machine/device_power/devices")
             if powerdevs is not False:
                 self.printer.configure_power_devices(powerdevs)
+        # Start FLSUN Changes
+        if "sensor" in self.server_info["components"]:
+            sensors = self.apiclient.send_request("server/sensors/list")
+            if sensors is not False:
+                self.printer.configure_moon_sensors(sensors)
+        # End FLSUN Changes
         if "webcam" in self.server_info["components"]:
             cameras = self.apiclient.send_request("server/webcams/list")
             if cameras is not False:

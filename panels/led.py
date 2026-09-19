@@ -39,7 +39,18 @@ class Panel(ScreenPanel):
         self.preset_list = Gtk.Grid(row_homogeneous=True, column_homogeneous=True)
         self.color_data = [0, 0, 0, 0]
         self.color_order = 'RGBW'
-        self.presets = {"off": [0.0, 0.0, 0.0, 0.0]}
+        # Start FLSUN Changes
+        #self.presets = {"off": [0.0, 0.0, 0.0, 0.0]}
+        self.presets = {
+            "off": [0.0, 0.0, 0.0, 0.0],
+            "white": [1.0, 1.0, 1.0, 0.0],
+            "blue": [0.0, 0.0, 1.0, 0.0],
+            "red": [1.0, 0.0, 0.0, 0.0],
+            "green": [0.0, 1.0, 0.0, 0.0],
+            "yellow": [1.0, 1.0, 0.0, 0.0],
+            "orange": [1.0, 0.39, 0.0, 0.0],
+            "violet": [1.0, 0.0, 1.0, 0.0]}
+        # End FLSUN Changes
         self.scales = {}
         self.buttons = []
         self.leds = self._printer.get_leds()
@@ -54,9 +65,11 @@ class Panel(ScreenPanel):
             or (idx == 3 and 'W' in self.color_order)
         )
 
-    def activate(self):
-        if self.current_led is not None:
-            self.set_title(f"{self.current_led}")
+    # Start FLSUN Changes
+    #def activate(self):
+    #    if self.current_led is not None:
+    #        self.set_title(f"{self.current_led}")
+    # End FLSUN Changes
 
     def set_title(self, title):
         self._screen.base_panel.set_title(self.prettify(title))
@@ -127,16 +140,22 @@ class Panel(ScreenPanel):
             scale_grid.attach(scale, 1, idx, 3, 1)
         grid.attach(scale_grid, 0, 0, 3, 1)
 
+        # Start FLSUN Changes
+        preset_button = self._gtk.Button(None, _("Presets"), "color1")
+        preset_button.connect("clicked", self.on_preset_button_clicked)
+        # End FLSUN Changes
         columns = 3 if self._screen.vertical_mode else 2
-        data_misc = self._screen.apiclient.send_request(
-            "server/database/item?namespace=mainsail&key=miscellaneous.entries")
-        if data_misc:
-            presets_data = data_misc['value'][next(iter(data_misc["value"]))]['presets']
-            if presets_data:
-                self.presets.update(self.parse_presets(presets_data))
+        # Start FLSUN Changes
+        #data_misc = self._screen.apiclient.send_request(
+        #    "server/database/item?namespace=mainsail&key=miscellaneous.entries")
+        #if data_misc:
+        #    presets_data = data_misc['value'][next(iter(data_misc["value"]))]['presets']
+        #    if presets_data:
+        #        self.presets.update(self.parse_presets(presets_data))
+        # End FLSUN Changes
         for i, key in enumerate(self.presets):
             logging.info(f'Adding preset: {key}')
-            preview = ColorPreviewArea(size=self.da_size)
+            preview = ColorPreviewArea(size=self.da_size * 1.25)  # FLSUN Changes
             preview.set_color(self.presets[key])
             button = self._gtk.Button()
             button.set_image(preview)
@@ -150,12 +169,18 @@ class Panel(ScreenPanel):
         preview_box.add(self.preview)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.add(preview_box)
+        box.add(preset_button) # FLSUN Changes
         box.add(scroll)
         if self._screen.vertical_mode:
             grid.attach(box, 0, 1, 3, 1)
         else:
             grid.attach(box, 3, 0, 2, 1)
         return grid
+
+    # Start FLSUN Changes
+    def on_preset_button_clicked(self, widget):
+        self._screen._send_action(widget, "printer.gcode.script",{"script": f"_NEOPIXELS_PRESETS"})
+    # End FLSUN Changes
 
     def update_preview_label(self, args):
         self.preview_label.set_label(rgb_to_hex(rgbw_to_rgb(self.color_data)))
@@ -187,8 +212,19 @@ class Panel(ScreenPanel):
 
     def set_led_color(self, color_data):
         name = self.current_led.split()[1] if len(self.current_led.split()) > 1 else self.current_led
+        # Start FLSUN Changes
+        self._screen._send_action(None, "printer.gcode.script",
+                              {"script": f"SET_LED_TEMPLATE LED=chamber_led TEMPLATE=\"\""})
+        red_value = color_data[0]
+        green_value = color_data[1]
+        blue_value = color_data[2]  
+        # End FLSUN Changes
         self._screen._send_action(None, "printer.gcode.script",
                                   {"script": KlippyGcodes.set_led_color(name, color_data)})
+        # Start FLSUN Changes
+        self._screen._send_action(None, "printer.gcode.script",
+                              {"script": f"SET_GCODE_VARIABLE MACRO=CHAMBER_LED_SWITCH VARIABLE=neopixels_state VALUE=1"})
+        # End FLSUN Changes
 
     @staticmethod
     def parse_presets(presets_data) -> {}:

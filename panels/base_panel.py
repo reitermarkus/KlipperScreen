@@ -31,6 +31,7 @@ class BasePanel(ScreenPanel):
         self.current_extruder = None
         self.last_usage_report = datetime.now()
         self.usage_report = 0
+        self.ks_topbar_sensors_cfg = None # FLSUN Changes
         # Action bar buttons
         self.abscale = self.bts * 1.1
         self.control['back'] = self._gtk.Button('back', scale=self.abscale)
@@ -39,6 +40,14 @@ class BasePanel(ScreenPanel):
         self.control['home'].connect("clicked", self._screen._menu_go_back, True)
         for control in self.control:
             self.set_control_sensitive(False, control)
+        # Start FLSUN Changes
+        self.control['led'] = self._gtk.Button('light', scale=self.abscale)
+        self.control['led'].connect("clicked", self.toggle_led)
+        self.control['led'].set_no_show_all(True)
+        self.control['lock'] = self._gtk.Button("lock", scale=self.abscale)
+        self.control['lock'].connect("clicked", self._screen.lock_screen.lock)
+        self.control['lock'].set_no_show_all(True)
+        # End FLSUN Changes
         self.control['estop'] = self._gtk.Button('emergency', scale=self.abscale)
         self.control['estop'].connect("clicked", self.emergency_stop)
         self.control['estop'].set_no_show_all(True)
@@ -52,13 +61,15 @@ class BasePanel(ScreenPanel):
         self.control['printer_select'].connect("clicked", self._screen.show_printer_select)
         self.control['printer_select'].set_no_show_all(True)
 
-        self.shorcut = {
-            "panel": "gcode_macros",
-            "icon": "custom-script",
-        }
-        self.control['shortcut'] = self._gtk.Button(self.shorcut['icon'], scale=self.abscale)
-        self.control['shortcut'].connect("clicked", self.menu_item_clicked, self.shorcut)
-        self.control['shortcut'].set_no_show_all(True)
+        # Start FLUSUN Changes
+        #self.shorcut = {
+        #    "panel": "gcode_macros",
+        #    "icon": "custom-script",
+        #}
+        #self.control['shortcut'] = self._gtk.Button(self.shorcut['icon'], scale=self.abscale)
+        #self.control['shortcut'].connect("clicked", self.menu_item_clicked, self.shorcut)
+        #self.control['shortcut'].set_no_show_all(True)
+        # End FLUN Changes
 
         # Any action bar button should close the keyboard
         for item in self.control:
@@ -77,7 +88,9 @@ class BasePanel(ScreenPanel):
         self.action_bar.add(self.control['back'])
         self.action_bar.add(self.control['home'])
         self.action_bar.add(self.control['printer_select'])
-        self.action_bar.add(self.control['shortcut'])
+        #self.action_bar.add(self.control['shortcut']) # FLSUN Changes
+        self.action_bar.add(self.control['led']) # FLSUN Changes
+        self.action_bar.add(self.control['lock']) # FLSUN Changes
         self.action_bar.add(self.control['estop'])
         self.action_bar.add(self.control['shutdown'])
         self.show_printer_select(len(self._config.get_printers()) > 1)
@@ -91,7 +104,10 @@ class BasePanel(ScreenPanel):
 
         self.control['time'] = Gtk.Label(label="00:00 AM")
         self.control['time_box'] = Gtk.Box(halign=Gtk.Align.END)
-        self.control['time_box'].pack_end(self.control['time'], True, True, 10)
+        # Start FLSUN Changes
+        #self.control['time_box'].pack_end(self.control['time'], True, True, 10)
+        self.control['time_box'].pack_end(self.control['time'], True, True, 5)
+        # End FLSUN Changes
 
         self.battery_icons = self.load_battery_icons()
         self.labels['battery'] = Gtk.Label()
@@ -176,7 +192,7 @@ class BasePanel(ScreenPanel):
                 self.labels[f'{device}_box'].pack_start(self.labels[device], False, False, 0)
 
             # Limit the number of items according to resolution
-            nlimit = int(round(log(self._screen.width, 10) * 5 - 10.5))
+            nlimit = int(round(log(self._screen.width, 10) * 6 - 10.5)) # FLSUN Changes
             n = 0
             if len(self._printer.get_tools()) > (nlimit - 1):
                 self.current_extruder = self._printer.get_stat("toolhead", "extruder")
@@ -193,6 +209,11 @@ class BasePanel(ScreenPanel):
                 elif device.startswith("heater"):
                     self.control['temp_box'].add(self.labels[f"{device}_box"])
                     n += 1
+                # Start FLSUN Changes
+                elif device.startswith("temperature_sensor chamber"):
+                    self.control['temp_box'].add(self.labels[f"{device}_box"])
+                    n += 1
+                # End FLSUN Changes
             for device in devices:
                 # Users can fill the bar if they want
                 if n >= nlimit + 1:
@@ -204,6 +225,26 @@ class BasePanel(ScreenPanel):
                         n += 1
                         break
 
+            # Start FLSUN Changes
+            self.ks_topbar_sensors_cfg = self._config.get_topbar_sensors()
+            if self.ks_topbar_sensors_cfg is not None:
+                try:
+                    for device, cfg in self.ks_topbar_sensors_cfg.items():
+                        if n >= nlimit + 1:
+                            break
+                        self.labels[device] = Gtk.Label(ellipsize=Pango.EllipsizeMode.START)
+                        self.labels[f'{device}_box'] = Gtk.Box()
+                        icon = self.get_icon_by_name(cfg.get("icon", "heat-up"), img_size)
+                        if icon is not None:
+                            self.labels[f'{device}_box'].pack_start(icon, False, False, 3)
+                        self.labels[f'{device}_box'].pack_start(self.labels[device], False, False, 0)
+                        self.control['temp_box'].add(self.labels[f"{device}_box"])
+                        self.labels[device].set_label(cfg.get("fallback_value", ""))
+                        n += 1
+                    self.update_top_sensors();
+                except Exception as e:
+                    logging.error(f"Couldn't create custom sensors: {e}")
+            # End FLSUN Changes
             self.control['temp_box'].show_all()
         except Exception as e:
             logging.debug(f"Couldn't create heaters box: {e}")
@@ -216,17 +257,36 @@ class BasePanel(ScreenPanel):
                 return self._gtk.Image(f"extruder-{device[8:]}", img_size, img_size)
             return self._gtk.Image("extruder", img_size, img_size)
         elif device.startswith("heater_bed"):
-            return self._gtk.Image("bed", img_size, img_size)
+        # Start FLSUN Changes
+            #return self._gtk.Image("bed", img_size, img_size)
+            return self._gtk.Image("bed-inner", img_size, img_size)
+        elif device.startswith("heater_generic heater_bed_2"):
+            return self._gtk.Image("bed-outer", img_size, img_size)
+        # End FLSUN Changes
         # Extra items
         elif self.titlebar_name_type is not None:
             # The item has a name, do not use an icon
             return None
         elif device.startswith("temperature_fan"):
             return self._gtk.Image("fan", img_size, img_size)
+        # Start FLSUN Changes
+        elif device.startswith("heater_generic drying_box"):
+            return self._gtk.Image("drying-box", img_size, img_size)
+        elif device.startswith("temperature_sensor chamber"):
+            return self._gtk.Image("chamber", img_size, img_size)
+        # End FLSUN Changes
         elif device.startswith("heater_generic"):
             return self._gtk.Image("heater", img_size, img_size)
         else:
             return self._gtk.Image("heat-up", img_size, img_size)
+
+    # Start FLSUN Changes
+    def get_icon_by_name(self, icon_name, img_size):
+        return self._gtk.Image(icon_name, img_size, img_size)
+
+    def toggle_led(self, button=None):
+        self._screen._send_action(None, "printer.gcode.script", {"script": "CHAMBER_LED_SWITCH"})
+    # End FLSUN Changes
 
     def activate(self):
         if self.time_update is None:
@@ -238,15 +298,20 @@ class BasePanel(ScreenPanel):
         printing = self._printer and self._printer.state in {"printing", "paused"}
         connected = self._printer and self._printer.state not in {'disconnected', 'startup', 'shutdown', 'error'}
         printer_select = 'printer_select' not in self._screen._cur_panels
+        self.control['led'].set_visible(connected and printer_select) # FLSUN Changes
+        self.control['lock'].set_visible(printing) # FLSUN Changes
         self.control['estop'].set_visible(printing)
         self.control['shutdown'].set_visible(not printing)
-        self.show_shortcut(connected and printer_select)
+        #self.show_shortcut(connected and printer_select) # FLSUN Changes
         self.show_heaters(connected and printer_select)
         self.show_printer_select(len(self._config.get_printers()) > 1)
         for control in ('back', 'home'):
             self.set_control_sensitive(len(self._screen._cur_panels) > 1, control=control)
         self.current_panel = panel
-        self.set_title(panel.title)
+        # Start FLSUN Changes
+        #self.set_title(panel.title)
+        self.set_title("")
+        # End FLSUN Changes
         self.content.add(panel.content)
 
     def back(self, widget=None):
@@ -259,29 +324,31 @@ class BasePanel(ScreenPanel):
             self._screen._menu_go_back()
 
     def process_update(self, action, data):
-        if action == "notify_proc_stat_update":
-            cpu = data["system_cpu_usage"]["cpu"]
-            memory = (data["system_memory"]["used"] / data["system_memory"]["total"]) * 100
-            error = "message_popup_error"
-            ctx = self.titlebar.get_style_context()
-            msg = f"CPU: {cpu:2.0f}%    RAM: {memory:2.0f}%"
-            if cpu > 80 or memory > 85:
-                if self.usage_report < 3:
-                    self.usage_report += 1
-                    return
-                self.last_usage_report = datetime.now()
-                if not ctx.has_class(error):
-                    ctx.add_class(error)
-                self._screen.log_notification(f"{self._screen.connecting_to_printer}: {msg}", 2)
-                self.titlelbl.set_label(msg)
-            elif ctx.has_class(error):
-                if (datetime.now() - self.last_usage_report).seconds < 5:
-                    self.titlelbl.set_label(msg)
-                    return
-                self.usage_report = 0
-                ctx.remove_class(error)
-                self.titlelbl.set_label(f"{self._screen.connecting_to_printer}")
-            return
+        # Start FLSUN change
+        #if action == "notify_proc_stat_update":
+        #    cpu = data["system_cpu_usage"]["cpu"]
+        #    memory = (data["system_memory"]["used"] / data["system_memory"]["total"]) * 100
+        #    error = "message_popup_error"
+        #    ctx = self.titlebar.get_style_context()
+        #    msg = f"CPU: {cpu:2.0f}%    RAM: {memory:2.0f}%"
+        #    if cpu > 80 or memory > 85:
+        #        if self.usage_report < 3:
+        #            self.usage_report += 1
+        #            return
+        #        self.last_usage_report = datetime.now()
+        #        if not ctx.has_class(error):
+        #            ctx.add_class(error)
+        #        self._screen.log_notification(f"{self._screen.connecting_to_printer}: {msg}", 2)
+        #        self.titlelbl.set_label(msg)
+        #    elif ctx.has_class(error):
+        #        if (datetime.now() - self.last_usage_report).seconds < 5:
+        #            self.titlelbl.set_label(msg)
+        #            return
+        #        self.usage_report = 0
+        #        ctx.remove_class(error)
+        #        self.titlelbl.set_label(f"{self._screen.connecting_to_printer}")
+        #    return
+        # End FLSUN Change
 
         if action == "notify_update_response":
             if self.update_dialog is None:
@@ -302,6 +369,11 @@ class BasePanel(ScreenPanel):
                         for dialog in self._screen.dialogs:
                             self._gtk.remove_dialog(dialog)
             return
+
+        # Start FLSUN Changes
+        elif action == "notify_sensor_update":
+            self.update_top_sensors()
+        # End FLSUN Changes
         if action != "notify_status_update" or self._screen.printer is None:
             return
         devices = self._printer.get_temp_devices()
@@ -318,7 +390,10 @@ class BasePanel(ScreenPanel):
                     elif self.titlebar_name_type == "short":
                         name = device.split()[1] if len(device.split()) > 1 else device
                         name = f"{name[:1].upper()}: "
-                self.labels[device].set_label(f"{name}{temp:.0f}°")
+                # Start FLSUN Changes
+                #self.labels[device].set_label(f"{name}{temp:.0f}°")
+                self.labels[device].set_label(f"{name}{temp:.0f}°C")
+                # End FLSUN Changes
 
         if (self.current_extruder and 'toolhead' in data and 'extruder' in data['toolhead']
                 and data["toolhead"]["extruder"] != self.current_extruder):
@@ -329,6 +404,43 @@ class BasePanel(ScreenPanel):
             self.control['temp_box'].show_all()
 
         return False
+
+    # Start FSLUN Changes
+    def update_top_sensors(self):
+        try:
+            if self.ks_topbar_sensors_cfg is not None:
+                for device, cfg in self.ks_topbar_sensors_cfg.items():
+                    if device in self.labels and "moonraker_sensor_id" in cfg and "moonraker_parameter" in cfg:
+                        sensor = self._printer.get_moon_sensor_params(cfg["moonraker_sensor_id"])
+                        label_text = cfg.get("fallback_value", "")
+                        if sensor is not None and cfg["moonraker_parameter"] in sensor:
+                            value = sensor[cfg["moonraker_parameter"]]
+                            if value is not None:
+                                unit = cfg.get("unit", "")
+                                decimals = cfg.get("decimal_count",1)
+                                if device == "spool_weight" and not self._config.get_main_config().getboolean('spool_weight_percent', True):
+                                    if value == 0:
+                                        value_unit = "0g"
+                                    elif value in range(10, 101, 10):
+                                        lower_bound = (value - 10) * 10
+                                        upper_bound = value * 10
+                                        value_unit = f"{lower_bound}g ~ {upper_bound}g" if value != 100 else "900g ~ 1Kg"
+                                    else:
+                                        value_unit = "0g"
+                                else:
+                                    value_unit = f"{value:.{decimals}f}{unit}"
+                                name = ""
+                                if self.titlebar_name_type == "full":
+                                    name = device.split()[1] if len(device.split()) > 1 else device
+                                    name = f'{self.prettify(name)}: '
+                                elif self.titlebar_name_type == "short":
+                                    name = device.split()[1] if len(device.split()) > 1 else device
+                                    name = f"{name[:1].upper()}: "
+                                label_text = f"{name}{value_unit}"
+                        self.labels[device].set_label(label_text)
+        except Exception as e:
+            logging.error(f"Error getting value from custom sensors: {e}")
+    # End FLSUN Changes
 
     def remove(self, widget):
         self.content.remove(widget)
@@ -354,15 +466,17 @@ class BasePanel(ScreenPanel):
 
     def set_title(self, title):
         self.titlebar.get_style_context().remove_class("message_popup_error")
-        if (
-                self._screen.connecting_to_printer != "Printer"
-                and 'printer_select' not in self._screen._cur_panels
-        ):
-            printer = self._screen.connecting_to_printer
-        else:
-            printer = ""
+        # Start FLSUN Changes
+        #if (
+        #        self._screen.connecting_to_printer != "Printer"
+        #        and 'printer_select' not in self._screen._cur_panels
+        #):
+        #    printer = self._screen.connecting_to_printer
+        #else:
+        #   printer = ""
+        # End FLSUN Changes
         if not title:
-            self.titlelbl.set_label(f"{printer}")
+            #self.titlelbl.set_label("") # FLSUN Changes
             return
         try:
             env = Environment(extensions=["jinja2.ext.i18n"], autoescape=True)
@@ -372,7 +486,7 @@ class BasePanel(ScreenPanel):
         except Exception as e:
             logging.debug(f"Error parsing jinja for title: {title}\n{e}")
 
-        self.titlelbl.set_label(f"{printer} {title}")
+        #self.titlelbl.set_label(f"{printer} {title}") # FLSUN Changes
 
     def update_time(self):
         now = datetime.now()
@@ -432,7 +546,10 @@ class BasePanel(ScreenPanel):
     def show_update_dialog(self):
         if self.update_dialog is not None:
             return
-        button = [{"name": _("Finish"), "response": Gtk.ResponseType.OK}]
+        # Start FLSUN Changes
+        #button = [{"name": _("Finish"), "response": Gtk.ResponseType.OK}]
+        button = [{"name": _("Close"), "response": Gtk.ResponseType.OK}]
+        # End FLSUN Changes
         self.labels['update_progress'] = Gtk.Label(hexpand=True, vexpand=True, ellipsize=Pango.EllipsizeMode.END)
         self.labels['update_scroll'] = self._gtk.ScrolledWindow(steppers=False)
         self.labels['update_scroll'].set_property("overlay-scrolling", True)

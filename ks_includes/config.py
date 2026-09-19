@@ -162,13 +162,13 @@ class KlipperScreenConfig:
                 bools = (
                     'invert_x', 'invert_y', 'invert_z', '24htime', 'only_heaters', 'show_cursor', 'confirm_estop',
                     'autoclose_popups', 'use_dpms', 'use_default_menu', 'side_macro_shortcut', 'use-matchbox-keyboard',
-                    'show_heater_power', "show_scroll_steppers", "auto_open_extrude"
-                )
+                    'show_heater_power', "show_scroll_steppers", "auto_open_extrude", "spool_weight_percent"
+                ) # FLSUN Changes
                 strs = (
                     'default_printer', 'language', 'print_sort_dir', 'theme', 'screen_blanking_printing', 'font_size',
                     'print_estimate_method', 'screen_blanking', "screen_on_devices", "screen_off_devices", 'print_view',
-                    "lock_password"
-                )
+                    "lock_password", 'brightness_command'
+                ) # FLSUN Changes
                 numbers = (
                     'job_complete_timeout', 'job_error_timeout', 'move_speed_xy', 'move_speed_z',
                     'print_estimate_compensation', 'width', 'height',
@@ -186,6 +186,16 @@ class KlipperScreenConfig:
                     'moonraker_port', 'move_speed_xy', 'move_speed_z', 'screw_rotation',
                     'calibrate_x_position', 'calibrate_y_position',
                 )
+            # Start FLSUN Changes
+            elif section.startswith('topbar_sensor '):
+                strs = (
+                    'moonraker_sensor_id', 'moonraker_parameter', 'icon',
+                    'unit', 'fallback_value',
+                )
+                numbers = (
+                    'decimal_count',
+                )
+            # End FLSUN Changes
             elif section.startswith('preheat '):
                 strs = ('gcode', '')
                 numbers = [f'{option}' for option in config[section] if option != 'gcode']
@@ -249,11 +259,18 @@ class KlipperScreenConfig:
     def _create_configurable_options(self, screen):
 
         self.configurable_options = [
+            # Start FLSUN Changes
+            #{"theme": {
+            #    "section": "main", "name": _("Icon Theme"), "type": "dropdown",
+            #    "tooltip": _("Changes how the interface looks"),
+            #    "value": "z-bolt", "callback": screen.change_theme, "options": [
+            #        {"name": "Z-bolt" + " " + _("(default)"), "value": "z-bolt"}]}},
             {"theme": {
                 "section": "main", "name": _("Icon Theme"), "type": "dropdown",
                 "tooltip": _("Changes how the interface looks"),
-                "value": "z-bolt", "callback": screen.change_theme, "options": [
-                    {"name": "Z-bolt" + " " + _("(default)"), "value": "z-bolt"}]}},
+                "value": "flsun-blue", "callback": screen.change_theme, "options": [
+                    {"name": "flsun-blue" + " " + _("(default)"), "value": "flsun-blue"}]}},
+            # End FLSUN Changes
             {"print_estimate_method": {
                 "section": "main", "name": _("Estimated Time Method"), "type": "dropdown",
                 "tooltip": _("Changes how the time remaining is calculated"),
@@ -296,10 +313,11 @@ class KlipperScreenConfig:
             {"only_heaters": {"section": "main", "name": _("Hide sensors in Temp."), "type": "binary",
                               "tooltip": _("Show only devices that are able to be set"),
                               "value": "False", "callback": screen.reload_panels}},
+            # Start FLSUN Changes
             {"use_dpms": {"section": "main", "name": _("Screen DPMS"), "type": "binary",
-                          "tooltip": _("Enable screen power management") + "\n"
-                                     + _("Not all screens support this"),
+                          "tooltip": _("Enable screen power management"),
                           "value": "True", "callback": screen.set_dpms}},
+            # End FLSUN Changes
             {"autoclose_popups": {"section": "main", "name": _("Auto-close notifications"), "type": "binary",
                                   "tooltip": _("Close messages after a timeout"),
                                   "value": "True"}},
@@ -309,11 +327,19 @@ class KlipperScreenConfig:
             {"show_scroll_steppers": {"section": "main", "name": _("Show Scrollbars Buttons"), "type": "binary",
                                       "tooltip": _("Useful for un-responsive touchscreens"),
                                       "value": "False", "callback": screen.reload_panels}},
-            {"auto_open_extrude": {"section": "main", "name": _("Auto-open Extrude On Pause"), "type": "binary",
+            # Start FLSUN Changes
+            {"auto_open_extrude": {"section": "main", "name": _("Auto-open filament management during Pause"), "type": "binary",
+            					   "tooltip": _("Useful for M600 feature"),
                                    "value": "True", "callback": screen.reload_panels}},
+            # End FLSUN Change
             {"show_cursor": {"section": "main", "name": _("Show cursor"), "type": "binary",
                              "tooltip": _("For mouse control or to verify touchscreen accuracy"),
                              "value": "False", "callback": screen.update_cursor}},
+            # Start FLSUN Changes
+            {"spool_weight_percent": {"section": "main", "name": _("Show Spool Weight in Percentage"), "type": "binary",
+                                   "tooltip": _("Percentage instead of grams"),
+                                   "value": "False", "callback": screen.reload_panels}},
+            # End FLSUN Changes
             # {"": {"section": "main", "name": _(""), "type": ""}}
         ]
 
@@ -346,7 +372,8 @@ class KlipperScreenConfig:
         themes = [
             d for d in os.listdir(t_path)
             if (not os.path.isfile(os.path.join(t_path, d))
-                and d not in ("z-bolt", "printers"))
+                #and d not in ("z-bolt", "printers")) # FLSUN Changes
+                and d not in ("flsun-blue", "printers")) # FLSUN Changes
         ]
         themes.sort()
 
@@ -513,6 +540,17 @@ class KlipperScreenConfig:
             name = f"printer {name}"
 
         return None if name not in self.config else self.config[name]
+
+    # Start FLSUN Changes
+    def get_topbar_sensors(self):
+        return {sensor_cfg.replace("topbar_sensor ", ""): self.config[sensor_cfg] for sensor_cfg in self.config.sections() if sensor_cfg.startswith("topbar_sensor ")}
+
+    def get_topbar_sensor_config(self, name):
+        if not name.startswith("topbar_sensor "):
+            name = f"topbar_sensor {name}"
+
+        return None if name not in self.config else self.config[name]
+    # End FLSUN Changes
 
     def get_printers(self):
         return self.printers

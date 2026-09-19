@@ -14,8 +14,10 @@ class Panel(ScreenPanel):
     distance = distances[-2]
 
     def __init__(self, screen, title):
-        title = title or _("Z Calibrate")
+        title = title or _("Z Offset Calibration") # FLSUN Changes
         super().__init__(screen, title)
+        macros = self._printer.get_config_section_list("gcode_macro ") # Changes
+        self.calibration_z_offset = any("CALIBRATION_Z_OFFSET" in macro.upper() for macro in macros) # FLSUN Changes
         self.last_drop_time = datetime.now()
         self.initialize_mesh_params()
         self.initialize_probe_params()
@@ -69,7 +71,12 @@ class Panel(ScreenPanel):
         pos.attach(self.widgets['zposition'], 0, 1, 2, 1)
 
         if self.probe:
-            pos.attach(Gtk.Label(label=_("Probe Offset") + ": "), 0, 2, 2, 1)
+            # Start FLSUN Changes
+            #pos.attach(Gtk.Label(label=_("Probe Offset") + ": "), 0, 2, 2, 1)    
+            label_probe_offset = Gtk.Label(label="<b>" + _("Probe Offset") + "</b>")
+            label_probe_offset.set_use_markup(True)
+            pos.attach(label_probe_offset, 0, 2, 2, 1)
+            # End FLSUN Changes
             pos.attach(Gtk.Label(label=_("Saved")), 0, 3, 1, 1)
             pos.attach(Gtk.Label(label=_("New")), 1, 3, 1, 1)
             pos.attach(Gtk.Label(label=f"{self.z_offset:.3f}"), 0, 4, 1, 1)
@@ -90,7 +97,7 @@ class Panel(ScreenPanel):
         self.buttons['zpos'].connect("clicked", self.move, "+")
         self.buttons['zneg'].connect("clicked", self.move, "-")
         self.buttons['complete'].connect("clicked", self.accept)
-        script = {"script": "ABORT"}
+        script = {"script": "ABORT\nG28"} # FLSUN Changes
         self.buttons['cancel'].connect(
             "clicked",
             self._screen._confirm_send_action,
@@ -100,14 +107,16 @@ class Panel(ScreenPanel):
         )
         self.buttons['start'].connect("clicked", self.start_calibration)
 
-        self.dropdown = Gtk.ComboBox.new_with_model(self.set_commands())
-        self.dropdown.connect("changed", self.on_dropdown_change)
-        self.dropdown.connect("notify::popup-shown", self.on_popup_shown)
-        renderer_text = Gtk.CellRendererText()
-        renderer_text.set_property("ellipsize", Pango.EllipsizeMode.END)
-        self.dropdown.pack_start(renderer_text, True)
-        self.dropdown.add_attribute(renderer_text, "text", 0)
-        self.dropdown.set_active(0)
+        # Start FLSUN Changes
+        #self.dropdown = Gtk.ComboBox.new_with_model(self.set_commands())
+        #self.dropdown.connect("changed", self.on_dropdown_change)
+        #self.dropdown.connect("notify::popup-shown", self.on_popup_shown)
+        #renderer_text = Gtk.CellRendererText()
+        #renderer_text.set_property("ellipsize", Pango.EllipsizeMode.END)
+        #self.dropdown.pack_start(renderer_text, True)
+        #self.dropdown.add_attribute(renderer_text, "text", 0)
+        #self.dropdown.set_active(0)
+        # End FlSUN Changes
 
         distgrid = Gtk.Grid()
         for j, i in enumerate(self.distances):
@@ -127,7 +136,7 @@ class Panel(ScreenPanel):
 
         start_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         start_box.pack_start(self.buttons['start'], True, True, 0)
-        start_box.pack_start(self.dropdown, True, True, 0)
+        #start_box.pack_start(self.dropdown, True, True, 0) FLSUN Changes
 
         grid = Gtk.Grid(column_homogeneous=True)
         if self._screen.vertical_mode:
@@ -150,6 +159,7 @@ class Panel(ScreenPanel):
             grid.attach(distances, 0, 2, 3, 1)
 
         self.content.add(grid)
+        self.content.show_all()
 
     def on_dropdown_change(self, dropdown):
         iterable = dropdown.get_active_iter()
@@ -179,16 +189,7 @@ class Panel(ScreenPanel):
         commands = Gtk.ListStore(str)
 
         if "PROBE_CALIBRATE" in self._printer.available_commands:
-            commands.append({"PROBE_CALIBRATE"})
-        if "Z_ENDSTOP_CALIBRATE" in self._printer.available_commands:
-            commands.append({"Z_ENDSTOP_CALIBRATE"})
-        if "BED_MESH_CALIBRATE" in self._printer.available_commands:
-            commands.append({"BED_MESH_CALIBRATE METHOD=manual"})
-        if "DELTA_CALIBRATE" in self._printer.available_commands:
-            commands.append({"DELTA_CALIBRATE"})
-            commands.append({"DELTA_CALIBRATE METHOD=manual"})
-        if "AXIS_TWIST_COMPENSATION_CALIBRATE" in self._printer.available_commands:
-            commands.append({"AXIS_TWIST_COMPENSATION_CALIBRATE"})
+            commands.append({"CALIBRATION_Z_OFFSET"}) # FLSUN Changes
 
         # Custom commands
         if self.ks_printer_cfg is not None:
@@ -205,23 +206,33 @@ class Panel(ScreenPanel):
         return [float(i.strip()) for i in string.split(',')]
 
     def start_calibration(self, widget):
-        iterable = self.dropdown.get_active_iter()
-        if iterable is None:
-            self._screen.show_popup_message("Unknown error with dropdown")
-            return
-        model = self.dropdown.get_model()
-        command = model[iterable][0]
+        # Start FLSUN Changes
+        #iterable = self.dropdown.get_active_iter()
+        #if iterable is None:
+        #    self._screen.show_popup_message("Unknown error with dropdown")
+        #    return
+        #model = self.dropdown.get_model()
+        #command = model[iterable][0]
 
-        self.buttons['start'].set_sensitive(False)
-        self.dropdown.set_sensitive(False)
+        #self.buttons['start'].set_sensitive(False)
+        #self.dropdown.set_sensitive(False)
 
-        self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Z=0")
-        if self._printer.config_section_exists("bed_mesh"):
-            self._screen._ws.klippy.gcode_script("BED_MESH_CLEAR")
-        if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
-            self._screen._ws.klippy.gcode_script("G28")
-        self._move_to_position(*self._get_calibration_location())
-        self._screen._ws.klippy.gcode_script(command)
+        #self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Z=0")
+        #if self._printer.config_section_exists("bed_mesh"):
+            #self._screen._ws.klippy.gcode_script("BED_MESH_CLEAR")
+        #if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
+            #self._screen._ws.klippy.gcode_script("G28")
+        #self._move_to_position(*self._get_calibration_location())
+        
+        if not self.calibration_z_offset:
+            self._screen.show_popup_message("Macro CALIBRATION_Z_OFFSET " + _("not found!\nPlease update your configuration files."))
+        else:
+            self.buttons['start'].set_sensitive(False)
+            script = {"script": "CALIBRATION_Z_OFFSET"}
+            self._screen._confirm_send_action(None, _("Do you want to start Z Offset calibration?"), "printer.gcode.script", script)
+        #else:
+            #self._screen._ws.klippy.gcode_script(command)
+        # End FLSUN Changes
 
     def _move_to_position(self, x, y):
         if not x or not y:
@@ -279,13 +290,27 @@ class Panel(ScreenPanel):
         logging.debug(f"Probe in the center X:{mid_x} Y:{mid_y}")
         return mid_x - self.x_offset, mid_y - self.y_offset
 
-    def activate(self):
-        if self._printer.get_stat("manual_probe", "is_active"):
+    # Start FLSUN Changes
+    #def activate(self):
+        #if self._printer.get_stat("manual_probe", "is_active"):
+            #self.buttons_calibrating()
+        #else:
+            #self.buttons_not_calibrating()
+
+    def process_busy(self, busy):
+        if busy:
+            for button in self.buttons:
+                self.buttons[button].set_sensitive(False)
+        elif self._printer.get_stat("manual_probe", "is_active"):
             self.buttons_calibrating()
         else:
             self.buttons_not_calibrating()
+    # End FLSUN Changes
 
     def process_update(self, action, data):
+        if action == "notify_busy": # FLSUN Changes
+            self.process_busy(data) # FLSUN Changes
+            return # FLSUN Changes
         if action == "notify_status_update":
             if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
                 self.widgets['zposition'].set_text("Z: ?")
@@ -321,11 +346,12 @@ class Panel(ScreenPanel):
     def accept(self, widget):
         logging.info("Accepting Z position")
         self._screen._ws.klippy.gcode_script("ACCEPT")
+        self._screen._ws.klippy.gcode_script("G28\nM400\nSAVE_CONFIG") # FLSUN Changes
 
     def buttons_calibrating(self):
         self.buttons['start'].get_style_context().remove_class('color3')
         self.buttons['start'].set_sensitive(False)
-        self.dropdown.set_sensitive(False)
+        #self.dropdown.set_sensitive(False) # FLSUN Changes
 
         self.buttons['zpos'].set_sensitive(True)
         self.buttons['zpos'].get_style_context().add_class('color4')
@@ -339,7 +365,7 @@ class Panel(ScreenPanel):
     def buttons_not_calibrating(self):
         self.buttons['start'].get_style_context().add_class('color3')
         self.buttons['start'].set_sensitive(True)
-        self.dropdown.set_sensitive(True)
+        #self.dropdown.set_sensitive(True) # FLSUN Changes
 
         self.buttons['zpos'].set_sensitive(False)
         self.buttons['zpos'].get_style_context().remove_class('color4')

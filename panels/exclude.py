@@ -15,7 +15,8 @@ class Panel(ScreenPanel):
         self._screen = screen
         self.object_list = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True)
         self.buttons = {}
-        self.current_object = self._gtk.Button("extrude", "", scale=self.bts, position=Gtk.PositionType.LEFT, lines=1)
+        #self.current_object = self._gtk.Button("extrude", "", scale=self.bts, position=Gtk.PositionType.LEFT, lines=1) # FLSUN Changes
+        self.current_object = self._gtk.Button("delete", "", scale=self.bts, position=Gtk.PositionType.LEFT, lines=1) # FLSUN Changes
         self.current_object.connect("clicked", self.exclude_current)
         self.current_object.set_vexpand(False)
         self.excluded_objects = self._printer.get_stat("exclude_object", "excluded_objects")

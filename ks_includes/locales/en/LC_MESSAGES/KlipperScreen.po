@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-26 12:31-0300\n"
+"POT-Creation-Date: 2023-05-07 07:02-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,7 +11,269 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "IP Address"
+msgstr ""
+
+msgid "System Info"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
+msgid "Current position_endstop: %s"
+msgstr ""
+
+msgid "Z Offset"
+msgstr ""
+
+msgid "DPMS has failed and has been disabled"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Lock"
+msgstr ""
+
+msgid "Unlock"
+msgstr ""
+
+msgid "Unlock failed"
+msgstr ""
+
+msgid "Klipper will reboot to save configurations"
+msgstr ""
+
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
+msgid "Presets"
+msgstr ""
+
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
+
+msgid "Show cursor"
+msgstr ""
+
+msgid "For mouse control or to verify touchscreen accuracy"
+msgstr ""
+
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
+msgid "Please heat the nozzle."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
+
+msgid "Brightness"
+msgstr ""
+
+msgid "Backlight not configured"
+msgstr ""
+
+msgid "Failed to set brightness"
+msgstr ""
+
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Temperature too low to extrude"
+msgstr ""
+
+msgid "Nozzle diameter"
+msgstr ""
+
+msgid "Job Status"
+msgstr ""
+
+msgid "Working"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Smooth time"
+msgstr ""
+
+msgid "Estimated Time"
+msgstr ""
+
+msgid "Do you want to forget or disconnect %s?"
+msgstr ""
+
+msgid "Forget"
+msgstr ""
+
+msgid "Failed to initialize"
+msgstr ""
+
+msgid "Disconnect"
+msgstr ""
+
+msgid "Remove network"
+msgstr ""
+
+msgid "Max:"
+msgstr ""
+
+msgid "Network not found"
+msgstr ""
+
+msgid "Unknown security type"
+msgstr ""
+
+msgid "Insufficient privileges"
+msgstr ""
+
+msgid "Couldn't add network"
+msgstr ""
+
+msgid "Failed to delete connection"
+msgstr ""
+
+msgid "Connecting"
+msgstr ""
+
+msgid "Getting IP address"
+msgstr ""
+
+msgid "Network connected"
+msgstr ""
+
+msgid "Network disconnected"
+msgstr ""
+
+msgid "Connection failed"
+msgstr ""
+
+msgid "Remaining weight"
+msgstr ""
+
+msgid "Remaining length"
+msgstr ""
+
+msgid "Configurations"
+msgstr ""
+
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Please wait..."
+msgstr ""
+
+msgid "No mesh has been loaded"
+msgstr ""
+
+msgid "Splash Screen"
+msgstr ""
+
+msgid "Print Status"
+msgstr ""
+
+msgid "Reprint"
+msgstr ""
+
+msgid "Auto Calibration"
+msgstr ""
+
+msgid "Manual Calibration"
+msgstr ""
+
+msgid "NOTE: Edit your printer.cfg to save manual calibration changes."
+msgstr ""
+
+msgid "Calibrations"
+msgstr ""
+
+msgid "LED"
+msgstr ""
+
+msgid "LED On"
+msgstr ""
+
+msgid "LED Off"
+msgstr ""
 
 #, python-format
 msgid "%s will be updated to version"
@@ -58,6 +320,9 @@ msgstr ""
 msgid "Archived"
 msgstr ""
 
+msgid "Are you sure you want to stop the calibration?"
+msgstr ""
+
 msgid "Are you sure do you want to exclude the object?"
 msgstr ""
 
@@ -88,10 +353,16 @@ msgstr ""
 msgid "Auto-close notifications"
 msgstr ""
 
-msgid "Auto-open Extrude On Pause"
+msgid "Auto-open filament management during Pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
 msgstr ""
 
 msgid "Auto-scroll"
+msgstr ""
+
+msgid "Axis Twist Compensation"
 msgstr ""
 
 msgid "Bed Level"
@@ -166,26 +437,14 @@ msgstr ""
 msgid "Connected"
 msgstr ""
 
-msgid "Connecting"
-msgstr ""
-
 #, python-format
 msgid "Connecting to %s"
-msgstr ""
-
-msgid "Connection failed"
 msgstr ""
 
 msgid "Console"
 msgstr ""
 
 msgid "Cooldown"
-msgstr ""
-
-msgid "Couldn't add network"
-msgstr ""
-
-msgid "Current"
 msgstr ""
 
 msgid "Current percentage and graph line"
@@ -206,20 +465,16 @@ msgstr ""
 msgid "Delete File?"
 msgstr ""
 
-msgid "Disable Motors"
+msgid "Deselect"
 msgstr ""
 
 msgid "Disable for 12hs with am / pm"
 msgstr ""
 
-msgid "Disconnect"
+msgid "Disable Motors"
 msgstr ""
 
 msgid "Distance (mm)"
-msgstr ""
-
-#, python-format
-msgid "Do you want to forget or disconnect %s?"
 msgstr ""
 
 #, python-format
@@ -253,9 +508,6 @@ msgstr ""
 msgid "Error: Couldn't get a position to probe"
 msgstr ""
 
-msgid "Estimated Time"
-msgstr ""
-
 msgid "Estimated Time Method"
 msgstr ""
 
@@ -278,12 +530,6 @@ msgid "Extrusion +"
 msgstr ""
 
 msgid "Extrusion -"
-msgstr ""
-
-msgid "Failed to delete connection"
-msgstr ""
-
-msgid "Failed to initialize"
 msgstr ""
 
 msgid "Failed, adjust position first"
@@ -337,19 +583,10 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-msgid "For mouse control or to verify touchscreen accuracy"
-msgstr ""
-
-msgid "Forget"
-msgstr ""
-
 msgid "Full Update"
 msgstr ""
 
 msgid "Gcodes"
-msgstr ""
-
-msgid "Getting IP address"
 msgstr ""
 
 msgid "Go Back"
@@ -403,9 +640,6 @@ msgstr ""
 msgid "Input Shaper"
 msgstr ""
 
-msgid "Insufficient privileges"
-msgstr ""
-
 msgid "Interface"
 msgstr ""
 
@@ -434,9 +668,6 @@ msgid "It may take more than 5 minutes depending on the heater power."
 msgstr ""
 
 msgid "It's possible that the configuration is not correct"
-msgstr ""
-
-msgid "Job Status"
 msgstr ""
 
 msgid "Klipper Restart"
@@ -473,6 +704,9 @@ msgstr ""
 msgid "Last Used"
 msgstr ""
 
+msgid "Last used"
+msgstr ""
+
 msgid "Layer Height"
 msgstr ""
 
@@ -492,9 +726,6 @@ msgid "Load"
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
-
-msgid "Lock"
 msgstr ""
 
 msgid "Lost Connection to Moonraker"
@@ -522,9 +753,6 @@ msgid "Max Acceleration"
 msgstr ""
 
 msgid "Max Velocity"
-msgstr ""
-
-msgid "Max:"
 msgstr ""
 
 msgid "Maximum"
@@ -575,15 +803,6 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-msgid "Network connected"
-msgstr ""
-
-msgid "Network disconnected"
-msgstr ""
-
-msgid "Network not found"
-msgstr ""
-
 msgid "Never"
 msgstr ""
 
@@ -594,9 +813,6 @@ msgid "No elegible macros:"
 msgstr ""
 
 msgid "No info available"
-msgstr ""
-
-msgid "No mesh has been loaded"
 msgstr ""
 
 msgid "No wireless interface has been found"
@@ -617,9 +833,6 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-msgid "Nozzle diameter"
-msgstr ""
-
 msgid "Only for the move panel"
 msgstr ""
 
@@ -633,9 +846,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Part Fan"
-msgstr ""
-
-msgid "Password"
 msgstr ""
 
 msgid "Password saved"
@@ -656,22 +866,16 @@ msgstr ""
 msgid "Please recompile and flash the micro-controller."
 msgstr ""
 
-msgid "Please wait"
-msgstr ""
-
 msgid "Power"
 msgstr ""
 
 msgid "Power On Printer"
 msgstr ""
 
-msgid "Pressure Advance"
-msgstr ""
-
 msgid "Pressure Advance:"
 msgstr ""
 
-msgid "Pressure advance"
+msgid "Pressure Advance"
 msgstr ""
 
 msgid "Print"
@@ -720,9 +924,6 @@ msgid "Reference"
 msgstr ""
 
 msgid "Refresh"
-msgstr ""
-
-msgid "Remove network"
 msgstr ""
 
 msgid "Rename/Move:"
@@ -786,6 +987,9 @@ msgstr ""
 msgid "Screws not used:"
 msgstr ""
 
+msgid "Select"
+msgstr ""
+
 msgid "Send"
 msgstr ""
 
@@ -801,13 +1005,10 @@ msgstr ""
 msgid "Show Heater Power"
 msgstr ""
 
-msgid "Show Scrollbars Buttons"
-msgstr ""
-
-msgid "Show cursor"
-msgstr ""
-
 msgid "Show only devices that are able to be set"
+msgstr ""
+
+msgid "Show Scrollbars Buttons"
 msgstr ""
 
 msgid "Shutdown"
@@ -823,9 +1024,6 @@ msgid "Slicer:"
 msgstr ""
 
 msgid "Small"
-msgstr ""
-
-msgid "Smooth time"
 msgstr ""
 
 msgid "Speed (mm/s)"
@@ -855,9 +1053,6 @@ msgstr ""
 msgid "Starting update for"
 msgstr ""
 
-msgid "Swaps buttons if they are on top of each other, affects other panels"
-msgstr ""
-
 msgid "System"
 msgstr ""
 
@@ -874,9 +1069,6 @@ msgid "Temp (°C)"
 msgstr ""
 
 msgid "Temperature"
-msgstr ""
-
-msgid "Temperature too low to extrude"
 msgstr ""
 
 msgid "The system doesn't meet the minimum requirement"
@@ -900,16 +1092,16 @@ msgstr ""
 msgid "Unknown Heater"
 msgstr ""
 
-msgid "Unknown security type"
+msgid "Unknown screw position"
 msgstr ""
 
 msgid "Unload"
 msgstr ""
 
-msgid "Unlock"
+msgid "Unload (Purge)"
 msgstr ""
 
-msgid "Unlock failed"
+msgid "Unload (Retract)"
 msgstr ""
 
 msgid "Unretract Extra Length"
@@ -924,19 +1116,16 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+msgid "Updates"
+msgstr ""
+
 msgid "Updating"
 msgstr ""
 
 msgid "Useful for un-responsive touchscreens"
 msgstr ""
 
-msgid "User"
-msgstr ""
-
 msgid "WebRTC is not supported by the backend trying Stream"
-msgstr ""
-
-msgid "Working"
 msgstr ""
 
 msgid "XY Move Speed (mm/s)"
@@ -962,11 +1151,6 @@ msgstr ""
 
 msgid "commit"
 msgid_plural "commits"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "day"
-msgid_plural "days"
 msgstr[0] ""
 msgstr[1] ""
 

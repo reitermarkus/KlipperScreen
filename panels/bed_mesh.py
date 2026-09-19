@@ -22,17 +22,26 @@ class Panel(ScreenPanel):
         self.profiles = {}
         self.buttons = {
             'add': self._gtk.Button("increase", " " + _("Add profile"), "color1", self.bts, Gtk.PositionType.LEFT, 1),
-            'calib': self._gtk.Button("refresh", " " + _("Calibrate"), "color3", self.bts, Gtk.PositionType.LEFT, 1),
+            #'calib': self._gtk.Button("refresh", " " + _("Calibrate"), "color3", self.bts, Gtk.PositionType.LEFT, 1), # FLSUN Changes
+            'calib': self._gtk.Button("refresh", " " + _("Bed Level"), "color3", self.bts, Gtk.PositionType.LEFT, 1), # FLSUN Changes
             'clear': self._gtk.Button("cancel", " " + _("Clear"), "color2", self.bts, Gtk.PositionType.LEFT, 1),
+            'mesh_settings': self._gtk.Button("settings", " " , "color2", self.bts, Gtk.PositionType.LEFT, 1), # FLSUN Changes
         }
         self.buttons['add'].connect("clicked", self.show_create_profile)
         self.buttons['clear'].connect("clicked", self.send_clear_mesh)
         self.buttons['calib'].connect("clicked", self.calibrate_mesh)
+        # Start FLSUN Changes
+        self.buttons['mesh_settings'].connect("clicked", self.mesh_settings)
+        macros = self._printer.get_config_section_list("gcode_macro ")
+        self.calibration_bed = any("CALIBRATION_BED" in macro.upper() for macro in macros)
+        self.bed_mesh = any("BED_MESH_SETTINGS" in macro.upper() for macro in macros)
+        # End FLSUN Changes
 
         topbar = Gtk.Box(spacing=5, hexpand=True, vexpand=False)
         topbar.add(self.buttons['add'])
         topbar.add(self.buttons['clear'])
         topbar.add(self.buttons['calib'])
+        topbar.add(self.buttons['mesh_settings']) # FLSUN Changes
 
         # Create a grid for all profiles
         self.labels['profiles'] = Gtk.Grid(valign=Gtk.Align.CENTER)
@@ -239,21 +248,38 @@ class Panel(ScreenPanel):
         self.remove_create()
 
     def calibrate_mesh(self, widget):
-        widget.set_sensitive(False)
-        self._screen.show_popup_message(_("Calibrating"), level=1)
-        if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
-            self._screen._ws.klippy.gcode_script("G28")
-        if (
-            "Z_TILT_ADJUST" in self._printer.available_commands
-            and not bool(self._printer.get_stat("z_tilt", "applied"))
-        ):
-            self._screen._ws.klippy.gcode_script("Z_TILT_ADJUST")
-        if (
-            "QUAD_GANTRY_LEVEL" in self._printer.available_commands
-            and not bool(self._printer.get_stat("quad_gantry_level", "applied"))
-        ):
-            self._screen._ws.klippy.gcode_script("QUAD_GANTRY_LEVEL")
-        self._screen._send_action(widget, "printer.gcode.script", {"script": "BED_MESH_CALIBRATE"})
+        # Start FLSUN Changes
+        #widget.set_sensitive(False)
+        #self._screen.show_popup_message(_("Calibrating"), level=1)
+        #if self._printer.get_stat("toolhead", "homed_axes") != "xyz":
+            #self._screen._ws.klippy.gcode_script("G28")
+        #if (
+        #    "Z_TILT_ADJUST" in self._printer.available_commands
+        #    and not bool(self._printer.get_stat("z_tilt", "applied"))
+        #):
+        #    self._screen._ws.klippy.gcode_script("Z_TILT_ADJUST")
+        #if (
+        #    "QUAD_GANTRY_LEVEL" in self._printer.available_commands
+        #    and not bool(self._printer.get_stat("quad_gantry_level", "applied"))
+        #):
+        #    self._screen._ws.klippy.gcode_script("QUAD_GANTRY_LEVEL")
+        #self._screen._send_action(widget, "printer.gcode.script", {"script": "BED_MESH_CALIBRATE"})
+        if not self.calibration_bed:
+            self._screen.show_popup_message("Macro CALIBRATION_BED " + _("not found!\nPlease update your configuration files."))
+        else:
+            widget.set_sensitive(False)
+            script = {"script": "CALIBRATION_BED"}
+            self._screen._confirm_send_action(None, _("Do you want to start bed calibrations?\n\nA Delta Calibration and a Bed Leveling will be performed.\n\nKlipper will restart after each action."), "printer.gcode.script", script)
+        # End FLSUN Changes
+
+    # Start FLSUN Changes
+    def mesh_settings(self, widget):
+        if not self.bed_mesh:
+            self._screen.show_popup_message("Macro BED_MESH_SETTINGS " + _("not found!\nPlease update your configuration files."))
+        else:
+            self._screen._send_action(widget, "printer.gcode.script",
+                                          {"script": f"BED_MESH_SETTINGS"})
+    # End FLSUN Changes
 
     def send_clear_mesh(self, widget):
         self._screen._send_action(widget, "printer.gcode.script", {"script": "BED_MESH_CLEAR"})

@@ -33,6 +33,9 @@ class Panel(ScreenPanel):
         self._gtk.reset_temp_color()
         self.extra_selection = None
         self.numpad_visible = False
+        macros = self._printer.get_config_section_list("gcode_macro ") # FLSUN Changes
+        self.pid_start = any("_PID_KS_START" in macro.upper() for macro in macros) # FLSUN Changes
+        self.pid_end = any("_PID_KS_END" in macro.upper() for macro in macros) # FLSUN Changes
 
         if self._screen.vertical_mode:
             self.grid.attach(self.create_left_panel(), 0, 0, 1, 3)
@@ -331,7 +334,7 @@ class Panel(ScreenPanel):
             self._screen._send_action(widget, "printer.gcode.script", script)
         return False
 
-    def add_device(self, device):
+    def add_device(self, device, order=None): # FLSUN Changes
 
         logging.info(f"Adding device: {device}")
 
@@ -352,10 +355,23 @@ class Panel(ScreenPanel):
             class_name = f"graph_label_{device}"
             dev_type = "extruder"
         elif device == "heater_bed":
-            image = "bed"
-            devname = "Heater Bed"
+            image = "bed-inner" # FLSUN Changes
+            devname = "Inner Bed" # FLSUN Changes
             class_name = "graph_label_heater_bed"
             dev_type = "bed"
+        # Start FLSUN Changes
+        elif device == "heater_generic heater_bed_2":
+            self.h += 1
+            image = "bed-outer"
+            devname = "Outer Bed"
+            class_name = f"graph_label_sensor_{self.h}"
+            dev_type = "sensor"
+        elif device.startswith("heater_generic drying_box"):
+            self.h += 1
+            image = "filament"
+            class_name = f"graph_label_sensor_{self.h}"
+            dev_type = "sensor"
+        # End FLSUN Changes
         elif device.startswith("heater_generic"):
             self.h += 1
             image = "heater"
@@ -413,15 +429,27 @@ class Panel(ScreenPanel):
             "name_button": name,
             "temp": temp,
             "visible": visible,
+            "order": order if order is not None else float('inf') # FLSUN Changes
         }
 
-        devices = sorted(self.devices)
-        pos = devices.index(device) + 1
+        # Start FLSUN Changes
+        #devices = sorted(self.devices)
+        #pos = devices.index(device) + 1
 
-        self.labels["devices"].insert_row(pos)
-        self.labels["devices"].attach(name, 0, pos, 1, 1)
-        self.labels["devices"].attach(temp, 1, pos, 1, 1)
-        self.labels["devices"].show_all()
+        #self.labels["devices"].insert_row(pos)
+        #self.labels["devices"].attach(name, 0, pos, 1, 1)
+        #self.labels["devices"].attach(temp, 1, pos, 1, 1)
+        #self.labels["devices"].show_all()
+        self.labels['devices'].foreach(self.labels['devices'].remove)
+        temp_label = Gtk.Label(label=_("Temp (°C)"))
+        self.labels['devices'].attach(temp_label, 1, 0, 1, 1)
+        sorted_devices = sorted(self.devices.items(), key=lambda x: x[1]["order"])
+        for pos, (device, device_info) in enumerate(sorted_devices):
+            self.labels['devices'].attach(device_info['name_button'], 0, pos + 1, 1, 1)
+            self.labels['devices'].attach(device_info['temp'], 1, pos + 1, 1, 1)
+
+        self.labels['devices'].show_all()
+        # End FLSUN Changes
         return True
 
     def name_pressed(self, widget, event, device):
@@ -492,27 +520,58 @@ class Panel(ScreenPanel):
         )
         logging.debug(f"{temp}/{max_temp}")
         if temp > max_temp:
+            #self._screen.show_popup_message(
+                #_("Can't set above the maximum:") + f" {max_temp}"
+            #) # FLSUN Changes
             self._screen.show_popup_message(
-                _("Can't set above the maximum:") + f" {max_temp}"
-            )
+                _("Can't set above the maximum:") + f" {max_temp}" + "C°"
+            ) # FLSUN Changes
             return False
         return max(temp, 0)
 
     def pid_calibrate(self, temp):
         heater = self.active_heater.split(' ', maxsplit=1)[-1]
         if self.verify_max_temp(temp):
-            script = {
-                "script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"
-            }
-            self._screen._confirm_send_action(
-                None,
-                _("Initiate a PID calibration for:")
-                + f" {heater} @ {temp} ºC"
-                + "\n\n"
-                + _("It may take more than 5 minutes depending on the heater power."),
-                "printer.gcode.script",
-                script,
-            )
+            # Start FLSUN Changes
+            #script = {
+                #"script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"
+            #}
+            #self._screen._confirm_send_action(
+                #None,
+                #_("Initiate a PID calibration for:")
+                #+ f" {heater} @ {temp} ºC"
+                #+ "\n\n"
+                #+ _("It may take more than 5 minutes depending on the heater power."),
+                #"printer.gcode.script",
+                #script,
+            #)
+            if not self.pid_start or not self.pid_end:
+                script = {
+                    "script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"
+                }
+                self._screen._confirm_send_action(
+                    None,
+                    _("Initiate a PID calibration for:")
+                    + f" {heater} @ {temp} ºC"
+                    + "\n\n"
+                    + _("It may take more than 5 minutes depending on the heater power."),
+                    "printer.gcode.script",
+                    script
+                )
+            else:
+                script = {
+                    "script": f"_PID_KS_START\nPID_CALIBRATE HEATER={self.active_heater} TARGET={temp}\n_PID_KS_END"
+                }
+                self._screen._confirm_send_action(
+                    None,
+                    _("Initiate a PID calibration for:")
+                    + f" {heater} @ {temp} ºC"
+                    + "\n\n"
+                    + _("It may take more than 5 minutes depending on the heater power."),
+                    "printer.gcode.script",
+                    script
+                )
+            # End FLSUN Changes
 
     def create_left_panel(self):
 

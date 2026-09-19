@@ -149,6 +149,7 @@ class Panel(ScreenPanel):
             'fan': self._gtk.Button("fan", "-", None, self.bts, Gtk.PositionType.LEFT, 1),
             'elapsed': self._gtk.Button("clock", "-", None, self.bts, Gtk.PositionType.LEFT, 1),
             'left': self._gtk.Button("hourglass", "-", None, self.bts, Gtk.PositionType.LEFT, 1),
+            'layers': self._gtk.Button("layer", "-", None, self.bts, Gtk.PositionType.LEFT, 1), # FLSUN Changes
         }
         for button in buttons:
             buttons[button].set_halign(Gtk.Align.START)
@@ -183,9 +184,9 @@ class Panel(ScreenPanel):
             if n >= nlimit:
                 break
             if dev == "heater_bed":
-                self.buttons['heater'][dev] = self._gtk.Button("bed", "", None, self.bts, Gtk.PositionType.LEFT, 1)
+                self.buttons['heater'][dev] = self._gtk.Button("bed-inner", "", None, self.bts, Gtk.PositionType.LEFT, 1) # FLSUN Changes
             else:
-                self.buttons['heater'][dev] = self._gtk.Button("heater", "", None, self.bts, Gtk.PositionType.LEFT, 1)
+                self.buttons['heater'][dev] = self._gtk.Button("bed-outer", "", None, self.bts, Gtk.PositionType.LEFT, 1) # FLSUN Changes
             self.labels[dev] = Gtk.Label(label="-")
 
             self.buttons['heater'][dev].set_label(self.labels[dev].get_text())
@@ -222,18 +223,23 @@ class Panel(ScreenPanel):
 
         szfe = Gtk.Grid(column_homogeneous=True)
         szfe.attach(self.buttons['speed'], 0, 0, 3, 1)
-        szfe.attach(self.buttons['z'], 2, 0, 2, 1)
+        #szfe.attach(self.buttons['z'], 2, 0, 2, 1) # FLSUN Changes
+        szfe.attach(self.buttons['z'], 2, 1, 2, 1) # FLSUN Changes
+        szfe.attach(self.buttons['elapsed'], 0, 2, 3, 1) # FLSUN Changes
+        szfe.attach(self.buttons['layers'], 2, 2, 2, 1) # FLSUN Changes
         if self._printer.get_tools():
             szfe.attach(self.buttons['extrusion'], 0, 1, 3, 1)
         if self._printer.get_fans():
-            szfe.attach(self.buttons['fan'], 2, 1, 2, 1)
+            #szfe.attach(self.buttons['fan'], 2, 1, 2, 1) # FLSUN Changes
+            szfe.attach(self.buttons['fan'], 2, 0, 2, 1) # FLSUN Changes
 
         info = Gtk.Grid(row_homogeneous=True)
         info.get_style_context().add_class("printing-info")
         info.attach(self.labels['temp_grid'], 0, 0, 1, 1)
         info.attach(szfe, 0, 1, 1, 2)
-        info.attach(self.buttons['elapsed'], 0, 3, 1, 1)
-        info.attach(self.buttons['left'], 0, 4, 1, 1)
+        #info.attach(self.buttons['elapsed'], 0, 3, 1, 1) # FLSUN Changes
+        #info.attach(self.buttons['left'], 0, 4, 1, 1) # FLSUN Changes
+        info.attach(self.buttons['left'], 0, 3, 1, 1) # FLSUN Changes
         self.status_grid = info
 
     def create_extrusion_grid(self, widget=None):
@@ -286,6 +292,7 @@ class Panel(ScreenPanel):
         self.move_grid = info
         self.buttons['z'].connect("clicked", self.switch_info, self.move_grid)
         self.buttons['speed'].connect("clicked", self.switch_info, self.move_grid)
+        self.buttons['layers'].connect("clicked", self.switch_info, self.move_grid) # FLSUN Changes
 
     def create_time_grid(self, widget=None):
         goback = self._gtk.Button("back", None, "color3", self.bts, Gtk.PositionType.TOP, False)
@@ -359,10 +366,10 @@ class Panel(ScreenPanel):
             'fine_tune': self._gtk.Button("fine-tune", _("Fine Tuning"), "color4"),
             'menu': self._gtk.Button("complete", _("Main Menu"), "color4"),
             'pause': self._gtk.Button("pause", _("Pause"), "color1"),
-            'restart': self._gtk.Button("refresh", _("Restart"), "color3"),
+            'restart': self._gtk.Button("refresh", _("Reprint"), "color3"), # FLSUN Changes
             'resume': self._gtk.Button("resume", _("Resume"), "color1"),
-            'save_offset_probe': self._gtk.Button("home-z", _("Save Z") + "\n" + "Probe", "color1"),
-            'save_offset_endstop': self._gtk.Button("home-z", _("Save Z") + "\n" + "Endstop", "color2"),
+            #'save_offset_probe': self._gtk.Button("home-z", _("Save Z") + "\n" + "Probe", "color1"), # FLSUN Changes
+            'save_offset_endstop': self._gtk.Button("home-z", _("Save") + "\n" + _("Z Offset"), "color2"), # FLSUN Changes
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
         self.buttons['control'].connect("clicked", self._screen._go_to_submenu, "")
@@ -372,41 +379,35 @@ class Panel(ScreenPanel):
         self.buttons['pause'].connect("clicked", self.pause)
         self.buttons['restart'].connect("clicked", self.restart)
         self.buttons['resume'].connect("clicked", self.resume)
-        self.buttons['save_offset_probe'].connect("clicked", self.save_offset, "probe")
+        #self.buttons['save_offset_probe'].connect("clicked", self.save_offset, "probe") # FLSUN Changes
         self.buttons['save_offset_endstop'].connect("clicked", self.save_offset, "endstop")
 
+    # Start FLSUN Changes
     def save_offset(self, widget, device):
         sign = "+" if self.zoffset > 0 else "-"
         label = Gtk.Label(hexpand=True, vexpand=True, wrap=True)
         saved_z_offset = None
         msg = f"Apply {sign}{abs(self.zoffset)} offset to {device}?"
-        if device == "probe":
-            msg = _("Apply %s%.3f offset to Probe?") % (sign, abs(self.zoffset))
-            if probe := self._printer.get_probe():
-                saved_z_offset = probe['z_offset']
-        elif device == "endstop":
+        if device == "endstop":
             msg = _("Apply %s%.3f offset to Endstop?") % (sign, abs(self.zoffset))
-            if 'stepper_z' in self._printer.get_config_section_list():
-                saved_z_offset = self._printer.get_config_section('stepper_z')['position_endstop']
-            elif 'stepper_a' in self._printer.get_config_section_list():
+            if 'stepper_a' in self._printer.get_config_section_list():
                 saved_z_offset = self._printer.get_config_section('stepper_a')['position_endstop']
         if saved_z_offset:
-            msg += "\n\n" + _("Saved offset: %s") % saved_z_offset
+            msg += "\n\n" + _("Current position_endstop: %s") % saved_z_offset
         label.set_label(msg)
         buttons = [
             {"name": _("Apply"), "response": Gtk.ResponseType.APPLY, "style": 'dialog-default'},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'}
         ]
-        self._gtk.Dialog(_("Save Z"), buttons, label, self.save_confirm, device)
+        self._gtk.Dialog(_("Save"), buttons, label, self.save_confirm, device) # FLSUN Changes
 
     def save_confirm(self, dialog, response_id, device):
         self._gtk.remove_dialog(dialog)
         if response_id == Gtk.ResponseType.APPLY:
-            if device == "probe":
-                self._screen._ws.klippy.gcode_script("Z_OFFSET_APPLY_PROBE")
             if device == "endstop":
                 self._screen._ws.klippy.gcode_script("Z_OFFSET_APPLY_ENDSTOP")
             self._screen._ws.klippy.gcode_script("SAVE_CONFIG")
+    # End FLSUN Changes
 
     def restart(self, widget):
         if self.filename:
@@ -489,13 +490,22 @@ class Panel(ScreenPanel):
 
         for x in self._printer.get_temp_devices():
             if x in data:
+                # Start FLSUN Changes
+                #self.update_temp(
+                #    x,
+                #    self._printer.get_stat(x, "temperature"),
+                #    self._printer.get_stat(x, "target"),
+                #    self._printer.get_stat(x, "power"),
+                #    digits=0
+                #)
                 self.update_temp(
                     x,
                     self._printer.get_stat(x, "temperature"),
                     self._printer.get_stat(x, "target"),
-                    self._printer.get_stat(x, "power"),
+                    None,
                     digits=0
                 )
+                # End FLSUN Changes
                 if x in self.buttons['extruder']:
                     self.buttons['extruder'][x].set_label(self.labels[x].get_text())
                 elif x in self.buttons['heater']:
@@ -524,7 +534,7 @@ class Panel(ScreenPanel):
             if 'gcode_position' in data['gcode_move']:
                 self.pos_z = round(float(data['gcode_move']['gcode_position'][2]), 2)
                 self.buttons['z'].set_label(
-                    f"Z: {self.pos_z:6.2f}{f'/{self.oheight}' if self.oheight > 0 else ''} "
+                    f"Z: {self.pos_z:6.2f}{f' / {self.oheight}' if self.oheight > 0 else ''} " # FLSUN Changes
                     f"{f'{self.mm}' if self._screen.width > 500 else ''}"
                 )
             if 'extrude_factor' in data['gcode_move']:
@@ -537,7 +547,7 @@ class Panel(ScreenPanel):
             if 'speed' in data['gcode_move']:
                 self.req_speed = round(float(data["gcode_move"]["speed"]) / 60 * self.speed_factor)
                 self.labels['req_speed'].set_label(
-                    f"{self.speed}% {self.vel:3.0f}/{self.req_speed:3.0f} "
+                    f"{self.speed}% {self.vel:3.0f} / {self.req_speed:3.0f} " # FLSUN Changes
                     f"{f'{self.mms}' if self.vel < 1000 and self.req_speed < 1000 and self._screen.width > 500 else ''}"
                 )
                 self.buttons['speed'].set_label(self.labels['req_speed'].get_label())
@@ -560,7 +570,7 @@ class Panel(ScreenPanel):
             if 'live_velocity' in data['motion_report']:
                 self.vel = float(data["motion_report"]["live_velocity"])
                 self.labels['req_speed'].set_label(
-                    f"{self.speed}% {self.vel:3.0f}/{self.req_speed:3.0f} "
+                    f"{self.speed}% {self.vel:3.0f} / {self.req_speed:3.0f} " # FLSUN Changes
                     f"{f'{self.mms}' if self.vel < 1000 and self.req_speed < 1000 and self._screen.width > 500 else ''}"
                 )
                 self.buttons['speed'].set_label(self.labels['req_speed'].get_label())
@@ -588,12 +598,14 @@ class Panel(ScreenPanel):
                 if ('total_layer' in data['print_stats']['info']
                         and data["print_stats"]['info']['total_layer'] is not None):
                     self.labels['total_layers'].set_label(f"{data['print_stats']['info']['total_layer']}")
+                    self.buttons['layers'].set_label(f"{self.labels['layer_lbl'].get_text()} {data['print_stats']['info']['total_layer']}") # FLSUN Changes
                 if ('current_layer' in data['print_stats']['info']
                         and data['print_stats']['info']['current_layer'] is not None):
                     self.labels['layer'].set_label(
                         f"{data['print_stats']['info']['current_layer']} / "
                         f"{self.labels['total_layers'].get_text()}"
                     )
+                    self.buttons['layers'].set_label(f"{self.labels['layer_lbl'].get_text()} {data['print_stats']['info']['current_layer']} / {self.labels['total_layers'].get_text()}") # FLSUN Changes
             if 'total_duration' in data["print_stats"]:
                 self.labels["duration"].set_label(self.format_time(data["print_stats"]["total_duration"]))
             if self.state in ["printing", "paused"]:
@@ -613,8 +625,8 @@ class Panel(ScreenPanel):
             max(self._printer.get_stat('virtual_sdcard', 'file_position') - self.file_metadata['gcode_start_byte'], 0)
             / (self.file_metadata['gcode_end_byte'] - self.file_metadata['gcode_start_byte'])
         ) if "gcode_start_byte" in self.file_metadata else self._printer.get_stat('virtual_sdcard', 'progress')
-
-        elapsed_label = f"{self.labels['elapsed'].get_text()}  {self.labels['duration'].get_text()}"
+        #elapsed_label = f"{self.labels['elapsed'].get_text()}  {self.labels['duration'].get_text()}" # FLSUN Changes
+        elapsed_label = f"{self.labels['elapsed'].get_text()} {self.labels['duration'].get_text()}" # FLSUN Changes
         self.buttons['elapsed'].set_label(elapsed_label)
         find_widget(self.buttons['elapsed'], Gtk.Label).set_ellipsize(Pango.EllipsizeMode.END)
 
@@ -657,7 +669,8 @@ class Panel(ScreenPanel):
             progress = min(max(print_duration / estimated, 0), 1)
             self.labels["est_time"].set_label(self.format_time(estimated))
             self.labels["time_left"].set_label(self.format_eta(estimated, print_duration))
-            remaining_label = f"{self.labels['left'].get_text()}  {self.labels['time_left'].get_text()}"
+            #remaining_label = f"{self.labels['left'].get_text()}  {self.labels['time_left'].get_text()}" # FLSUN Changes
+            remaining_label = f"{self.labels['left'].get_text()} {self.labels['time_left'].get_text()}" # FLSUN Changes
             self.buttons['left'].set_label(remaining_label)
             find_widget(self.buttons['left'], Gtk.Label).set_ellipsize(Pango.EllipsizeMode.END)
         self.update_progress(progress)
@@ -745,16 +758,15 @@ class Panel(ScreenPanel):
             self.enable_button("resume", "cancel")
             self.can_close = False
         else:
+            #Start FLSUN Changes
             offset = self._printer.get_stat("gcode_move", "homing_origin")
             self.zoffset = float(offset[2]) if offset else 0
             if self.zoffset != 0:
                 if "Z_OFFSET_APPLY_ENDSTOP" in self._printer.available_commands:
-                    self.buttons['button_grid'].attach(self.buttons["save_offset_endstop"], 0, 0, 1, 1)
+                    self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
+                    self.buttons['button_grid'].attach(self.buttons["save_offset_endstop"], 1, 0, 1, 1)
                 else:
                     self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
-                if "Z_OFFSET_APPLY_PROBE" in self._printer.available_commands:
-                    self.buttons['button_grid'].attach(self.buttons["save_offset_probe"], 1, 0, 1, 1)
-                else:
                     self.buttons['button_grid'].attach(Gtk.Label(), 1, 0, 1, 1)
             else:
                 self.buttons['button_grid'].attach(Gtk.Label(), 0, 0, 1, 1)
@@ -768,6 +780,7 @@ class Panel(ScreenPanel):
             if self.state != "cancelling":
                 self.buttons['button_grid'].attach(self.buttons['menu'], 3, 0, 1, 1)
                 self.can_close = True
+            # End FLSUN Changes
         self.content.show_all()
 
     def show_file_thumbnail(self):

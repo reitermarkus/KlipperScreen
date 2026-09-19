@@ -23,7 +23,7 @@ class Panel(ScreenPanel):
             valign=Gtk.Align.CENTER,
         )
 
-        self.labels["menu"] = self._gtk.Button("settings", _("Menu"), "color4")
+        self.labels["menu"] = self._gtk.Button("settings", _("Configurations"), "color4") # FLSUN Changes
         self.labels["menu"].connect("clicked", self._screen._go_to_submenu, "")
         self.labels["restart"] = self._gtk.Button(
             "refresh", _("Klipper Restart"), "color1"
@@ -129,46 +129,76 @@ class Panel(ScreenPanel):
         self._screen.connect_printer(self._screen.connecting_to_printer)
         self.show_restart_buttons()
 
+
+    # Start FLSUN Changes
+    #def reboot_poweroff(self, widget, method):
+        #label = Gtk.Label(wrap=True, hexpand=True, vexpand=True)
+        #if method == "reboot":
+            #label.set_label(_("Are you sure you wish to reboot the system?"))
+            #title = _("Restart")
+        #else:
+            #label.set_label(_("Are you sure you wish to shutdown the system?"))
+            #title = _("Shutdown")
+        #buttons = [
+            #{
+                #"name": _("Host"),
+                #"response": Gtk.ResponseType.OK,
+                #"style": "dialog-info",
+            #},
+            #{
+                #"name": _("Cancel"),
+                #"response": Gtk.ResponseType.CANCEL,
+                #"style": "dialog-error",
+            #},
+        #]
+        #if self._screen._ws.connected:
+            #buttons.insert(
+                #1,
+                #{
+                    #"name": _("Printer"),
+                    #"response": Gtk.ResponseType.APPLY,
+                    #"style": "dialog-warning",
+                #},
+            #)
+        #self._gtk.Dialog(title, buttons, label, self.reboot_poweroff_confirm, method)
+
     def reboot_poweroff(self, widget, method):
         label = Gtk.Label(wrap=True, hexpand=True, vexpand=True)
         if method == "reboot":
             label.set_label(_("Are you sure you wish to reboot the system?"))
             title = _("Restart")
+            buttons = [
+                {"name": _("Restart"), "response": Gtk.ResponseType.APPLY, "style": 'dialog-warning'},
+                {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'}
+            ]
         else:
             label.set_label(_("Are you sure you wish to shutdown the system?"))
             title = _("Shutdown")
-        buttons = [
-            {
-                "name": _("Host"),
-                "response": Gtk.ResponseType.OK,
-                "style": "dialog-info",
-            },
-            {
-                "name": _("Cancel"),
-                "response": Gtk.ResponseType.CANCEL,
-                "style": "dialog-error",
-            },
-        ]
-        if self._screen._ws.connected:
-            buttons.insert(
-                1,
-                {
-                    "name": _("Printer"),
-                    "response": Gtk.ResponseType.APPLY,
-                    "style": "dialog-warning",
-                },
-            )
+            buttons = [
+                {"name": _("Shutdown"), "response": Gtk.ResponseType.APPLY, "style": 'dialog-warning'},
+                {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'}
+            ]
         self._gtk.Dialog(title, buttons, label, self.reboot_poweroff_confirm, method)
+    # End FLSUN Changes
 
     def reboot_poweroff_confirm(self, dialog, response_id, method):
         self._gtk.remove_dialog(dialog)
-        if response_id == Gtk.ResponseType.OK:
-            if method == "reboot":
-                os.system("systemctl reboot -i")
-            else:
-                os.system("systemctl poweroff -i")
-        elif response_id == Gtk.ResponseType.APPLY:
+        # Start FLSUN Changes
+        #if response_id == Gtk.ResponseType.OK:
+            #if method == "reboot":
+                #os.system("systemctl reboot -i")
+            #else:
+                #os.system("systemctl poweroff -i")
+        #elif response_id == Gtk.ResponseType.APPLY:
+            #if method == "reboot":
+                #self._screen._ws.send_method("machine.reboot")
+            #else:
+                #self._screen._ws.send_method("machine.shutdown")
+        if response_id == Gtk.ResponseType.APPLY:
             if method == "reboot":
                 self._screen._ws.send_method("machine.reboot")
+                os.system("systemctl reboot -i")
             else:
                 self._screen._ws.send_method("machine.shutdown")
+                os.system("systemctl poweroff -i")
+        # End FLSUN Changes

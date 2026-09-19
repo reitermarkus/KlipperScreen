@@ -57,11 +57,26 @@ class Panel(ScreenPanel):
         changeable = any(fan.startswith(x) or fan == x for x in CHANGEABLE_FANS)
         name = Gtk.Label(halign=Gtk.Align.START, valign=Gtk.Align.CENTER, hexpand=True, vexpand=True,
                          wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
-        fan_name = _("Part Fan") if fan == "fan" else fan.split()[1]
+        # Start FLSUN Changes
+        #fan_name = _("Part Fan") if fan == "fan" else fan.split()[1]
+        if fan == "fan":
+            fan_name = _("Part Fan")
+        elif fan == "fan_generic chamber_fan":
+            fan_name = _("Chamber Fan")
+        elif fan == "heater_fan heat_sink_fan":
+            fan_name = _("Heat Sink Fan")
+        elif fan == "heater_fan motherboard_fan":
+            fan_name = _("Motherboard Fan")
+        elif fan == "heater_fan drying_box_fan":
+            fan_name = _("Drying Box Fan")
+        else:
+            fan_name = fan.split()[1]
+        # End FLSUN Changes
         name.set_markup(f"\n<big><b>{fan_name}</b></big>\n")
 
         fan_col = Gtk.Box(spacing=5)
-        stop_btn = self._gtk.Button("cancel", None, "color1")
+        #stop_btn = self._gtk.Button("cancel", None, "color1") # FLSUN Changes
+        stop_btn = self._gtk.Button("cancel", _("Min"), "color1") # FLSUN Changes
         stop_btn.set_hexpand(False)
         stop_btn.connect("clicked", self.update_fan_speed, fan, 0)
         max_btn = self._gtk.Button("fan-on", _("Max"), "color2")

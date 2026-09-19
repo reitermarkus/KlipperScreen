@@ -9,6 +9,7 @@ from datetime import datetime
 from ks_includes.screen_panel import ScreenPanel
 from ks_includes.KlippyGtk import find_widget
 from ks_includes.widgets.flowboxchild_extended import PrintListItem
+from ks_includes.KlippyGcodes import KlippyGcodes # FLSUN Changes
 
 
 def format_label(widget):
@@ -24,6 +25,13 @@ class Panel(ScreenPanel):
     def __init__(self, screen, title):
         title = title or (_("Print") if self._printer.extrudercount > 0 else _("Gcodes"))
         super().__init__(screen, title)
+        # Start FLSUN Changes
+        self.bed_mesh_settings = 1001
+        self.bed_heating_settings = 1002
+        macros = self._printer.get_config_section_list("gcode_macro ")
+        self.bed_mesh = any("BED_MESH_SETTINGS" in macro.upper() for macro in macros)
+        self.bed_heating = any("BED_HEATING_SETTINGS" in macro.upper() for macro in macros)
+        # End FLSUN Changes
         sortdir = self._config.get_main_config().get("print_sort_dir", "name_asc")
         sortdir = sortdir.split('_')
         self.sort_items = {
@@ -318,11 +326,14 @@ class Panel(ScreenPanel):
     def confirm_print(self, widget, filename):
         action = _("Print") if self._printer.extrudercount > 0 else _("Start")
 
+        # Start FLSUN Changes
         buttons = [
-            {"name": _("Delete"), "response": Gtk.ResponseType.REJECT, "style": 'dialog-error'},
+            {"name": _("Mesh Settings"), "response": self.bed_mesh_settings, "style": 'dialog-warning'},
+            {"name": _("Heating Settings"), "response": self.bed_heating_settings, "style": 'dialog-warning'},
             {"name": action, "response": Gtk.ResponseType.OK, "style": 'dialog-primary'},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-secondary'}
         ]
+        # End FLSUN Changes
 
         label = Gtk.Label(
             hexpand=True, vexpand=True, lines=2,
@@ -362,7 +373,11 @@ class Panel(ScreenPanel):
         self._gtk.Dialog(f'{action} {filename}', buttons, main_box, self.confirm_print_response, filename)
 
     def confirm_print_response(self, dialog, response_id, filename):
-        self._gtk.remove_dialog(dialog)
+        # Start FLSUN Changes
+        #self._gtk.remove_dialog(dialog)
+        if not (response_id == self.bed_mesh_settings or response_id == self.bed_heating_settings):
+            self._gtk.remove_dialog(dialog)
+        # End FLSUN Changes
         if response_id == Gtk.ResponseType.CANCEL:
             return
         elif response_id == Gtk.ResponseType.OK:
@@ -370,6 +385,20 @@ class Panel(ScreenPanel):
             self._screen._ws.klippy.print_start(filename)
         elif response_id == Gtk.ResponseType.REJECT:
             self.confirm_delete_file(None, f"gcodes/{filename}")
+        # Start FLSUN Changes
+        elif response_id == self.bed_heating_settings:
+            if not self.bed_heating:
+                self._screen.show_popup_message("Macro BED_HEATING_SETTINGS " + _("not found!\nPlease update your configuration files."))
+            else:
+                self._screen._send_action(None, "printer.gcode.script",
+                                          {"script": f"BED_HEATING_SETTINGS"})
+        elif response_id == self.bed_mesh_settings:
+            if not self.bed_mesh:
+                self._screen.show_popup_message("Macro BED_MESH_SETTINGS " + _("not found!\nPlease update your configuration files."))
+            else:
+                self._screen._send_action(None, "printer.gcode.script",
+                                          {"script": f"BED_MESH_SETTINGS"})
+        # End FLSUN Changes
 
     def get_info_str(self, item, path):
         info = ""
