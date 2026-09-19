@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-07-04 18:01+0000\n"
 "Last-Translator: Selim <technical50@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/klipperscreen/"
@@ -28,11 +28,11 @@ msgstr "Hareket"
 msgid "Temperature"
 msgstr "Sıcaklık"
 
-msgid "Extrude"
-msgstr "Ekstrüzyon"
+msgid "Filament"
+msgstr "Filement"
 
-msgid "More"
-msgstr "Daha"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Yazdır"
@@ -40,47 +40,62 @@ msgstr "Yazdır"
 msgid "Gcodes"
 msgstr "G kodları"
 
-msgid "Bed Level"
-msgstr "Tabla Ayarı"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Tabla Haritası"
 
-msgid "Z Calibrate"
-msgstr "Z Kalibrasyonu"
+msgid "Input Shaper"
+msgstr "İvme Düzenleyicisi"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Limitler"
 
+msgid "Fine Tuning"
+msgstr "İnce Ayar"
+
 msgid "Fan"
 msgstr "Fan"
 
-msgid "Leds"
-msgstr "Ledler"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Makrolar"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Pinler"
 
-msgid "Power"
-msgstr "Güç"
-
-msgid "Camera"
-msgstr "Kamera"
+msgid "Macros"
+msgstr "Makrolar"
 
 msgid "Console"
 msgstr "Konsol"
 
-msgid "Update"
-msgstr "Güncelle"
-
-msgid "Input Shaper"
-msgstr "İvme Düzenleyicisi"
-
 msgid "Save Config"
 msgstr "Yapılandırma Kayıt"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Ağ"
@@ -91,8 +106,11 @@ msgstr "Bildirimler"
 msgid "System"
 msgstr "Sistem"
 
-msgid "Fine Tuning"
-msgstr "İnce Ayar"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Eksenleri Sıfırla"
 
 msgid "Home X"
 msgstr "X Sıfırla"
@@ -103,26 +121,20 @@ msgstr "Y Sıfırla"
 msgid "Home Z"
 msgstr "Z Sıfırla"
 
-msgid "Home All"
-msgstr "Eksenleri Sıfırla"
-
 msgid "Home XY"
 msgstr "XY Sıfırla"
-
-msgid "Quad Gantry Level"
-msgstr "Dörtlü Köprü Seviyesi"
-
-msgid "Z Tilt"
-msgstr "Z Eğim"
 
 msgid "Print Control"
 msgstr "Yazdırma Kontrolü"
 
-msgid "Lock"
-msgstr "Kilitle"
+msgid "Extrude"
+msgstr "Ekstrüzyon"
 
-msgid "Menu"
-msgstr "Menü"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Güç"
 
 msgid "Icon Theme"
 msgstr "Simge Teması"
@@ -175,6 +187,12 @@ msgstr "12 saat boyunca am / pm ile devre dışı bırakın"
 msgid "Action bar Shortcut"
 msgstr "Eylem çubuğu Kısayolu"
 
+msgid "Lock"
+msgstr "Kilitle"
+
+msgid "Camera"
+msgstr "Kamera"
+
 msgid "LEDs"
 msgstr "LED'ler"
 
@@ -217,9 +235,6 @@ msgstr "Ekran DPMS"
 msgid "Enable screen power management"
 msgstr "Ekran güç yönetimini etkinleştirin"
 
-msgid "Not all screens support this"
-msgstr "Tüm ekranlar bunu desteklemez"
-
 msgid "Auto-close notifications"
 msgstr "Bildirimleri otomatik kapat"
 
@@ -238,14 +253,23 @@ msgstr "Kaydırma çubuklarında düğmeleri göster"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Yanıt vermeyen dokunmatik ekranlar için kullanışlıdır"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Duraklatıldığında Ekstrüzyonu Otomatik Aç"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "İmleci göster"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Fare yada dokunmatik ekranın kesinliğini doğrulamak için"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 msgid "Screen wake delay"
 msgstr "Ekran uyandırma gecikmesi"
@@ -257,6 +281,15 @@ msgid "second"
 msgid_plural "seconds"
 msgstr[0] "saniye"
 msgstr[1] "saniyeler"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "X Ters çevir"
@@ -289,11 +322,11 @@ msgstr[1] "dakikalar"
 msgid "Temperature too low to extrude"
 msgstr "Sıcaklık ekstrüzyon için çok düşük"
 
-msgid "Klipper will reboot"
-msgstr "Klipper yeniden başlayacak"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Yapılandırmayı kaydet?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Acil Durdurmak istediğinizden emin misiniz?"
@@ -357,11 +390,17 @@ msgstr "Kilit açma başarısız"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Nesneyi çıkarmak istediğinizden emin misiniz?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Bitir"
 
 msgid "Updating"
 msgstr "Güncelleniyor"
+
+msgid "Bed Level"
+msgstr "Tabla Ayarı"
 
 msgid "Disable Motors"
 msgstr "Motorları Devre Dışı Bırak"
@@ -387,9 +426,6 @@ msgstr "Referans"
 msgid "Add profile"
 msgstr "Profil ekle"
 
-msgid "Calibrate"
-msgstr "Kalibre et"
-
 msgid "Clear"
 msgstr "Temizle"
 
@@ -399,11 +435,33 @@ msgstr "Profil ismi:"
 msgid "Save"
 msgstr "Kaydet"
 
-msgid "Calibrating"
-msgstr "Kalibre Ediliyor"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Maksimum"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC, Stream deneyin tarafından desteklenmez"
+
+msgid "Leds"
+msgstr "Ledler"
 
 msgid "Auto-scroll"
 msgstr "Otomatik-kaydırma"
@@ -444,11 +502,32 @@ msgstr "Uzaklık (mm)"
 msgid "Speed (mm/s)"
 msgstr "Hız (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Parça Fanı"
 
-msgid "Max"
-msgstr "Maksimum"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -489,6 +568,12 @@ msgstr "Dizini Sil?"
 msgid "Start"
 msgstr "Başlat"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Sil"
 
@@ -501,9 +586,6 @@ msgstr "Değiştirilmiş"
 msgid "Layer Height"
 msgstr "Katman Yüksekliği"
 
-msgid "Filament"
-msgstr "Filement"
-
 msgid "Estimated Time"
 msgstr "Tahmini Süre"
 
@@ -513,8 +595,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Nozzle ölçüsü"
 
-msgid "Last Duration"
-msgstr "Son Süre"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Yeniden Adlandır/Taşı:"
@@ -530,6 +614,15 @@ msgstr "Y Ölçüle"
 
 msgid "Measure Both"
 msgstr "İkisini de ölçüle"
+
+msgid "Calibrating"
+msgstr "Kalibre Ediliyor"
+
+msgid "Klipper will reboot"
+msgstr "Klipper yeniden başlayacak"
+
+msgid "Save configuration?"
+msgstr "Yapılandırmayı kaydet?"
 
 msgid "Check ADXL Wiring"
 msgstr "ADXL Bağlantılarını Kontrol Et"
@@ -612,20 +705,16 @@ msgstr "Yeniden Başlat"
 msgid "Resume"
 msgstr "Devam Et"
 
-msgid "Save Z"
-msgstr "Z Kaydet"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "{sign}{offset:.3f} ofseti Probe'a uygula?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "{sign}{offset:.3f} ofseti Endstop'a uygula?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Kaydedilen telafi mesafesi: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Uygula"
@@ -663,6 +752,9 @@ msgstr "Duraklatıldı"
 msgid "Standby"
 msgstr "Hazırda Bekle"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Maksimum Hızlanma"
 
@@ -672,8 +764,8 @@ msgstr "Minimum Gezinme Oranı"
 msgid "Max Velocity"
 msgstr "Maksimum Hız"
 
-msgid "Square Corner Velocity"
-msgstr "Kare Köşe Hızı"
+msgid "Temp (°C)"
+msgstr "Sıcaklık (°C)"
 
 msgid "Unknown Heater"
 msgstr "Bilinmeyen Isıtıcı"
@@ -687,11 +779,14 @@ msgstr "PID kalibrasyonu başlatın:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "Isıtıcı gücüne bağlı olarak 5 dakikadan fazla sürebilir."
 
-msgid "Temp (°C)"
-msgstr "Sıcaklık (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "Geçersiz Sıcaklık"
+
+msgid "Calibrate"
+msgstr "Kalibre et"
 
 msgid "Home"
 msgstr "Ana Konum"
@@ -770,8 +865,14 @@ msgstr "Ana bilgisayar adı"
 msgid "Notification log empty"
 msgstr "Geçmiş bildirim yok"
 
-msgid "Pressure advance"
-msgstr "Basınç avansı"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Mevcut"
@@ -785,8 +886,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Yazıcı Seçimi"
 
-msgid "Please wait"
-msgstr "Lütfen Bekleyin"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Geri Çekme Uzunluğu"
@@ -962,11 +1063,17 @@ msgstr "Göster"
 msgid "Hide"
 msgstr "Gizle"
 
+msgid "Update"
+msgstr "Güncelle"
+
 msgid "Full Update"
 msgstr "Tam Güncelleme"
 
 msgid "Refresh"
 msgstr "Yenile"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Güncellemeler kontrol ediliyor, lütfen bekleyin..."
@@ -1044,6 +1151,9 @@ msgstr "İptal et"
 msgid "Calibration commands not available yet"
 msgstr "Kalibrasyon komutları henüz mevcut değil"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Hata: İnceleyici için bir konum alınamadı"
 
@@ -1097,6 +1207,22 @@ msgstr "Klipper başlatılmaya çalışılıyor"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper Kapandı"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 msgid "Waiting for Moonraker connection to close"
 msgstr "Moonraker bağlantısının kapanması bekleniyor"

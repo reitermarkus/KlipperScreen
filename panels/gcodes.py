@@ -343,6 +343,10 @@ class Panel(ScreenPanel):
         action = _("Print") if self._printer.extrudercount > 0 else _("Start")
 
         buttons = [
+            # Start FLSUN Changes
+            {"name": _("Mesh Settings"), "response": self.bed_mesh_settings, "style": "dialog-warning"},
+            {"name": _("Heating Settings"), "response": self.bed_heating_settings, "style": "dialog-warning"},
+            # End FLSUN Changes
             {"name": _("Delete"), "response": Gtk.ResponseType.REJECT, "style": "dialog-error"},
             {"name": action, "response": Gtk.ResponseType.OK, "style": "dialog-primary"},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": "dialog-secondary"},
@@ -416,7 +420,11 @@ class Panel(ScreenPanel):
         image_button.show_all()
 
     def confirm_print_response(self, dialog, response_id, filename):
-        self._gtk.remove_dialog(dialog)
+        # Start FLSUN Changes
+        #self._gtk.remove_dialog(dialog)
+        if not (response_id == self.bed_mesh_settings or response_id == self.bed_heating_settings):
+            self._gtk.remove_dialog(dialog)
+        # End FLSUN Changes
         if response_id == Gtk.ResponseType.CANCEL:
             return
         elif response_id == Gtk.ResponseType.OK:
@@ -424,6 +432,20 @@ class Panel(ScreenPanel):
             self._screen._ws.api.print_start(filename)
         elif response_id == Gtk.ResponseType.REJECT:
             self.confirm_delete_file(None, f"gcodes/{filename}")
+        # Start FLSUN Changes
+        elif response_id == self.bed_heating_settings:
+            if not self.bed_heating:
+                self._screen.show_popup_message("Macro BED_HEATING_SETTINGS " + _("not found!\nPlease update your configuration files."))
+            else:
+                self._screen._send_action(None, "printer.gcode.script",
+                                          {"script": f"BED_HEATING_SETTINGS"})
+        elif response_id == self.bed_mesh_settings:
+            if not self.bed_mesh:
+                self._screen.show_popup_message("Macro BED_MESH_SETTINGS " + _("not found!\nPlease update your configuration files."))
+            else:
+                self._screen._send_action(None, "printer.gcode.script",
+                                          {"script": f"BED_MESH_SETTINGS"})
+        # End FLSUN Changes
 
     def get_info_str(self, item, path):
         info = ""

@@ -1,52 +1,63 @@
-# KlipperScreen
+# KlipperScreen for FLSUN S1
 
-KlipperScreen is a touchscreen GUI that interfaces with [Klipper](https://github.com/Klipper3d/klipper) via [Moonraker](https://github.com/arksine/moonraker). It allows you to switch between multiple printers and access them from a single location. Notably, it doesn't need to run on the same host as your printer; you can install it on another device and configure the IP address to connect to the printer.
+![Banner](https://github.com/user-attachments/assets/a2ebd6cd-e430-4d7b-a240-a8cac461b0c7)
 
-### Documentation
+KlipperScreen is a touchscreen GUI that interfaces with [Klipper](https://github.com/kevinOConnor/klipper) via [Moonraker](https://github.com/arksine/moonraker). It can switch between multiple printers to access them from a single location, and it doesn't even need to run on the same host, you can install it on another device and configure the IP address to access the printer.
 
-For detailed information, [click here to access the documentation](https://klipperscreen.github.io/KlipperScreen/).
+### Documentation [![Documentation Status](https://readthedocs.org/projects/klipperscreen/badge/?version=latest)](https://klipperscreen.readthedocs.io/en/latest/?badge=latest)
 
-### Inspiration
+[Click here to access the documentation.](https://klipperscreen.readthedocs.io/en/latest/)
 
-KlipperScreen draws inspiration from [OctoScreen](https://github.com/Z-Bolt/OctoScreen/) and was developed to provide a native touchscreen GUI compatible with [Klipper](https://github.com/Klipper3d/klipper) and [Moonraker](https://github.com/arksine/moonraker).
+<br />
 
-[![Main Menu](docs/img/panels/main_panel.png)](https://klipperscreen.readthedocs.io/en/latest/Panels/)
+## About
 
-Explore more screenshots [here](https://klipperscreen.readthedocs.io/en/latest/Panels/).
+This version of KlipperScreen is compatible with FLSUN S1, it's optimized for Delta printers.
 
-### Translations
+- Latest build of KlipperScreen
+- Inner/Outer Bed integration
+- Drying Box integration
+- Automated with prompt macros
+- Some fixes and adjustments
 
-Translations for KlipperScreen are hosted on Weblate. Thanks to the Weblate team for supporting the open-source community.
+Wiki is available here:
 
-<a href="https://hosted.weblate.org/engage/klipperscreen/">
-    <img src="https://hosted.weblate.org/widget/klipperscreen/svg-badge.svg" alt="Translation status" />
-</a>
+<a href="https://guilouz.github.io/FLSUN-S1-Open-Source-Edition/home.html" target="_blank"><img width="350" src="https://github.com/Guilouz/FLSUN-S1-Open-Source-Edition/blob/main/docs/assets/images/open-source-edition.png?raw=true"></a>
 
-Click the widget below to access the translation platform:
+<br />
 
-<a href="https://hosted.weblate.org/engage/klipperscreen/">
-    <img src="https://hosted.weblate.org/widget/klipperscreen/horizontal-auto.svg" alt="Weblate widget" width="50%" />
-</a>
+If you like my work, don't hesitate to support me by paying me a 🍺 or a ☕. Thank you 🙂
 
-### About the Project
+<a href="https://ko-fi.com/guilouz" target="_blank"><img width="350" src="https://github.com/Guilouz/Creality-Helper-Script-Wiki/blob/main/docs/assets/img/home/Ko-fi.png?raw=true"></a>
 
-KlipperScreen was created by Jordan Ruthe in 2020.
+<br />
 
-| Donate to Jordan |
-|------------------|
-| [Patreon](https://www.patreon.com/klipperscreen) |
-| [Ko-fi](https://ko-fi.com/klipperscreen) |
+## Installation
 
-Since 2021, the project has been maintained by Alfredo Monclus (alfrix).
+This version is already installed by default on the Open Source Edition operating system, but if you need to reinstall it, follow these steps:
 
-| Donate to Alfrix |
-|------------------|
-| [Ko-fi](https://ko-fi.com/alfrix) |
+- Make sure previous installation of KlipperScreen is removed (with Kiauh).
+- In SSH, enter the following commands (one at a time) to install KlipperScreen:
+  ```
+  cd ~ && git clone https://github.com/Guilouz/KlipperScreen-Flsun-S1.git ~/KlipperScreen
+  ```
+  ```
+  ./KlipperScreen/scripts/KlipperScreen-install.sh
+  ```
 
-We extend our gratitude to all contributors who have helped along the way. [Meet the contributors](https://github.com/KlipperScreen/KlipperScreen/graphs/contributors).
+- Go to your Mainsail Web interface then select the `Machine` tab.
+- Open the `moonraker.conf` file and modify the `[update_manager KlipperScreen]` section  as follows:
 
-### Sponsors
-
-![LDO](docs/img/sponsors/LDO.png) ![YUMI](docs/img/sponsors/YUMI.png)
-
-Special thanks to [LDO](https://ldomotors.com/) and [YUMI](https://wiki.yumi-lab.com/) for sponsoring KlipperScreen and the open-source community.
+  ```
+  [update_manager KlipperScreen]
+  type: git_repo
+  path: ~/KlipperScreen
+  origin: https://github.com/Guilouz/KlipperScreen-Flsun-S1.git
+  virtualenv: ~/.KlipperScreen-env
+  requirements: scripts/KlipperScreen-requirements.txt
+  system_dependencies: scripts/system-dependencies.json
+  managed_services: KlipperScreen
+  ```
+- Once done, click on `SAVE & RESTART` at the top right to save the file.
+- You can now click the refresh button (still in the Machine tab) on the `Update Manager` tile.
+- Once installed you will have the new version of KlipperScreen and future updates will point directly to my repo.

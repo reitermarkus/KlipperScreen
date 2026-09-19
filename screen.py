@@ -902,7 +902,7 @@ class KlipperScreen(Gtk.ApplicationWindow):
     def state_paused(self):
         self.state_printing()
         if self._config.get_main_config().getboolean("auto_open_extrude", fallback=True):
-            self.show_panel("extrude")
+            self.show_panel("pause") # FLSUN Changes
 
     def state_printing(self):
         self.show_panel("job_status", remove_all=True)
@@ -1091,7 +1091,8 @@ class KlipperScreen(Gtk.ApplicationWindow):
             wrap_mode=Pango.WrapMode.WORD_CHAR,
         )
         grid = Gtk.Grid()
-        grid.attach(label, 0, 3, 2, 1)
+        grid.set_column_homogeneous(True) # FLSUN Changes
+        grid.attach(label, 0, 3, 3, 1) # FLSUN Changes
         offset = self.printer.get_stat("gcode_move", "homing_origin")
         zoffset = float(offset[2]) if offset else 0
         if zoffset != 0:
@@ -1099,16 +1100,19 @@ class KlipperScreen(Gtk.ApplicationWindow):
             msg = f"Apply {sign}{abs(zoffset):.3f} offset?"
             zlabel = Gtk.Label(label=msg, hexpand=True, vexpand=True, wrap=True)
             zlabel.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
-            grid.attach(zlabel, 0, 1, 2, 1)
-            if "Z_OFFSET_APPLY_PROBE" in self.printer.available_commands:
-                apply_probe = self.gtk.Button(label=_("Save Z") + "\n" + "Probe", style="color1")
-                apply_probe.set_vexpand(False)
-                apply_probe.set_size_request(-1, self.gtk.dialog_buttons_height)
-                apply_probe.connect("clicked", self.save, "Z_OFFSET_APPLY_PROBE")
-                grid.attach(apply_probe, 0, 2, 1, 1)
+            grid.attach(zlabel, 0, 1, 3, 1) # FLSUN Changes
+            # Start FLSUN Changes
+            #if "Z_OFFSET_APPLY_PROBE" in self.printer.available_commands:
+                #apply_probe = self.gtk.Button(label=_("Save Z") + "\n" + "Probe", style="color1")
+                #apply_probe.set_vexpand(False)
+                #apply_probe.set_size_request(-1, self.gtk.dialog_buttons_height)
+                #apply_probe.connect("clicked", self.save, "Z_OFFSET_APPLY_PROBE")
+                #grid.attach(apply_probe, 0, 2, 1, 1)
+            # End FLSUN Changes
             if "Z_OFFSET_APPLY_ENDSTOP" in self.printer.available_commands:
-                apply_end = self.gtk.Button(label=_("Save Z") + "\n" + "Endstop", style="color2")
+                apply_end = self.gtk.Button(label=_("Save") + "\n" + _("Z Offset"), style="color2") # FLSUN Changes
                 apply_end.set_vexpand(False)
+                apply_end.set_hexpand(True)
                 apply_end.set_size_request(-1, self.gtk.dialog_buttons_height)
                 apply_end.connect("clicked", self.save, "Z_OFFSET_APPLY_ENDSTOP")
                 grid.attach(apply_end, 1, 2, 1, 1)
@@ -1120,9 +1124,11 @@ class KlipperScreen(Gtk.ApplicationWindow):
         self.gtk.remove_dialog(dialog)
         if response_id == Gtk.ResponseType.OK:
             self._ws.api.gcode_script("SAVE_CONFIG")
-        if response_id == "Z_OFFSET_APPLY_PROBE":
-            self._ws.api.gcode_script("Z_OFFSET_APPLY_PROBE")
-            self._ws.api.gcode_script("SAVE_CONFIG")
+        # Start FLSUN Changes
+        #if response_id == "Z_OFFSET_APPLY_PROBE":
+        #    self._ws.api.gcode_script("Z_OFFSET_APPLY_PROBE")
+        #    self._ws.api.gcode_script("SAVE_CONFIG")
+        # End FLSUN Changes
         if response_id == "Z_OFFSET_APPLY_ENDSTOP":
             self._ws.api.gcode_script("Z_OFFSET_APPLY_ENDSTOP")
             self._ws.api.gcode_script("SAVE_CONFIG")
@@ -1156,6 +1162,72 @@ class KlipperScreen(Gtk.ApplicationWindow):
         self.confirm = self.gtk.Dialog(
             "KlipperScreen", buttons, label, self._confirm_send_action_response, method, params
         )
+
+    # Start FLSUN Changes
+    def _confirm_unload_action(self, widget, text, method, params=None):
+        buttons = [
+            {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": 'dialog-error'},
+            {"name": _("Unload (Retract)"), "response": Gtk.ResponseType.APPLY, "style": 'dialog-info'},
+            {"name": _("Unload (Purge)"), "response": Gtk.ResponseType.OK, "style": 'dialog-info'}
+        ]
+
+        try:
+            j2_temp = self.env.from_string(text)
+            text = j2_temp.render()
+        except Exception as e:
+            logging.debug(f"Error parsing jinja for confirm_unload_action\n{e}\n\n{traceback.format_exc()}")
+
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        vbox.set_margin_top(20)
+        vbox.set_margin_bottom(0)
+        vbox.set_margin_start(0)
+        vbox.set_margin_end(0)
+
+        label = Gtk.Label(hexpand=True, vexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
+                      wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
+        label.set_markup(text)
+        vbox.pack_start(label, True, True, 0)
+
+        image_path = os.path.join(klipperscreendir, "styles", "unload.png")
+        image = Gtk.Image.new_from_file(image_path)
+
+        vbox.pack_start(image, True, True, 0)
+
+        if self.confirm is not None:
+            self.gtk.remove_dialog(self.confirm)
+        self.confirm = self.gtk.Dialog(
+            "KlipperScreen", buttons, vbox, self._confirm_unload_action_response, method, params
+        )
+
+    def _info_action(self, widget, text, method, params=None):
+        buttons = []
+
+        try:
+            j2_temp = self.env.from_string(text)
+            text = j2_temp.render()
+        except Exception as e:
+            logging.debug(f"Error parsing jinja for info_action\n{e}\n\n{traceback.format_exc()}")
+
+        label = Gtk.Label(hexpand=True, vexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER,
+                          wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR)
+        label.set_markup(text)
+
+        if self.confirm is not None:
+            self.gtk.remove_dialog(self.confirm)
+        self.confirm = self.gtk.Dialog(
+            "KlipperScreen", buttons, label, self._confirm_send_action_response, method, params
+        )
+
+    def _confirm_unload_action_response(self, dialog, response_id, method, params=None):
+        self.gtk.remove_dialog(dialog)
+        if response_id == Gtk.ResponseType.OK:
+            params = {"script": "_KS_UNLOAD_FILAMENT_PURGE"}
+        elif response_id == Gtk.ResponseType.APPLY:
+            params = {"script": "_KS_UNLOAD_FILAMENT_RETRACT"}
+        else:
+            return
+        self._send_action(None, method, params)
+    # End FLSUN Changes
 
     def _confirm_send_action_response(self, dialog, response_id, method, params):
         self.gtk.remove_dialog(dialog)
@@ -1269,11 +1341,18 @@ class KlipperScreen(Gtk.ApplicationWindow):
             self.show_popup_message(popup, level)
         if "power" in self.server_info["components"]:
             self._ws.api.get_power_devices(self.set_power_devices)
+        # Start FLSUN Changes
+        if "sensor" in self.server_info["components"]:
+            self._ws.send_method("server.sensors.list", {"extended": False}, self.set_moon_sensors)
+        # End FLSUN Changes
         if "webcam" in self.server_info["components"]:
             self._ws.api.list_webcams(self.set_cameras)
         if "spoolman" in self.server_info["components"]:
             self.printer.enable_spoolman()
         self.init_klipper()
+
+    def set_moon_sensors(self, data, method, params):
+        self.printer.configure_moon_sensors(data["result"])
 
     def set_power_devices(self, data, method, params):
         self.printer.configure_power_devices(data["result"])

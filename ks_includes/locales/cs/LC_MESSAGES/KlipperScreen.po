@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Czech\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-05-04 00:09+0000\n"
 "Last-Translator: Michal Bitala <yzeroy14@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/klipperscreen/"
@@ -28,11 +28,11 @@ msgstr "Posun"
 msgid "Temperature"
 msgstr "Teplota"
 
-msgid "Extrude"
-msgstr "Extrudovat"
+msgid "Filament"
+msgstr "Filament"
 
-msgid "More"
-msgstr "Více"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Tisk"
@@ -40,47 +40,62 @@ msgstr "Tisk"
 msgid "Gcodes"
 msgstr "G-kódy"
 
-msgid "Bed Level"
-msgstr "Vyrovnání podložky"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Mapa podložky"
 
-msgid "Z Calibrate"
-msgstr "Kalibrace Z"
+msgid "Input Shaper"
+msgstr "Kompenzace rezonancí"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Limity"
 
+msgid "Fine Tuning"
+msgstr "Jemné ladění"
+
 msgid "Fan"
 msgstr "Ventilátor"
 
-msgid "Leds"
-msgstr "LEDky"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Makra"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Piny"
 
-msgid "Power"
-msgstr "Zdroj"
-
-msgid "Camera"
-msgstr "Kamera"
+msgid "Macros"
+msgstr "Makra"
 
 msgid "Console"
 msgstr "Konzole"
 
-msgid "Update"
-msgstr "Aktualizovat"
-
-msgid "Input Shaper"
-msgstr "Kompenzace rezonancí"
-
 msgid "Save Config"
 msgstr "Uložit nastavení"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Síť"
@@ -91,8 +106,11 @@ msgstr "Oznámení"
 msgid "System"
 msgstr "Systém"
 
-msgid "Fine Tuning"
-msgstr "Jemné ladění"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Zaparkovat XYZ"
 
 msgid "Home X"
 msgstr "Zaparkovat X"
@@ -103,26 +121,20 @@ msgstr "Zaparkovat Y"
 msgid "Home Z"
 msgstr "Zaparkovat Z"
 
-msgid "Home All"
-msgstr "Zaparkovat XYZ"
-
 msgid "Home XY"
 msgstr "Zaparkovat XY"
-
-msgid "Quad Gantry Level"
-msgstr "QGL"
-
-msgid "Z Tilt"
-msgstr "Z Tilt"
 
 msgid "Print Control"
 msgstr "Nastavení tisku"
 
-msgid "Lock"
-msgstr "Uzamknout"
+msgid "Extrude"
+msgstr "Extrudovat"
 
-msgid "Menu"
-msgstr "Menu"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Zdroj"
 
 msgid "Icon Theme"
 msgstr "Motiv ikon"
@@ -176,6 +188,12 @@ msgstr "Vypnout na 12 hodin am / pm"
 msgid "Action bar Shortcut"
 msgstr "Zkratka akčního panelu"
 
+msgid "Lock"
+msgstr "Uzamknout"
+
+msgid "Camera"
+msgstr "Kamera"
+
 #, fuzzy
 msgid "LEDs"
 msgstr "LED"
@@ -219,9 +237,6 @@ msgstr "Obrazovka DPMS"
 msgid "Enable screen power management"
 msgstr "Povolit správu napájení obrazovky"
 
-msgid "Not all screens support this"
-msgstr "Ne všechny obrazovky podporují tuto funkci"
-
 msgid "Auto-close notifications"
 msgstr "Automaticky zavřít upozornění"
 
@@ -240,14 +255,23 @@ msgstr "Ukázat rolovací tlačítka"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Užitečné pro nereagující dotykové obrazovky"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Automatické otevření Extruze při pauze"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "Zobrazit kurzor"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Pro ovládání myší nebo ověření přesnosti dotykového displeje"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -262,6 +286,15 @@ msgid_plural "seconds"
 msgstr[0] "sekunda"
 msgstr[1] "sekundy"
 msgstr[2] "sekund"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Otočit X"
@@ -296,11 +329,11 @@ msgstr[2] "minut"
 msgid "Temperature too low to extrude"
 msgstr "Příliš nízká teplota pro extruzi"
 
-msgid "Klipper will reboot"
-msgstr "Klipper se restartuje"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Uložit nastavení?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Opravdu okamžitě nouzově zastavit?"
@@ -366,11 +399,17 @@ msgstr "Odemknutí selhalo"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Opravdu chcete vyloučit objekt?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Konec"
 
 msgid "Updating"
 msgstr "Aktualizuji"
+
+msgid "Bed Level"
+msgstr "Vyrovnání podložky"
 
 msgid "Disable Motors"
 msgstr "Vypnout motory"
@@ -396,9 +435,6 @@ msgstr "Odkaz"
 msgid "Add profile"
 msgstr "Přidat profil"
 
-msgid "Calibrate"
-msgstr "Kalibrace"
-
 msgid "Clear"
 msgstr "Vymazat"
 
@@ -408,11 +444,33 @@ msgstr "Jméno profilu:"
 msgid "Save"
 msgstr "Uložit"
 
-msgid "Calibrating"
-msgstr "Kalibruji"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Max"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC není podporováno backendem, který se pokouší spustit Stream"
+
+msgid "Leds"
+msgstr "LEDky"
 
 msgid "Auto-scroll"
 msgstr "Auto posun"
@@ -453,11 +511,32 @@ msgstr "Vzdálenost (mm)"
 msgid "Speed (mm/s)"
 msgstr "Rychlost (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Ventilátor chlazení modelu"
 
-msgid "Max"
-msgstr "Max"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -498,6 +577,12 @@ msgstr "Smazat adresář?"
 msgid "Start"
 msgstr "Start"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Smazat"
 
@@ -510,9 +595,6 @@ msgstr "Změněno"
 msgid "Layer Height"
 msgstr "Výška vrstvy"
 
-msgid "Filament"
-msgstr "Filament"
-
 msgid "Estimated Time"
 msgstr "Odhadovaný čas"
 
@@ -522,8 +604,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Průměr trysky"
 
-msgid "Last Duration"
-msgstr "Poslední doba trvání"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Přejmenovat/Přesunout:"
@@ -539,6 +623,15 @@ msgstr "Změřit Y"
 
 msgid "Measure Both"
 msgstr "Změřit obojí"
+
+msgid "Calibrating"
+msgstr "Kalibruji"
+
+msgid "Klipper will reboot"
+msgstr "Klipper se restartuje"
+
+msgid "Save configuration?"
+msgstr "Uložit nastavení?"
 
 msgid "Check ADXL Wiring"
 msgstr "Zkontroluj zapojení ADXL"
@@ -621,20 +714,16 @@ msgstr "Restart"
 msgid "Resume"
 msgstr "Obnovit"
 
-msgid "Save Z"
-msgstr "Uložit Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Použít posun {sign}{offset:.3f} na Probe?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Použít posun {sign}{offset:.3f} na Endstop?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Uložený offset: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Použít"
@@ -672,6 +761,9 @@ msgstr "Pozastaveno"
 msgid "Standby"
 msgstr "Pohotovostní režim"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Max. zrychlení"
 
@@ -681,8 +773,8 @@ msgstr "Minimální cestovní poměr"
 msgid "Max Velocity"
 msgstr "Max. rychlost"
 
-msgid "Square Corner Velocity"
-msgstr "Čtvercová rychlost v rozích"
+msgid "Temp (°C)"
+msgstr "Teplota (°C)"
 
 msgid "Unknown Heater"
 msgstr "Neznámé topení"
@@ -696,11 +788,14 @@ msgstr "Spustit PID kalibraci:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "V závislosti na výkonu ohřívače to může trvat déle než 5 minut."
 
-msgid "Temp (°C)"
-msgstr "Teplota (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "Chybná teplota"
+
+msgid "Calibrate"
+msgstr "Kalibrace"
 
 msgid "Home"
 msgstr "Domů"
@@ -784,8 +879,14 @@ msgstr "Hostname"
 msgid "Notification log empty"
 msgstr "Protokol oznámení je prázdný"
 
-msgid "Pressure advance"
-msgstr "Předstih tlaku"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Aktuální"
@@ -799,8 +900,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Výběr tiskárny"
 
-msgid "Please wait"
-msgstr "Čekejte prosím"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Délka retrakce"
@@ -999,11 +1100,17 @@ msgstr "Ukázat"
 msgid "Hide"
 msgstr "Skrýt"
 
+msgid "Update"
+msgstr "Aktualizovat"
+
 msgid "Full Update"
 msgstr "Kompletní aktualizace"
 
 msgid "Refresh"
 msgstr "Znovu načíst"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Kontrola aktualizací, prosím počkejte..."
@@ -1085,6 +1192,9 @@ msgstr "Zrušit"
 msgid "Calibration commands not available yet"
 msgstr "Kalibrační příkazy ještě nejsou k dispozici"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Chyba: Nepodařilo se získat pozici pro sondování"
 
@@ -1142,6 +1252,24 @@ msgstr "Klipper startuje"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper zastaven"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

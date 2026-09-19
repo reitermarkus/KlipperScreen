@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Klipperscreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-04-23 21:28+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/klipperscreen/"
@@ -30,12 +30,12 @@ msgstr "הזזת צירים"
 msgid "Temperature"
 msgstr "טמפרטורה"
 
-msgid "Extrude"
-msgstr "הוצא חומר"
-
 #, fuzzy
-msgid "More"
-msgstr "עוד"
+msgid "Filament"
+msgstr "חומר הדפסה"
+
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "הדפסה"
@@ -44,49 +44,62 @@ msgstr "הדפסה"
 msgid "Gcodes"
 msgstr "פקודות G"
 
-msgid "Bed Level"
-msgstr "פילוס מיטה"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "מיפוי מיטה"
 
-msgid "Z Calibrate"
-msgstr "כיול Z"
+msgid "Input Shaper"
+msgstr "מעצב גימור"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "גבולות"
 
+msgid "Fine Tuning"
+msgstr "כוונון עדין"
+
 msgid "Fan"
 msgstr "מאוורר"
 
-#, fuzzy
-msgid "Leds"
-msgstr "נורות לד"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "מקרואים"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "פינים"
 
-msgid "Power"
-msgstr "הפעלה"
-
-#, fuzzy
-msgid "Camera"
-msgstr "מצלמה"
+msgid "Macros"
+msgstr "מקרואים"
 
 msgid "Console"
 msgstr "קונסול"
 
-msgid "Update"
-msgstr "עדכון"
-
-msgid "Input Shaper"
-msgstr "מעצב גימור"
-
 msgid "Save Config"
 msgstr "שמור קונפיג"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "רשת"
@@ -98,8 +111,11 @@ msgstr "התראות"
 msgid "System"
 msgstr "מערכת"
 
-msgid "Fine Tuning"
-msgstr "כוונון עדין"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "איפוס XYZ"
 
 msgid "Home X"
 msgstr "איפוס X"
@@ -110,27 +126,20 @@ msgstr "איפוס Y"
 msgid "Home Z"
 msgstr "איפוס Z"
 
-msgid "Home All"
-msgstr "איפוס XYZ"
-
 msgid "Home XY"
 msgstr "איפוס XY"
-
-msgid "Quad Gantry Level"
-msgstr "יישור הגנטרי הריבועי"
-
-msgid "Z Tilt"
-msgstr "הטיה Z"
 
 msgid "Print Control"
 msgstr "שליטה בהדפסה"
 
-#, fuzzy
-msgid "Lock"
-msgstr "נעילה"
+msgid "Extrude"
+msgstr "הוצא חומר"
 
-msgid "Menu"
-msgstr "תפריט"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "הפעלה"
 
 msgid "Icon Theme"
 msgstr "ערכת נושא"
@@ -191,6 +200,14 @@ msgid "Action bar Shortcut"
 msgstr "קיצור דרך לסרגל הפעולות"
 
 #, fuzzy
+msgid "Lock"
+msgstr "נעילה"
+
+#, fuzzy
+msgid "Camera"
+msgstr "מצלמה"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
 
@@ -239,10 +256,6 @@ msgstr "DPMS מסך"
 msgid "Enable screen power management"
 msgstr "הפעל ניהול הספק למסך"
 
-#, fuzzy
-msgid "Not all screens support this"
-msgstr "לא כל המסכים תומכים בזה"
-
 msgid "Auto-close notifications"
 msgstr "סגירת התראות אוטומטית"
 
@@ -265,9 +278,11 @@ msgstr "הצג כפתורי סרגל גלילה"
 msgid "Useful for un-responsive touchscreens"
 msgstr "שימושי למסכי מגע לא מגיבים"
 
-#, fuzzy
-msgid "Auto-open Extrude On Pause"
-msgstr "פתיחה אוטומטית של הזנה בהשהיה"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 #, fuzzy
 msgid "Show cursor"
@@ -276,6 +291,12 @@ msgstr "הצג סמן"
 #, fuzzy
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "לשליטה בעכבר או לאימות דיוק מסך מגע"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -292,6 +313,15 @@ msgstr[0] "שנייה"
 msgstr[1] "שניות"
 msgstr[2] "שניות"
 msgstr[3] "שניות"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "הפוך את X"
@@ -330,11 +360,11 @@ msgstr[3] "דקות"
 msgid "Temperature too low to extrude"
 msgstr "הטמפרטורה נמוכה מדי להזרמה"
 
-msgid "Klipper will reboot"
-msgstr "קליפר יבצע אתחול"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "שמור קונפיגרציה?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "האם אתה בטוח שאתה רוצה לבצע עצירת חירום?"
@@ -418,11 +448,17 @@ msgstr "ביטול הנעילה נכשל"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "האם אתה בטוח שברצונך להוסיף את האובייקט?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "סיים"
 
 msgid "Updating"
 msgstr "מעדכן"
+
+msgid "Bed Level"
+msgstr "פילוס מיטה"
 
 msgid "Disable Motors"
 msgstr "השבת מנועים"
@@ -452,9 +488,6 @@ msgstr "התייחסות"
 msgid "Add profile"
 msgstr "הוסף פרופיל"
 
-msgid "Calibrate"
-msgstr "לכייל"
-
 msgid "Clear"
 msgstr "נקה"
 
@@ -464,12 +497,35 @@ msgstr "שם פרופיל:"
 msgid "Save"
 msgstr "לשמור"
 
-msgid "Calibrating"
-msgstr "מכייל"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "מקסימום"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 #, fuzzy
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC אינו נתמך על ידי ה-Backend, מנסה לזרים"
+
+#, fuzzy
+msgid "Leds"
+msgstr "נורות לד"
 
 msgid "Auto-scroll"
 msgstr "גלילה אוטומטית"
@@ -512,11 +568,32 @@ msgstr "מרחק (מ\"מ)"
 msgid "Speed (mm/s)"
 msgstr "מהירות (מ\"מ/שניות)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "מאוורר חומר"
 
-msgid "Max"
-msgstr "מקסימום"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "מ''מ"
@@ -559,6 +636,12 @@ msgstr "למחוק תיקייה?"
 msgid "Start"
 msgstr "התחל"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "מחק"
 
@@ -573,10 +656,6 @@ msgid "Layer Height"
 msgstr "גובה שכבה"
 
 #, fuzzy
-msgid "Filament"
-msgstr "חומר הדפסה"
-
-#, fuzzy
 msgid "Estimated Time"
 msgstr "זמן משוער"
 
@@ -588,9 +667,10 @@ msgstr "גרם"
 msgid "Nozzle diameter"
 msgstr "קוטר זרבובית"
 
-#, fuzzy
-msgid "Last Duration"
-msgstr "משך אחרון"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 #, fuzzy
 msgid "Rename/Move:"
@@ -607,6 +687,15 @@ msgstr "מדוד Y"
 
 msgid "Measure Both"
 msgstr "מדוד את שניהם"
+
+msgid "Calibrating"
+msgstr "מכייל"
+
+msgid "Klipper will reboot"
+msgstr "קליפר יבצע אתחול"
+
+msgid "Save configuration?"
+msgstr "שמור קונפיגרציה?"
 
 msgid "Check ADXL Wiring"
 msgstr "בדוק את החיווט של ה ADXL"
@@ -693,20 +782,16 @@ msgstr "אתחל"
 msgid "Resume"
 msgstr "המשך"
 
-msgid "Save Z"
-msgstr "שמור Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr ","
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr ","
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "שמור אופ-סט %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "החל"
@@ -746,6 +831,9 @@ msgstr "מושהה"
 msgid "Standby"
 msgstr ","
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "מקסימום תאוצה"
 
@@ -756,8 +844,8 @@ msgstr ","
 msgid "Max Velocity"
 msgstr "מהירות מרבית"
 
-msgid "Square Corner Velocity"
-msgstr "מהירות פינה מרובעת"
+msgid "Temp (°C)"
+msgstr "טמפ' (°C)"
 
 msgid "Unknown Heater"
 msgstr "מחמם לא ידוע"
@@ -773,12 +861,15 @@ msgstr ","
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr ","
 
-msgid "Temp (°C)"
-msgstr "טמפ' (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "טמפרטורה לא תקינה"
+
+msgid "Calibrate"
+msgstr "לכייל"
 
 msgid "Home"
 msgstr "איפוס"
@@ -870,9 +961,14 @@ msgstr "שם שרת"
 msgid "Notification log empty"
 msgstr ","
 
-#, fuzzy
-msgid "Pressure advance"
-msgstr ","
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 #, fuzzy
 msgid "Current"
@@ -890,9 +986,8 @@ msgstr ","
 msgid "Printer Select"
 msgstr ","
 
-#, fuzzy
-msgid "Please wait"
-msgstr ","
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "מרחק משיכה"
@@ -1106,11 +1201,17 @@ msgstr "הצג"
 msgid "Hide"
 msgstr "הסתר"
 
+msgid "Update"
+msgstr "עדכון"
+
 msgid "Full Update"
 msgstr "עדכון מלא"
 
 msgid "Refresh"
 msgstr "רענון"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "בודק עדכונים, אנא המתן"
@@ -1195,6 +1296,9 @@ msgstr "בטל"
 msgid "Calibration commands not available yet"
 msgstr "פקודות כיול עדיין לא זמינות"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 #, fuzzy
 msgid "Error: Couldn't get a position to probe"
 msgstr "שגיאה: לא ניתן לקבל מיקום לבדיקה"
@@ -1257,6 +1361,26 @@ msgstr "קליפר מנסה לעלות"
 
 msgid "Klipper has shutdown"
 msgstr "קליפר כבה"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

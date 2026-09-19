@@ -21,10 +21,6 @@
     border: 0;
 }
 
-button:disabled {
-    opacity: .5;
-}
-
 list row,
 treeview.view,
 window {
@@ -81,12 +77,17 @@ button.active {
     background-color: @active;
 }
 
-button:disabled,
+button:disabled
+ {
+    border: 0;
+}
+
 button.color1:disabled,
 button.color2:disabled,
 button.color3:disabled,
 button.color4:disabled {
     border: 0;
+    border-bottom: .4em solid grey;
 }
 
 button:disabled label,
@@ -320,7 +321,6 @@ trough {
 
 .horizontal_togglebuttons_active {
     background-color: @active;
-    font-weight: 600;
 }
 
 .horizontal_togglebuttons {
@@ -378,9 +378,9 @@ trough {
     margin: 0;
 }
 
-.heater-grid button{
+.heater-grid button {
     margin: .2em;
-    min-height: 2.9em;
+    min-height: 2.75em;
     padding: 0 .5em;
 }
 
@@ -426,6 +426,10 @@ trough {
     background-color: @error;
 }
 
+.numpad{
+    margin-top: 30px;
+}
+
 .numpad_key {
     border: .15em;
     border-style: solid;
@@ -433,6 +437,7 @@ trough {
 }
 
 .numpad_tleft {
+    border: .15em solid @text;
     border-bottom: 0;
     border-right: 0;
     border-top-left-radius: .7em;
@@ -440,46 +445,54 @@ trough {
 }
 
 .numpad_top {
+    border: .15em solid @text;
     border-bottom: 0;
     border-right: 0;
     margin: .15em 0 0 0;
 }
 
 .numpad_tright {
+    border: .15em solid @text;
     border-bottom: 0;
     border-top-right-radius: .7em;
     margin: .15em .15em 0 0;
 }
 
 .numpad_left {
+    border: .15em solid @text;
     border-right: 0;
     border-bottom: 0;
     margin: 0 0 0 .15em;
 }
 
 .numpad_button {
+    border: .15em solid @text;
     border-right: 0;
     border-bottom: 0;
     margin: 0;
 }
 
 .numpad_right {
+    border: .15em solid @text;
     border-bottom: 0;
     margin: 0 .15em 0 0;
 }
 
 .numpad_bleft {
+    border: .15em solid @text;
     border-right: 0;
     border-bottom-left-radius: .7em;
     margin: 0 0 .15em .15em;
 }
 
 .numpad_bottom {
+    border: .15em solid @text;
     border-right: 0;
     margin: 0 0 .15em 0;
 }
 
 .numpad_bright {
+    border: .15em solid @text;
     border-bottom-right-radius: .7em;
     margin: 0 .15em .15em 0;
 }
@@ -576,7 +589,7 @@ popover {
 
 popover button {
     background-color: @bg;
-    padding: 1em 3.1em;
+    padding: 0em 1.5em;
     margin: 0;
 }
 

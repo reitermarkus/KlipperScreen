@@ -48,7 +48,7 @@ class Panel(ScreenPanel):
         if self._screen._ws and self._screen.state.connected:
             self._screen.close_connection()
             logging.debug("Waiting for disconnect")
-            self._screen.base_panel.set_title(_("Please wait"))
+            self._screen.base_panel.set_title(_("Please wait...")) # FLSUN Changes
             b: Gtk.Button
             for b in self.printer_buttons:
                 b.set_sensitive(False)

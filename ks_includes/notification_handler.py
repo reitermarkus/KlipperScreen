@@ -20,6 +20,7 @@ class NotificationHandler:
             "notify_webcams_changed": self._webcams_changed,
             "notify_gcode_response": self._gcode_response,
             "notify_active_spool_set": self._active_spool_set,
+            "notify_sensor_update": self._sensor_update, # FLSUN Changes
         }
 
     def handle(self, action, data):
@@ -85,6 +86,11 @@ class NotificationHandler:
     def _metadata_update(self, data):
         self._screen.files.request_metadata(data["filename"])
 
+    # Start FLSUN Changes
+    def _sensor_update(self, data):
+        self._screen.printer.process_moon_sensors_update(data)
+    # End FLSUN Changes
+
     def _update_response(self, data):
         if "message" in data and "Error" in data["message"]:
             logging.error(f"notify_update_response: {data['message']}")
@@ -122,7 +128,10 @@ class NotificationHandler:
                     "temperature",
                     extra=self._screen.printer.get_stat("toolhead", "extruder"),
                 )
-            self._screen.show_popup_message(_("Temperature too low to extrude"))
+            self._screen.show_popup_message(
+                _("Temperature too low to extrude") + f"!\n"
+                + _("Please heat the nozzle.") # FLSUN Changes
+            )
             return True
         elif data.startswith("!! "):
             self._screen.show_popup_message(data[3:], 3, from_ws=True)
@@ -135,12 +144,20 @@ class NotificationHandler:
             self._screen.show_popup_message(data, from_ws=True)
         elif "SAVE_CONFIG" in data and self._screen.printer.state == "ready":
             script = {"script": "SAVE_CONFIG"}
-            self._screen._confirm_send_action(
+            #self._screen._confirm_send_action(
+            #    None,
+            #    _("Save configuration?") + "\n\n" + _("Klipper will reboot"),
+            #    "printer.gcode.script",
+            #    script,
+            #)
+            self._screen._info_action(
                 None,
-                _("Save configuration?") + "\n\n" + _("Klipper will reboot"),
+                _("Klipper will reboot to save configurations"),
                 "printer.gcode.script",
                 script,
             )
+            self._screen._ws.api.gcode_script("SAVE_CONFIG")
+
 
     def _active_spool_set(self, data):
         self._screen.set_active_spool_details(data.get("spool_id"))

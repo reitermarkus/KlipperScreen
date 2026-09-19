@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-06-24 07:01+0000\n"
 "Last-Translator: Niolay Danov <nikdan@abv.bg>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/klipperscreen/"
@@ -28,11 +28,11 @@ msgstr "Ход"
 msgid "Temperature"
 msgstr "Tемпература"
 
-msgid "Extrude"
-msgstr "Екструзия"
+msgid "Filament"
+msgstr "Филамент"
 
-msgid "More"
-msgstr "Повече"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Печат"
@@ -40,47 +40,62 @@ msgstr "Печат"
 msgid "Gcodes"
 msgstr "Gcodes"
 
-msgid "Bed Level"
-msgstr "Ниво на леглото"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Мрежа за легло"
 
-msgid "Z Calibrate"
-msgstr "Калибр. Z"
+msgid "Input Shaper"
+msgstr "Входен шейпер"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Лимити"
 
+msgid "Fine Tuning"
+msgstr "Фина настройка"
+
 msgid "Fan"
 msgstr "Охлаждане"
 
-msgid "Leds"
-msgstr "Leds"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Макроси"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Пинове"
 
-msgid "Power"
-msgstr "Изк. принтера"
-
-msgid "Camera"
-msgstr "Камера"
+msgid "Macros"
+msgstr "Макроси"
 
 msgid "Console"
 msgstr "Конзола"
 
-msgid "Update"
-msgstr "Обнови"
-
-msgid "Input Shaper"
-msgstr "Входен шейпер"
-
 msgid "Save Config"
 msgstr "Зап. Конфиг"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Мрежа"
@@ -91,8 +106,11 @@ msgstr "Известия"
 msgid "System"
 msgstr "Система"
 
-msgid "Fine Tuning"
-msgstr "Фина настройка"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Паркирай всички"
 
 msgid "Home X"
 msgstr "Паркирай X"
@@ -103,26 +121,20 @@ msgstr "Паркирай Y"
 msgid "Home Z"
 msgstr "Паркирай Z"
 
-msgid "Home All"
-msgstr "Паркирай всички"
-
 msgid "Home XY"
 msgstr "Паркирай XY"
-
-msgid "Quad Gantry Level"
-msgstr "Ниво Quad Gantry"
-
-msgid "Z Tilt"
-msgstr "Z Наклон"
 
 msgid "Print Control"
 msgstr "Контрол на печата"
 
-msgid "Lock"
-msgstr "Заключване"
+msgid "Extrude"
+msgstr "Екструзия"
 
-msgid "Menu"
-msgstr "Меню"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Изк. принтера"
 
 msgid "Icon Theme"
 msgstr "Тема"
@@ -177,6 +189,12 @@ msgstr "Деактивирайте за 12 часа с am / pm"
 msgid "Action bar Shortcut"
 msgstr "Бърз достъп на лентата с действия"
 
+msgid "Lock"
+msgstr "Заключване"
+
+msgid "Camera"
+msgstr "Камера"
+
 msgid "LEDs"
 msgstr "LED"
 
@@ -219,9 +237,6 @@ msgstr "Екран DPMS"
 msgid "Enable screen power management"
 msgstr "Активирайте управлението на захранването на екрана"
 
-msgid "Not all screens support this"
-msgstr "Не всички екрани поддържат това"
-
 msgid "Auto-close notifications"
 msgstr "Известия за автоматично затваряне"
 
@@ -240,14 +255,23 @@ msgstr "Показване на бутони за ленти за превърт
 msgid "Useful for un-responsive touchscreens"
 msgstr "Полезно за неотзивчиви сензорни екрани"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Автоматично отваряне на екструдиране при пауза"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "Показване на курсора"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "За управление с мишка или за проверка на точността на сензорния екран"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 msgid "Screen wake delay"
 msgstr "Забавяне на събуждане на екрана"
@@ -260,6 +284,15 @@ msgid "second"
 msgid_plural "seconds"
 msgstr[0] "секунда"
 msgstr[1] "секунди"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Инверсиране X"
@@ -292,11 +325,11 @@ msgstr[1] "минути"
 msgid "Temperature too low to extrude"
 msgstr "Температурата е твърде ниска за екструдиране"
 
-msgid "Klipper will reboot"
-msgstr "Klipper се рестартира"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Запиши конфигурацията?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Сигурни ли сте, че искате да стартирате аварийно спиране?"
@@ -360,11 +393,17 @@ msgstr "Отключването е неуспешно"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Сигурни ли сте, че искате да изключите обекта?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Край"
 
 msgid "Updating"
 msgstr "Обновяване"
+
+msgid "Bed Level"
+msgstr "Ниво на леглото"
 
 msgid "Disable Motors"
 msgstr "Изкл. моторите"
@@ -390,9 +429,6 @@ msgstr "Връзка"
 msgid "Add profile"
 msgstr "Добавете профил"
 
-msgid "Calibrate"
-msgstr "Калибриране"
-
 msgid "Clear"
 msgstr "Изчисти"
 
@@ -402,11 +438,33 @@ msgstr "Име на профила:"
 msgid "Save"
 msgstr "Запиши"
 
-msgid "Calibrating"
-msgstr "Калибриране"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Макс"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC не се поддържа от бекенда, опитващ Stream"
+
+msgid "Leds"
+msgstr "Leds"
 
 msgid "Auto-scroll"
 msgstr "Автоматично превъртане"
@@ -447,11 +505,32 @@ msgstr "Растояние (mm)"
 msgid "Speed (mm/s)"
 msgstr "Скорост (мм/с)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Частичен вентилатор"
 
-msgid "Max"
-msgstr "Макс"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "мм"
@@ -492,6 +571,12 @@ msgstr "Изтриване на директория?"
 msgid "Start"
 msgstr "Старт"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Изтриване"
 
@@ -504,9 +589,6 @@ msgstr "Променено"
 msgid "Layer Height"
 msgstr "Височина на слоя"
 
-msgid "Filament"
-msgstr "Филамент"
-
 msgid "Estimated Time"
 msgstr "Очаквано време"
 
@@ -516,8 +598,10 @@ msgstr "г"
 msgid "Nozzle diameter"
 msgstr "Диаметър на дюзата"
 
-msgid "Last Duration"
-msgstr "Ретракт"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Преименуване/Преместване:"
@@ -533,6 +617,15 @@ msgstr "Измерете Y"
 
 msgid "Measure Both"
 msgstr "Измерете и двете"
+
+msgid "Calibrating"
+msgstr "Калибриране"
+
+msgid "Klipper will reboot"
+msgstr "Klipper се рестартира"
+
+msgid "Save configuration?"
+msgstr "Запиши конфигурацията?"
 
 msgid "Check ADXL Wiring"
 msgstr "Проверете ADXL свързването"
@@ -615,20 +708,16 @@ msgstr "Рестарт"
 msgid "Resume"
 msgstr "Продължи"
 
-msgid "Save Z"
-msgstr "Запиши Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Приложи отместване {sign}{offset:.3f} към зондирането?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Приложи отместване {sign}{offset:.3f} към крайната точка?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Записан офсет: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Приложи"
@@ -666,6 +755,9 @@ msgstr "Спряно"
 msgid "Standby"
 msgstr "В режим на готовност"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Максимално ускорение"
 
@@ -675,8 +767,8 @@ msgstr "Минимално круизно съотношение"
 msgid "Max Velocity"
 msgstr "Скорост"
 
-msgid "Square Corner Velocity"
-msgstr "Квадратна ъглова скорост"
+msgid "Temp (°C)"
+msgstr "Темп (°С)"
 
 msgid "Unknown Heater"
 msgstr "Неизвестен нагревател"
@@ -691,11 +783,14 @@ msgid "It may take more than 5 minutes depending on the heater power."
 msgstr ""
 "Може да отнеме повече от 5 минути в зависимост от мощността на нагревателя."
 
-msgid "Temp (°C)"
-msgstr "Темп (°С)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "Невалидна температура"
+
+msgid "Calibrate"
+msgstr "Калибриране"
 
 msgid "Home"
 msgstr "Паркирай X"
@@ -774,8 +869,14 @@ msgstr "Име на хоста"
 msgid "Notification log empty"
 msgstr "Дневникът на известията е празен"
 
-msgid "Pressure advance"
-msgstr "Предварително налягане"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Текущ"
@@ -789,8 +890,8 @@ msgstr "с"
 msgid "Printer Select"
 msgstr "Избор на принтер"
 
-msgid "Please wait"
-msgstr "Моля изчакайте"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Дължина на ретракта"
@@ -966,11 +1067,17 @@ msgstr "Покажи"
 msgid "Hide"
 msgstr "Скрий"
 
+msgid "Update"
+msgstr "Обнови"
+
 msgid "Full Update"
 msgstr "Пълна актуализация"
 
 msgid "Refresh"
 msgstr "Опресняване"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Проверява се за актуализации, моля изчакайте..."
@@ -1048,6 +1155,9 @@ msgstr "Прекъсване"
 msgid "Calibration commands not available yet"
 msgstr "Команди за калибриране още не са налични"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Грешка: Не може да се намери позиция за сондиране"
 
@@ -1101,6 +1211,22 @@ msgstr "Klipper е готов"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper се изключи"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 msgid "Waiting for Moonraker connection to close"
 msgstr "Очакване на затваряне на връзката с Moonraker"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-01-10 23:01+0000\n"
 "Last-Translator: Joe <alawadhi3000@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/klipperscreen/"
@@ -29,11 +29,11 @@ msgstr "تحرك"
 msgid "Temperature"
 msgstr "درجة الحرارة"
 
-msgid "Extrude"
-msgstr "ابثق"
+msgid "Filament"
+msgstr "الخيط"
 
-msgid "More"
-msgstr "أكثر"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "اطبع"
@@ -41,47 +41,62 @@ msgstr "اطبع"
 msgid "Gcodes"
 msgstr "كود ج Gcodes"
 
-msgid "Bed Level"
-msgstr "مستوى السرير"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "شبكة السرير"
 
-msgid "Z Calibrate"
-msgstr "معايرة Z"
+msgid "Input Shaper"
+msgstr "مشكل الإدخال"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "حدود"
 
+msgid "Fine Tuning"
+msgstr "الضبط الدقيق"
+
 msgid "Fan"
 msgstr "المروحة"
 
-msgid "Leds"
-msgstr "المصابيح"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "ماكرو"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "دبابيس"
 
-msgid "Power"
-msgstr "القوة"
-
-msgid "Camera"
-msgstr "آلة تصوير"
+msgid "Macros"
+msgstr "ماكرو"
 
 msgid "Console"
 msgstr "لوحة التحكم"
 
-msgid "Update"
-msgstr "حدث"
-
-msgid "Input Shaper"
-msgstr "مشكل الإدخال"
-
 msgid "Save Config"
 msgstr "حفظ التكوين"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "الشبكة"
@@ -92,8 +107,11 @@ msgstr "إشعارات"
 msgid "System"
 msgstr "النظام"
 
-msgid "Fine Tuning"
-msgstr "الضبط الدقيق"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "منزل الكل"
 
 msgid "Home X"
 msgstr "منزل X"
@@ -104,26 +122,20 @@ msgstr "منزل Y"
 msgid "Home Z"
 msgstr "منزل Z"
 
-msgid "Home All"
-msgstr "منزل الكل"
-
 msgid "Home XY"
 msgstr "منزل XY"
-
-msgid "Quad Gantry Level"
-msgstr "مستوى القنطرية الرباعية"
-
-msgid "Z Tilt"
-msgstr "تعديل ميل Z"
 
 msgid "Print Control"
 msgstr "التحكم في الطباعة"
 
-msgid "Lock"
-msgstr "قفل"
+msgid "Extrude"
+msgstr "ابثق"
 
-msgid "Menu"
-msgstr "القائِمة"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "القوة"
 
 msgid "Icon Theme"
 msgstr "موضوع الأيقونة"
@@ -177,6 +189,12 @@ msgstr "تعطيل لمدة 12 ساعة مع صباحا / مساء"
 msgid "Action bar Shortcut"
 msgstr "اختصار شريط الإجراءات"
 
+msgid "Lock"
+msgstr "قفل"
+
+msgid "Camera"
+msgstr "آلة تصوير"
+
 #, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
@@ -220,9 +238,6 @@ msgstr "شاشة DPMS"
 msgid "Enable screen power management"
 msgstr "تمكين إدارة طاقة الشاشة"
 
-msgid "Not all screens support this"
-msgstr "ليس كل الشاشات تدعم هذا"
-
 msgid "Auto-close notifications"
 msgstr "إغلاق الإشعار التلقائي"
 
@@ -241,14 +256,23 @@ msgstr "أظهر أزرار أشرطة التمرير"
 msgid "Useful for un-responsive touchscreens"
 msgstr "مفيد لشاشات اللمس غير المستجيبة"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "بثق الفتح التلقائي عند الإيقاف المؤقت"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "أظهر المؤشر"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "للتحكم بالفأرة أو للتأكد من دقة شاشة اللمس"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -266,6 +290,15 @@ msgstr[2] "ثانيتين"
 msgstr[3] "ثواني"
 msgstr[4] "ثواني"
 msgstr[5] "ثوانٍ"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "عكس X"
@@ -306,11 +339,11 @@ msgstr[5] "دقائق"
 msgid "Temperature too low to extrude"
 msgstr "درجة الحرارة قليلة جدا لبدء التدفق"
 
-msgid "Klipper will reboot"
-msgstr "سيقوم Klipper بإعادة التشغيل"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "حفظ التكوين؟"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "هل تريد تأكيد التوقف الطارئ؟"
@@ -380,11 +413,17 @@ msgstr "خطأ في الفتح"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "هل أنت متأكد من أنك تريد استبعاد الجسم؟?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "انتهى"
 
 msgid "Updating"
 msgstr "يتم التحديث الان"
+
+msgid "Bed Level"
+msgstr "مستوى السرير"
 
 msgid "Disable Motors"
 msgstr "تعطيل المحركات"
@@ -410,9 +449,6 @@ msgstr "مرجع"
 msgid "Add profile"
 msgstr "إضافة نمط"
 
-msgid "Calibrate"
-msgstr "معايرة"
-
 msgid "Clear"
 msgstr "ازال"
 
@@ -422,11 +458,33 @@ msgstr "اسم الملف:"
 msgid "Save"
 msgstr "حفظ"
 
-msgid "Calibrating"
-msgstr "يضبط"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "الاقصي"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC غير مدعوم من قبل الواجهة الخلفية التي تحاول البث"
+
+msgid "Leds"
+msgstr "المصابيح"
 
 msgid "Auto-scroll"
 msgstr "التمرير التلقائي"
@@ -467,11 +525,32 @@ msgstr "المسافة (م م)"
 msgid "Speed (mm/s)"
 msgstr "السرعة (مم/ثانية)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "مروحة تبريد المطبوعات"
 
-msgid "Max"
-msgstr "الاقصي"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "مم"
@@ -512,6 +591,12 @@ msgstr "حذف الدليل؟"
 msgid "Start"
 msgstr "ابدأ"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "حذف"
 
@@ -524,9 +609,6 @@ msgstr "معدل"
 msgid "Layer Height"
 msgstr "ارتفاع الطبقة"
 
-msgid "Filament"
-msgstr "الخيط"
-
 msgid "Estimated Time"
 msgstr "الوقت التقديري"
 
@@ -536,8 +618,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "قطر الفوهة"
 
-msgid "Last Duration"
-msgstr "المدة الأخيرة"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "إعادة تسمية/نقل:"
@@ -553,6 +637,15 @@ msgstr "قياس Y"
 
 msgid "Measure Both"
 msgstr "قم بقياس كليهما"
+
+msgid "Calibrating"
+msgstr "يضبط"
+
+msgid "Klipper will reboot"
+msgstr "سيقوم Klipper بإعادة التشغيل"
+
+msgid "Save configuration?"
+msgstr "حفظ التكوين؟"
 
 msgid "Check ADXL Wiring"
 msgstr "تحقق من ADXL الأسلاك"
@@ -635,20 +728,16 @@ msgstr "اعادة التشغيل"
 msgid "Resume"
 msgstr "استناف"
 
-msgid "Save Z"
-msgstr "احفظ Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "تطبيق إزاحة {sign}{offset:.3f} على الفحص؟"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "تطبيق إزاحة {sign}{offset:.3f} على نقطة النهاية؟"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "تم حفظ التحديد: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "تطبيق"
@@ -686,6 +775,9 @@ msgstr "متوقف"
 msgid "Standby"
 msgstr "الاستعداد"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "أقصى تسارع"
 
@@ -695,8 +787,8 @@ msgstr "الحد الأدنى لنسبة الرحلات"
 msgid "Max Velocity"
 msgstr "السرعة القصوى"
 
-msgid "Square Corner Velocity"
-msgstr "سرعة الزاوية المربعة"
+msgid "Temp (°C)"
+msgstr "الحرارة (°م)"
 
 msgid "Unknown Heater"
 msgstr "سخان غير معروف"
@@ -710,11 +802,14 @@ msgstr "بدء معايرة PID:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "قد يستغرق الأمر أكثر من 5 دقائق اعتمادا على طاقة السخان."
 
-msgid "Temp (°C)"
-msgstr "الحرارة (°م)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "درجة حرارة غير صحيحة"
+
+msgid "Calibrate"
+msgstr "معايرة"
 
 msgid "Home"
 msgstr "المنزل"
@@ -798,8 +893,14 @@ msgstr "اسم المضيف"
 msgid "Notification log empty"
 msgstr "سجل الإشعارات فارغ"
 
-msgid "Pressure advance"
-msgstr "تقدم الضغط"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "الحالي"
@@ -813,8 +914,8 @@ msgstr "ث"
 msgid "Printer Select"
 msgstr "اختيار الطابعة"
 
-msgid "Please wait"
-msgstr "من فضلك انتظر"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "طول التراجع"
@@ -1013,11 +1114,17 @@ msgstr "عرض"
 msgid "Hide"
 msgstr "إخفاء"
 
+msgid "Update"
+msgstr "حدث"
+
 msgid "Full Update"
 msgstr "تحديث كامل"
 
 msgid "Refresh"
 msgstr "التجديد"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "التحقق من التحديثات، يرجى الانتظار..."
@@ -1105,6 +1212,9 @@ msgstr "إجهاض"
 msgid "Calibration commands not available yet"
 msgstr "أوامر المعايرة غير متاحة بعد"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "خطأ: تعذر لعدم الحصول على مستوي المسبار"
 
@@ -1162,6 +1272,30 @@ msgstr "يحاول Klipper البدء"
 
 msgid "Klipper has shutdown"
 msgstr "تم إغلاق Klipper"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

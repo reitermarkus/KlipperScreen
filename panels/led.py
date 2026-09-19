@@ -55,9 +55,11 @@ class Panel(ScreenPanel):
             or (idx == 3 and "W" in self.color_order)
         )
 
-    def activate(self):
-        if self.current_led is not None:
-            self.set_title(f"{self.current_led}")
+    # Start FLSUN Changes
+    #def activate(self):
+    #    if self.current_led is not None:
+    #        self.set_title(f"{self.current_led}")
+    # End FLSUN Changes
 
     def set_title(self, title):
         self._screen.base_panel.set_title(self.prettify(title))
@@ -145,12 +147,25 @@ class Panel(ScreenPanel):
         preview_box.add(self.preview)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.add(preview_box)
+
+        # Start FLSUN Changes
+        if led.startswith("neopixel "):
+            preset_button = self._gtk.Button(None, _("Presets"), "color1")
+            preset_button.connect("clicked", self.on_preset_button_clicked)
+            box.add(preset_button)
+        # End FLSUN Changes
+
         box.add(scroll)
         if self._screen.vertical_mode:
             grid.attach(box, 0, 1, 3, 1)
         else:
             grid.attach(box, 3, 0, 2, 1)
         return grid
+
+    # Start FLSUN Changes
+    def on_preset_button_clicked(self, widget):
+        self._screen._send_action(widget, "printer.gcode.script",{"script": f"_NEOPIXELS_PRESETS"})
+    # End FLSUN Changes
 
     def update_preview_label(self, args):
         self.preview_label.set_label(rgb_to_hex(rgbw_to_rgb(self.color_data)))
@@ -184,9 +199,27 @@ class Panel(ScreenPanel):
         name = (
             self.current_led.split()[1] if len(self.current_led.split()) > 1 else self.current_led
         )
+
+        # Start FLSUN Changes
+        variable = "led_state" if self.current_led.startswith("led ") else "neopixels_state" if self.current_led.startswith("neopixel ") else None
+        if variable == "neopixels_state":
+            self._screen._send_action(
+                None, "printer.gcode.script",
+                {"script": f"SET_LED_TEMPLATE LED={name} TEMPLATE=\"\""}
+            )
+        # End FLSUN Changes
+
         self._screen._send_action(
             None, "printer.gcode.script", {"script": KlippyGcodes.set_led_color(name, color_data)}
         )
+
+        # Start FLSUN Changes
+        if variable:
+            self._screen._send_action(
+                None, "printer.gcode.script",
+                {"script": f"SET_GCODE_VARIABLE MACRO=CHAMBER_LED_SWITCH VARIABLE={variable} VALUE=1"}
+            )
+        # End FLSUN Changes
 
     @staticmethod
     def parse_presets(presets_data) -> {}:

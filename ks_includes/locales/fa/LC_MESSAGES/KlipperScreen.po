@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-04-23 15:17-0300\n"
 "Last-Translator: Pouriya Zolghadry <merdasss@yahoo.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/klipperscreen/"
@@ -32,12 +32,11 @@ msgid "Temperature"
 msgstr "دما"
 
 #, fuzzy
-msgid "Extrude"
-msgstr "بیرون‌کشیدن"
+msgid "Filament"
+msgstr "فیلامنت"
 
-#, fuzzy
-msgid "More"
-msgstr "بیشتر"
+msgid "Configurations"
+msgstr ""
 
 #, fuzzy
 msgid "Print"
@@ -47,57 +46,69 @@ msgstr "چاپ"
 msgid "Gcodes"
 msgstr "کدهای G"
 
-msgid "Bed Level"
-msgstr "تراز سازی بستر چاپ"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "مش بستر چاپ"
 
 #, fuzzy
-msgid "Z Calibrate"
-msgstr "کالیبراسیون Z"
+msgid "Input Shaper"
+msgstr "شکل‌دهی ورودی"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 #, fuzzy
 msgid "Limits"
 msgstr "محدودیت‌ها"
 
 #, fuzzy
+msgid "Fine Tuning"
+msgstr "تنظیمات ظریف"
+
+#, fuzzy
 msgid "Fan"
 msgstr "فن"
 
-#, fuzzy
-msgid "Leds"
-msgstr "چراغ‌ها"
+msgid "LED"
+msgstr ""
 
-#, fuzzy
-msgid "Macros"
-msgstr "مکروها"
+msgid "Brightness"
+msgstr ""
 
 #, fuzzy
 msgid "Pins"
 msgstr "پین‌ها"
 
 #, fuzzy
-msgid "Power"
-msgstr "برق"
-
-msgid "Camera"
-msgstr "دوربین"
+msgid "Macros"
+msgstr "مکروها"
 
 msgid "Console"
 msgstr "کنسول"
 
 #, fuzzy
-msgid "Update"
-msgstr "به‌روزرسانی"
-
-#, fuzzy
-msgid "Input Shaper"
-msgstr "شکل‌دهی ورودی"
-
-#, fuzzy
 msgid "Save Config"
 msgstr "ذخیره پیکربندی"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 #, fuzzy
 msgid "Network"
@@ -111,9 +122,12 @@ msgstr "اعلان‌ها"
 msgid "System"
 msgstr "سیستم"
 
+msgid "About"
+msgstr ""
+
 #, fuzzy
-msgid "Fine Tuning"
-msgstr "تنظیمات ظریف"
+msgid "Home All"
+msgstr "خانه‌ی همه"
 
 #, fuzzy
 msgid "Home X"
@@ -128,32 +142,23 @@ msgid "Home Z"
 msgstr "خانه‌ی Z"
 
 #, fuzzy
-msgid "Home All"
-msgstr "خانه‌ی همه"
-
-#, fuzzy
 msgid "Home XY"
 msgstr "خانه‌ی XY"
-
-#, fuzzy
-msgid "Quad Gantry Level"
-msgstr "تراز کردن چهارگانه گانتری"
-
-#, fuzzy
-msgid "Z Tilt"
-msgstr "کج‌شدگی Z"
 
 #, fuzzy
 msgid "Print Control"
 msgstr "کنترل چاپ"
 
 #, fuzzy
-msgid "Lock"
-msgstr "قفل"
+msgid "Extrude"
+msgstr "بیرون‌کشیدن"
+
+msgid "System Info"
+msgstr ""
 
 #, fuzzy
-msgid "Menu"
-msgstr "منو"
+msgid "Power"
+msgstr "برق"
 
 #, fuzzy
 msgid "Icon Theme"
@@ -218,6 +223,13 @@ msgid "Action bar Shortcut"
 msgstr "میانبر نوار عملیات"
 
 #, fuzzy
+msgid "Lock"
+msgstr "قفل"
+
+msgid "Camera"
+msgstr "دوربین"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
 
@@ -270,10 +282,6 @@ msgstr "DPMS صفحه نمایش"
 msgid "Enable screen power management"
 msgstr "فعال سازی کنترل برق صفحه نمایشگر"
 
-#, fuzzy
-msgid "Not all screens support this"
-msgstr "همه صفحه‌ها از این پشتیبانی نمی‌کنند"
-
 msgid "Auto-close notifications"
 msgstr "بستن اتوماتیک اعلانات"
 
@@ -295,8 +303,11 @@ msgstr "نمایش دکمه‌های نوار پیمایش"
 msgid "Useful for un-responsive touchscreens"
 msgstr "برای صفحه‌های لمسی غیرحساس مفید است"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "باز کردن اتوماتیک اکسترود در هنگام توقف"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 #, fuzzy
 msgid "Show cursor"
@@ -305,6 +316,12 @@ msgstr "نمایش نشانگر"
 #, fuzzy
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "برای کنترل ماوس یا بررسی دقت صفحه لمسی"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -319,6 +336,15 @@ msgid "second"
 msgid_plural "seconds"
 msgstr[0] "ثانیه"
 msgstr[1] "ثانیه‌ها"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 #, fuzzy
 msgid "Invert X"
@@ -360,13 +386,11 @@ msgstr[1] "دقیقه‌ها"
 msgid "Temperature too low to extrude"
 msgstr "دما برای اکسترود پایین است"
 
-#, fuzzy
-msgid "Klipper will reboot"
-msgstr "Klipper بازنشانی خواهد شد"
+msgid "Please heat the nozzle."
+msgstr ""
 
-#, fuzzy
-msgid "Save configuration?"
-msgstr "ذخیره پیکربندی؟"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "مطمئنید میخواهید توقف اضطراری را فعال نمایید؟"
@@ -445,6 +469,9 @@ msgstr "باز کردن قفل ناموفق بود"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "مطمئنید میخواهید این شی را مستثنی کنید؟"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 #, fuzzy
 msgid "Finish"
 msgstr "پایان"
@@ -452,6 +479,9 @@ msgstr "پایان"
 #, fuzzy
 msgid "Updating"
 msgstr "در حال به‌روزرسانی"
+
+msgid "Bed Level"
+msgstr "تراز سازی بستر چاپ"
 
 msgid "Disable Motors"
 msgstr "غیر فعال سازی موتورها"
@@ -483,9 +513,6 @@ msgstr "مرجع"
 msgid "Add profile"
 msgstr "اضافه کردن پروفایل"
 
-msgid "Calibrate"
-msgstr "کالیبراسیون"
-
 msgid "Clear"
 msgstr "پاکسازی"
 
@@ -497,12 +524,36 @@ msgstr "نام پروفایل:"
 msgid "Save"
 msgstr "ذخیره"
 
-msgid "Calibrating"
-msgstr "در حال کالیبره کردن"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+#, fuzzy
+msgid "Max"
+msgstr "حداکثر"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 #, fuzzy
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC توسط بک‌اند پشتیبانی نمی‌شود، تلاش برای استریم"
+
+#, fuzzy
+msgid "Leds"
+msgstr "چراغ‌ها"
 
 msgid "Auto-scroll"
 msgstr "چرخش اتوماتیک"
@@ -553,13 +604,33 @@ msgstr "فاصله (mm)"
 msgid "Speed (mm/s)"
 msgstr "سرعت (میلی‌متر/ثانیه)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 #, fuzzy
 msgid "Part Fan"
 msgstr "فن قطعه"
 
-#, fuzzy
-msgid "Max"
-msgstr "حداکثر"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 #, fuzzy
 msgid "mm"
@@ -610,6 +681,12 @@ msgstr "پوشه حذف شود؟"
 msgid "Start"
 msgstr "شروع"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "حذف"
 
@@ -625,10 +702,6 @@ msgid "Layer Height"
 msgstr "ارتفاع لایه"
 
 #, fuzzy
-msgid "Filament"
-msgstr "فیلامنت"
-
-#, fuzzy
 msgid "Estimated Time"
 msgstr "زمان تخمینی"
 
@@ -640,9 +713,10 @@ msgstr "گرم"
 msgid "Nozzle diameter"
 msgstr "قطر نازل"
 
-#, fuzzy
-msgid "Last Duration"
-msgstr "مدت زمان آخرین"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 #, fuzzy
 msgid "Rename/Move:"
@@ -663,6 +737,17 @@ msgstr "اندازه‌گیری Y"
 #, fuzzy
 msgid "Measure Both"
 msgstr "اندازه‌گیری هر دو"
+
+msgid "Calibrating"
+msgstr "در حال کالیبره کردن"
+
+#, fuzzy
+msgid "Klipper will reboot"
+msgstr "Klipper بازنشانی خواهد شد"
+
+#, fuzzy
+msgid "Save configuration?"
+msgstr "ذخیره پیکربندی؟"
 
 msgid "Check ADXL Wiring"
 msgstr "بررسی سیم کشی ADXL"
@@ -766,21 +851,16 @@ msgstr "دوباره شروع"
 msgid "Resume"
 msgstr "ادامه"
 
-#, fuzzy
-msgid "Save Z"
-msgstr "ذخیره Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "اعمال جابجایی {sign}{offset:.3f} به Probe؟"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "اعمال جابجایی {sign}{offset:.3f} به Endstop؟"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "جابجایی ذخیره شده: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "اعمال"
@@ -823,6 +903,9 @@ msgstr "متوقف"
 msgid "Standby"
 msgstr "آماده به کار"
 
+msgid "Presets"
+msgstr ""
+
 #, fuzzy
 msgid "Max Acceleration"
 msgstr "شتاب حداکثر"
@@ -836,8 +919,8 @@ msgid "Max Velocity"
 msgstr "سرعت حداکثر"
 
 #, fuzzy
-msgid "Square Corner Velocity"
-msgstr "سرعت گوشه مربع"
+msgid "Temp (°C)"
+msgstr "دما (°C)"
 
 #, fuzzy
 msgid "Unknown Heater"
@@ -854,13 +937,15 @@ msgstr "شروع کالیبراسیون PID برای:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "بسته به توان گرم‌کن ممکن است بیش از ۵ دقیقه طول بکشد."
 
-#, fuzzy
-msgid "Temp (°C)"
-msgstr "دما (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "دما نامعتبر است"
+
+msgid "Calibrate"
+msgstr "کالیبراسیون"
 
 #, fuzzy
 msgid "Home"
@@ -958,9 +1043,14 @@ msgstr "نام میزبان"
 msgid "Notification log empty"
 msgstr "لاگ اعلان‌ها خالی است"
 
-#, fuzzy
-msgid "Pressure advance"
-msgstr "پیشرفت فشار"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "جریان"
@@ -977,9 +1067,8 @@ msgstr "ثانیه"
 msgid "Printer Select"
 msgstr "انتخاب پرینتر"
 
-#, fuzzy
-msgid "Please wait"
-msgstr "لطفاً صبر کنید"
+msgid "Please wait..."
+msgstr ""
 
 #, fuzzy
 msgid "Retraction Length"
@@ -1206,12 +1295,19 @@ msgid "Hide"
 msgstr "مخفی"
 
 #, fuzzy
+msgid "Update"
+msgstr "به‌روزرسانی"
+
+#, fuzzy
 msgid "Full Update"
 msgstr "بروزرسانی کامل"
 
 #, fuzzy
 msgid "Refresh"
 msgstr "بروزرسانی"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "در حال بررسی به روزرسانی ها، لطفا صبر کنید..."
@@ -1307,6 +1403,9 @@ msgstr "لغو"
 msgid "Calibration commands not available yet"
 msgstr "دستورات کالیبراسیون هنوز در دسترس نیستند"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 #, fuzzy
 msgid "Error: Couldn't get a position to probe"
 msgstr "خطا: نمی‌توان موقعیت پروب را دریافت کرد"
@@ -1376,6 +1475,22 @@ msgstr "Klipper در حال تلاش برای شروع است"
 #, fuzzy
 msgid "Klipper has shutdown"
 msgstr "Klipper خاموش شد"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

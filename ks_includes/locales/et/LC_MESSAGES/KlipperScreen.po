@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2024-07-26 19:09+0000\n"
 "Last-Translator: Jegert Uusküla <jegertuuskula@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/klipperscreen/"
@@ -24,11 +24,11 @@ msgstr "Liiguta"
 msgid "Temperature"
 msgstr "Temperatuur"
 
-msgid "Extrude"
-msgstr "Ekstrudeeri"
+msgid "Filament"
+msgstr "Filament"
 
-msgid "More"
-msgstr "Veel"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Prindi"
@@ -36,47 +36,62 @@ msgstr "Prindi"
 msgid "Gcodes"
 msgstr "G-koodid"
 
-msgid "Bed Level"
-msgstr "Voodi tase"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Voodi võrk"
 
-msgid "Z Calibrate"
-msgstr "Z kalibreerimine"
+msgid "Input Shaper"
+msgstr "Sisendvormija"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Piirangud"
 
+msgid "Fine Tuning"
+msgstr "Peenhäälestus"
+
 msgid "Fan"
 msgstr "Ventilaator"
 
-msgid "Leds"
-msgstr "LEDid"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Makrod"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Nõelad"
 
-msgid "Power"
-msgstr "Võimsus"
-
-msgid "Camera"
-msgstr "Kaamera"
+msgid "Macros"
+msgstr "Makrod"
 
 msgid "Console"
 msgstr "Konsool"
 
-msgid "Update"
-msgstr "Uuenda"
-
-msgid "Input Shaper"
-msgstr "Sisendvormija"
-
 msgid "Save Config"
 msgstr "Salvesta konfiguratsioon"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Võrk"
@@ -87,8 +102,11 @@ msgstr "Teavitused"
 msgid "System"
 msgstr "Süsteem"
 
-msgid "Fine Tuning"
-msgstr "Peenhäälestus"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Kõik koju"
 
 msgid "Home X"
 msgstr "Kodu X"
@@ -99,27 +117,20 @@ msgstr "Kodu Y"
 msgid "Home Z"
 msgstr "Kodu Z"
 
-msgid "Home All"
-msgstr "Kõik koju"
-
 msgid "Home XY"
 msgstr "Kodu XY"
-
-msgid "Quad Gantry Level"
-msgstr "Neljandikurea tase"
-
-msgid "Z Tilt"
-msgstr "Z kalle"
 
 msgid "Print Control"
 msgstr "Prindi juhtimine"
 
-#, fuzzy
-msgid "Lock"
-msgstr "Lukusta"
+msgid "Extrude"
+msgstr "Ekstrudeeri"
 
-msgid "Menu"
-msgstr "Menüü"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Võimsus"
 
 msgid "Icon Theme"
 msgstr "Ikoonide teema"
@@ -174,6 +185,13 @@ msgid "Action bar Shortcut"
 msgstr "Tegevusribbi otsetee"
 
 #, fuzzy
+msgid "Lock"
+msgstr "Lukusta"
+
+msgid "Camera"
+msgstr "Kaamera"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LED-id"
 
@@ -216,9 +234,6 @@ msgstr "Ekraani DPMS"
 msgid "Enable screen power management"
 msgstr "Luba ekraani energiakontroll"
 
-msgid "Not all screens support this"
-msgstr "Mitte kõik ekraanid ei toeta seda"
-
 msgid "Auto-close notifications"
 msgstr "Teatiste automaatne sulgemine"
 
@@ -237,8 +252,11 @@ msgstr "Näita kerimisriba nuppe"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Kasulik mitte reageerivate puuteekraanide jaoks"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Pausi ajal ekstrusiooni automaatne avamine"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 #, fuzzy
 msgid "Show cursor"
@@ -247,6 +265,12 @@ msgstr "Näytä osoitin"
 #, fuzzy
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Hiiren hallinta tai kosketusnäytön tarkkuuden varmistamiseksi"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -260,6 +284,15 @@ msgid "second"
 msgid_plural "seconds"
 msgstr[0] "sekund"
 msgstr[1] "sekundit"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Pööra X"
@@ -293,11 +326,11 @@ msgstr[1] "minutit"
 msgid "Temperature too low to extrude"
 msgstr "Lämpötila liian matala puristamiseen"
 
-msgid "Klipper will reboot"
-msgstr "Klipper taaskäivitub"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Salvesta konfiguratsioon?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Kas olete kindel, et soovite käivitada hädapidurduse?"
@@ -365,11 +398,17 @@ msgstr "Lukituksen avaus epäonnistui"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Kas olete kindel, et soovite objekti välistada?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Lõpeta"
 
 msgid "Updating"
 msgstr "Uuendamine"
+
+msgid "Bed Level"
+msgstr "Voodi tase"
 
 msgid "Disable Motors"
 msgstr "Keela mootorid"
@@ -395,9 +434,6 @@ msgstr "Viide"
 msgid "Add profile"
 msgstr "Lisa profiil"
 
-msgid "Calibrate"
-msgstr "Kalibreeri"
-
 msgid "Clear"
 msgstr "Kustuta"
 
@@ -407,11 +443,33 @@ msgstr "Profiili nimi:"
 msgid "Save"
 msgstr "Salvesta"
 
-msgid "Calibrating"
-msgstr "Kalibreerimine"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Maks"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC-d ei toeta taustsüsteem, mis proovib voogu"
+
+msgid "Leds"
+msgstr "LEDid"
 
 msgid "Auto-scroll"
 msgstr "Automaatne kerimine"
@@ -452,11 +510,32 @@ msgstr "Kaugus (mm)"
 msgid "Speed (mm/s)"
 msgstr "Kiirus (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Osaventilaator"
 
-msgid "Max"
-msgstr "Maks"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -497,6 +576,12 @@ msgstr "Kustuta kataloog?"
 msgid "Start"
 msgstr "Alusta"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Kustuta"
 
@@ -509,9 +594,6 @@ msgstr "Muudetud"
 msgid "Layer Height"
 msgstr "Kihi kõrgus"
 
-msgid "Filament"
-msgstr "Filament"
-
 msgid "Estimated Time"
 msgstr "Eeldatav aeg"
 
@@ -521,8 +603,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Düüsi läbimõõt"
 
-msgid "Last Duration"
-msgstr "Viimane kestus"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Nimeta ümber/Liiguta:"
@@ -538,6 +622,15 @@ msgstr "Mõõda Y"
 
 msgid "Measure Both"
 msgstr "Mõõda mõlemad"
+
+msgid "Calibrating"
+msgstr "Kalibreerimine"
+
+msgid "Klipper will reboot"
+msgstr "Klipper taaskäivitub"
+
+msgid "Save configuration?"
+msgstr "Salvesta konfiguratsioon?"
 
 msgid "Check ADXL Wiring"
 msgstr "Kontrollige ADXL juhtmeid"
@@ -620,20 +713,16 @@ msgstr "Taaskäivita"
 msgid "Resume"
 msgstr "Jätka"
 
-msgid "Save Z"
-msgstr "Salvesta Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Käytä {sign}{offset:.3f} siirtoa kohteeseen Probe?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Käytä {sign}{offset:.3f} siirtoa kohteeseen Endstop?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Salvestatud nihe: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Rakenda"
@@ -671,6 +760,9 @@ msgstr "Pausil"
 msgid "Standby"
 msgstr "Valmisolek"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Maksimaalne kiirendus"
 
@@ -680,8 +772,8 @@ msgstr "Minimaalne kruiisisuhe"
 msgid "Max Velocity"
 msgstr "Maksimaalne kiirus"
 
-msgid "Square Corner Velocity"
-msgstr "Ruudukujuline nurga kiirus"
+msgid "Temp (°C)"
+msgstr "Temperatuur (°C)"
 
 msgid "Unknown Heater"
 msgstr "Tundmatu küttekeha"
@@ -695,12 +787,15 @@ msgstr "Algata PID kalibreerimine jaoks:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "See võib võtta rohkem kui 5 minutit, sõltuvalt kütteseadme võimsusest."
 
-msgid "Temp (°C)"
-msgstr "Temperatuur (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "Virheellinen lämpötila"
+
+msgid "Calibrate"
+msgstr "Kalibreeri"
 
 msgid "Home"
 msgstr "Kodu"
@@ -785,8 +880,14 @@ msgstr "Hosti nimi"
 msgid "Notification log empty"
 msgstr "Teavituste logi tühi"
 
-msgid "Pressure advance"
-msgstr "Pressure advance"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Praegune"
@@ -800,8 +901,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Vali printer"
 
-msgid "Please wait"
-msgstr "Palun oodake"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Tagasitõmbumise pikkus"
@@ -1000,11 +1101,17 @@ msgstr "Näita"
 msgid "Hide"
 msgstr "Peida"
 
+msgid "Update"
+msgstr "Uuenda"
+
 msgid "Full Update"
 msgstr "Täisuuendus"
 
 msgid "Refresh"
 msgstr "Värskenda"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Uuenduste kontrollimine, palun oodake..."
@@ -1084,6 +1191,9 @@ msgstr "Katkesta"
 msgid "Calibration commands not available yet"
 msgstr "Kalıbratsiooni käskud ei ole veel saadaval"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Viga: ei saanud sondi positsiooni"
 
@@ -1141,6 +1251,22 @@ msgstr "Klipper püüab käivituda"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper on välja lülitatud"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

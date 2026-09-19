@@ -84,7 +84,7 @@ class Panel(MenuPanel):
         if self.active_heater is not None:
             self.hide_numpad()
 
-    def add_device(self, device):
+    def add_device(self, device, order=None): # FLSUN Changes
         devname = device.split()[1] if len(device.split()) > 1 else device
         # Support for hiding devices by name
         if devname.startswith("_"):
@@ -104,10 +104,28 @@ class Panel(MenuPanel):
             class_name = f"graph_label_{device}"
             dev_type = "extruder"
         elif device == "heater_bed":
-            image = "bed"
-            devname = "Heater Bed"
+            image = "bed-inner" # FLSUN Changes
+            devname = "Inner Bed" # FLSUN Changes
             class_name = "graph_label_heater_bed"
             dev_type = "bed"
+        # Start FLSUN Changes
+        elif device == "heater_generic heater_bed_2":
+            self.h += 1
+            image = "bed-outer"
+            devname = "Outer Bed"
+            class_name = f"graph_label_sensor_{self.h}"
+            dev_type = "sensor"
+        elif device.startswith("heater_generic drying_box"):
+            self.h += 1
+            image = "drying-box"
+            class_name = f"graph_label_sensor_{self.h}"
+            dev_type = "sensor"
+        elif device.startswith("temperature_sensor chamber"):
+            self.h += 1
+            image = "chamber"
+            class_name = f"graph_label_sensor_{self.h}"
+            dev_type = "sensor"
+        # End FLSUN Changes
         elif device.startswith("heater_generic"):
             self.h += 1
             image = "heater"
@@ -159,16 +177,29 @@ class Panel(MenuPanel):
             "name": name,
             "temp": temp,
             "can_target": can_target,
-            "visible": visible,
+            "visible": visible, # FLSUN Changes
+            "order": order if order is not None else float('inf'), # FLSUN Changes
         }
 
-        devices = sorted(self.devices)
-        pos = devices.index(device) + 1
+        # Start FLSUN Changes
+        #devices = sorted(self.devices)
+        #pos = devices.index(device) + 1
 
-        self.labels["devices"].insert_row(pos)
-        self.labels["devices"].attach(name, 0, pos, 1, 1)
-        self.labels["devices"].attach(temp, 1, pos, 1, 1)
+        #self.labels["devices"].insert_row(pos)
+        #self.labels["devices"].attach(name, 0, pos, 1, 1)
+        #self.labels["devices"].attach(temp, 1, pos, 1, 1)
+        #self.labels["devices"].show_all()
+
+        self.labels["devices"].foreach(self.labels["devices"].remove)
+        temp_label = Gtk.Label(label=_("Temp (°C)"))
+        self.labels["devices"].attach(temp_label, 1, 0, 1, 1)
+        sorted_devices = sorted(self.devices.items(), key=lambda x: x[1]["order"])
+        for pos, (device, device_info) in enumerate(sorted_devices):
+            self.labels["devices"].attach(device_info["name"], 0, pos + 1, 1, 1)
+            self.labels["devices"].attach(device_info["temp"], 1, pos + 1, 1, 1)
+
         self.labels["devices"].show_all()
+        # End FLSUN Changes
         return True
 
     def toggle_visibility(self, widget, device):
@@ -215,7 +246,11 @@ class Panel(MenuPanel):
         max_temp = int(float(self._printer.get_config_section(self.active_heater)["max_temp"]))
         logging.debug(f"{temp}/{max_temp}")
         if temp > max_temp:
-            self._screen.show_popup_message(_("Can't set above the maximum:") + f" {max_temp}")
+            self._screen.show_popup_message(
+                _("Can't set above the maximum:")
+                + f" {max_temp}"
+                + "°C" # FLSUN Changes
+            )
             return False
         return max(temp, 0)
 
@@ -224,16 +259,40 @@ class Panel(MenuPanel):
             return
         heater = self.active_heater.split(" ", maxsplit=1)[-1]
         if self.verify_max_temp(temp):
-            script = {"script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"}
-            self._screen._confirm_send_action(
-                None,
-                _("Initiate a PID calibration for:")
-                + f" {heater} @ {temp} ºC"
+            # Start FLSUN Changes
+            #script = {"script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"}
+            #self._screen._confirm_send_action(
+            #    None,
+            #    _("Initiate a PID calibration for:")
+            #    + f" {heater} @ {temp} ºC"
+            #    + "\n\n"
+            #    + _("It may take more than 5 minutes depending on the heater power."),
+            #    "printer.gcode.script",
+            #    script
+            #)
+            if not self.pid_start or not self.pid_end:
+                script = {"script": f"PID_CALIBRATE HEATER={heater} TARGET={temp}"}
+                self._screen._confirm_send_action(
+                    None,
+                    _("Initiate a PID calibration for:")
+                    + f" {heater} @ {temp} ºC"
+                    + "\n\n"
+                    + _("It may take more than 5 minutes depending on the heater power."),
+                    "printer.gcode.script",
+                    script,
+                )
+            else:
+                script = {"script": f"_PID_KS_START\nPID_CALIBRATE HEATER={heater} TARGET={temp}\n_PID_KS_END"}
+                self._screen._confirm_send_action(
+                    None,
+                    _("Initiate a PID calibration for:")
+                    + f" {self.active_heater} @ {temp} ºC"
                 + "\n\n"
                 + _("It may take more than 5 minutes depending on the heater power."),
                 "printer.gcode.script",
                 script,
             )
+            # End FLSUN Changes
 
     def mpc_calibrate(self, temp):
         if temp <= 0:

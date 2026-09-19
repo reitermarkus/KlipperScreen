@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-08-21 05:52+0000\n"
 "Last-Translator: vjurka <v@jurka.lt>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/klipperscreen/"
@@ -29,11 +29,11 @@ msgstr "Judinti"
 msgid "Temperature"
 msgstr "Temperatūra"
 
-msgid "Extrude"
-msgstr "Išstumti"
+msgid "Filament"
+msgstr "Gijų siūlas"
 
-msgid "More"
-msgstr "Daugiau"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Spausdinti"
@@ -41,47 +41,62 @@ msgstr "Spausdinti"
 msgid "Gcodes"
 msgstr "G-kodas"
 
-msgid "Bed Level"
-msgstr "Platformos lygis"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Platformos tinkliukas"
 
-msgid "Z Calibrate"
-msgstr "Z kalibravimas"
+msgid "Input Shaper"
+msgstr "Input Shaper"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Ribos"
 
+msgid "Fine Tuning"
+msgstr "Tikslus nustatymas"
+
 msgid "Fan"
 msgstr "Ventiliatorius"
 
-msgid "Leds"
-msgstr "Ledai"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Makro komandos"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Prievadai"
 
-msgid "Power"
-msgstr "Maitinimas"
-
-msgid "Camera"
-msgstr "Kamera"
+msgid "Macros"
+msgstr "Makro komandos"
 
 msgid "Console"
 msgstr "Terminalas"
 
-msgid "Update"
-msgstr "Atnaujinimai"
-
-msgid "Input Shaper"
-msgstr "Input Shaper"
-
 msgid "Save Config"
 msgstr "Išsaugoti konfigūraciją"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Tinklas"
@@ -92,8 +107,11 @@ msgstr "Pranešimai"
 msgid "System"
 msgstr "Sistema"
 
-msgid "Fine Tuning"
-msgstr "Tikslus nustatymas"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Parkuoti viską"
 
 msgid "Home X"
 msgstr "Parkuoti X"
@@ -104,26 +122,20 @@ msgstr "Parkuoti Y"
 msgid "Home Z"
 msgstr "Parkuoti Z"
 
-msgid "Home All"
-msgstr "Parkuoti viską"
-
 msgid "Home XY"
 msgstr "Parkuoti XY"
-
-msgid "Quad Gantry Level"
-msgstr "Diržų lygiavimas"
-
-msgid "Z Tilt"
-msgstr "Z polinkis"
 
 msgid "Print Control"
 msgstr "Spausdinimo valdymas"
 
-msgid "Lock"
-msgstr "Užrakinti"
+msgid "Extrude"
+msgstr "Išstumti"
 
-msgid "Menu"
-msgstr "Meniu"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Maitinimas"
 
 msgid "Icon Theme"
 msgstr "Temos"
@@ -176,6 +188,12 @@ msgstr "Išjungti 12hs su am / pm"
 msgid "Action bar Shortcut"
 msgstr "Veiksmų juostos trumpinys"
 
+msgid "Lock"
+msgstr "Užrakinti"
+
+msgid "Camera"
+msgstr "Kamera"
+
 msgid "LEDs"
 msgstr "LED"
 
@@ -218,9 +236,6 @@ msgstr "Ekrano DPMS"
 msgid "Enable screen power management"
 msgstr "Įgalinti ekrano energijos valdymą"
 
-msgid "Not all screens support this"
-msgstr "Ne visi ekranai tai palaiko"
-
 msgid "Auto-close notifications"
 msgstr "Automatinis pranešimų slėpimas"
 
@@ -239,14 +254,23 @@ msgstr "Rodyti stumdymo juostą"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Naudinga nereaguojantiems jutikliniams ekranams"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Automatiškai atidaryti Extruderio menių kai suveikia Pauzė"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "Rodyti kursorių"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Norėdami valdyti pele ar patikrinti jutiklinio ekrano tikslumą"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 msgid "Screen wake delay"
 msgstr "Ekranas įsijungs po"
@@ -259,6 +283,15 @@ msgid_plural "seconds"
 msgstr[0] "sekundė"
 msgstr[1] "sekundės"
 msgstr[2] "sekundžių"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "X inversija"
@@ -293,11 +326,11 @@ msgstr[2] "minutės"
 msgid "Temperature too low to extrude"
 msgstr "Per maža temperatūra ekstruzijai"
 
-msgid "Klipper will reboot"
-msgstr "Klipper'is persikraus"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Išsaugoti konfigūraciją?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Ar tikrai paleisti avarinį stabdymą?"
@@ -362,11 +395,17 @@ msgstr "Atrakinti nepavyko"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Ar tikrai norite išmesti objektą?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Pabaiga"
 
 msgid "Updating"
 msgstr "Atnaujinama"
+
+msgid "Bed Level"
+msgstr "Platformos lygis"
 
 msgid "Disable Motors"
 msgstr "Išjungti variklius"
@@ -392,9 +431,6 @@ msgstr "Nuoroda"
 msgid "Add profile"
 msgstr "Pridėti profilį"
 
-msgid "Calibrate"
-msgstr "Kalibravimas"
-
 msgid "Clear"
 msgstr "Išvalyti"
 
@@ -404,11 +440,33 @@ msgstr "Profilio vardas:"
 msgid "Save"
 msgstr "Išsaugoti"
 
-msgid "Calibrating"
-msgstr "Kalibruojama"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Max"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC nepalaikoma, bandoma Stream"
+
+msgid "Leds"
+msgstr "Ledai"
 
 msgid "Auto-scroll"
 msgstr "Automatinis slinkimas"
@@ -449,11 +507,32 @@ msgstr "Atstumas (mm)"
 msgid "Speed (mm/s)"
 msgstr "Greitis (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Dirbinio ventiliatorius"
 
-msgid "Max"
-msgstr "Max"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -494,6 +573,12 @@ msgstr "Šalinti katalogą?"
 msgid "Start"
 msgstr "Pradėti"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Naikinti"
 
@@ -506,9 +591,6 @@ msgstr "Pakeista"
 msgid "Layer Height"
 msgstr "Sluoksnio aukštis"
 
-msgid "Filament"
-msgstr "Gijų siūlas"
-
 msgid "Estimated Time"
 msgstr "Apskaičiuotas laikas"
 
@@ -518,8 +600,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Purkštuko diametras"
 
-msgid "Last Duration"
-msgstr "Paskutinė trukmė"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Pervadinti/Perkelti:"
@@ -535,6 +619,15 @@ msgstr "Išmatuoti Y"
 
 msgid "Measure Both"
 msgstr "Išmatuoti abu"
+
+msgid "Calibrating"
+msgstr "Kalibruojama"
+
+msgid "Klipper will reboot"
+msgstr "Klipper'is persikraus"
+
+msgid "Save configuration?"
+msgstr "Išsaugoti konfigūraciją?"
 
 msgid "Check ADXL Wiring"
 msgstr "Patikrinkite ADXL laidus"
@@ -617,20 +710,16 @@ msgstr "Perkrauti"
 msgid "Resume"
 msgstr "Tęsti"
 
-msgid "Save Z"
-msgstr "Išsaugoti Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Taikyti {sign}{offset:.3f} poslinkį Zondavimui?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Taikyti {sign}{offset:.3f} poslinkį Galiniam stabdžiui?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Išsaugotas poslinkis: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Pritaikyti"
@@ -668,6 +757,9 @@ msgstr "Pristabdyta"
 msgid "Standby"
 msgstr "Laukiama"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Maksimalus pagreitis"
 
@@ -677,8 +769,8 @@ msgstr "Minimalus kruizo koeficientas"
 msgid "Max Velocity"
 msgstr "Maksimalus greitis"
 
-msgid "Square Corner Velocity"
-msgstr "Stataus kampo greitis"
+msgid "Temp (°C)"
+msgstr "Temperatūra (°С)"
 
 msgid "Unknown Heater"
 msgstr "Nežinomas šildytuvas"
@@ -693,11 +785,14 @@ msgid "It may take more than 5 minutes depending on the heater power."
 msgstr ""
 "Priklausomai nuo šildytuvo galios gali užtrukti daugiau kaip 5 minutes."
 
-msgid "Temp (°C)"
-msgstr "Temperatūra (°С)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "Neteisinga temperatūra"
+
+msgid "Calibrate"
+msgstr "Kalibravimas"
 
 msgid "Home"
 msgstr "Parkavimas"
@@ -777,8 +872,14 @@ msgstr "Hosto vardas"
 msgid "Notification log empty"
 msgstr "Pranešimų žurnalas tuščias"
 
-msgid "Pressure advance"
-msgstr "Slėgio reguliavimas"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Dabartinis"
@@ -792,8 +893,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Išsirinkti spausdintuvą"
 
-msgid "Please wait"
-msgstr "Prašome laukti"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Išstūmimo ilgis"
@@ -969,11 +1070,17 @@ msgstr "Rodyti"
 msgid "Hide"
 msgstr "Paslėpti"
 
+msgid "Update"
+msgstr "Atnaujinimai"
+
 msgid "Full Update"
 msgstr "Atnaujinti viską"
 
 msgid "Refresh"
 msgstr "Atnaujinti"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Atnaujinimų paieška, laukite..."
@@ -1053,6 +1160,9 @@ msgstr "Atšaukti"
 msgid "Calibration commands not available yet"
 msgstr "Kalibravimo komandos dar nėra prieinamos"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Klaida: neįmanoma pozicija aukščio sensoriui"
 
@@ -1106,6 +1216,24 @@ msgstr "Klipper'is pasiruošęs"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper'is išjungtas"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 msgid "Waiting for Moonraker connection to close"
 msgstr "Laukiama Moonraker ryšio uždarymo"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2025-06-20 09:12+0000\n"
 "Last-Translator: kr <Tlake_ichi_ni_san_shi@yahoo.co.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/klipperscreen/"
@@ -24,12 +24,11 @@ msgstr "移動"
 msgid "Temperature"
 msgstr "温度"
 
-msgid "Extrude"
-msgstr "吐出"
+msgid "Filament"
+msgstr "フィラメント"
 
-#, fuzzy
-msgid "More"
-msgstr "もっと"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "印刷"
@@ -37,48 +36,62 @@ msgstr "印刷"
 msgid "Gcodes"
 msgstr "Gコード"
 
-msgid "Bed Level"
-msgstr "ベッドレベル"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "ベッドメッシュ"
 
-msgid "Z Calibrate"
-msgstr "Z軸 校正"
+msgid "Input Shaper"
+msgstr "入力シェーパー"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "制限"
 
+msgid "Fine Tuning"
+msgstr "Fine Tuning"
+
 msgid "Fan"
 msgstr "ファン"
 
-#, fuzzy
-msgid "Leds"
-msgstr "LED"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "マクロ"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Pins"
 
-msgid "Power"
-msgstr "電源"
-
-msgid "Camera"
-msgstr "カメラ"
+msgid "Macros"
+msgstr "マクロ"
 
 msgid "Console"
 msgstr "コンソール"
 
-msgid "Update"
-msgstr "更新"
-
-msgid "Input Shaper"
-msgstr "入力シェーパー"
-
 msgid "Save Config"
 msgstr "設定の保存"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "ネットワーク"
@@ -89,8 +102,11 @@ msgstr "通知"
 msgid "System"
 msgstr "システム"
 
-msgid "Fine Tuning"
-msgstr "Fine Tuning"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "全てをホームに戻す"
 
 msgid "Home X"
 msgstr "Home X"
@@ -101,27 +117,20 @@ msgstr "Home Y"
 msgid "Home Z"
 msgstr "Home Z"
 
-msgid "Home All"
-msgstr "全てをホームに戻す"
-
 msgid "Home XY"
 msgstr "XY軸をホームに戻す"
-
-msgid "Quad Gantry Level"
-msgstr "ガントリーレベル"
-
-msgid "Z Tilt"
-msgstr "Z軸 チルト"
 
 msgid "Print Control"
 msgstr "印刷制御"
 
-#, fuzzy
-msgid "Lock"
-msgstr "ロック"
+msgid "Extrude"
+msgstr "吐出"
 
-msgid "Menu"
-msgstr "メニュー"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "電源"
 
 msgid "Icon Theme"
 msgstr "アイコンテーマ"
@@ -177,6 +186,13 @@ msgid "Action bar Shortcut"
 msgstr "アクションバー ショートカット"
 
 #, fuzzy
+msgid "Lock"
+msgstr "ロック"
+
+msgid "Camera"
+msgstr "カメラ"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LED"
 
@@ -221,9 +237,6 @@ msgstr "画面DPMS"
 msgid "Enable screen power management"
 msgstr "画面の電源管理を有効化"
 
-msgid "Not all screens support this"
-msgstr "すべての画面がこれをサポートしているわけではありません"
-
 msgid "Auto-close notifications"
 msgstr "自動終了通知"
 
@@ -244,15 +257,23 @@ msgstr "スクロールバーボタンを表示"
 msgid "Useful for un-responsive touchscreens"
 msgstr "無反応のタッチスクリーンに有利"
 
-#, fuzzy
-msgid "Auto-open Extrude On Pause"
-msgstr "一時停止時に押出を自動開く"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "カーソルの表示"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "マウス制御またはタッチスクリーンの精度を確認する場合"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -266,6 +287,15 @@ msgstr "画面起動時の誤操作を防ぎます"
 msgid "second"
 msgid_plural "seconds"
 msgstr[0] "秒"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "X軸を反対にする"
@@ -298,11 +328,11 @@ msgstr[0] "分"
 msgid "Temperature too low to extrude"
 msgstr "温度が低すぎるため押し出すことができません"
 
-msgid "Klipper will reboot"
-msgstr "Klipperは再起動します"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "設定を保存しますか？"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "緊急停止しますか？"
@@ -370,11 +400,17 @@ msgstr "ロック解除に失敗"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "対象を除外しますか？"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "完了"
 
 msgid "Updating"
 msgstr "更新中"
+
+msgid "Bed Level"
+msgstr "ベッドレベル"
 
 msgid "Disable Motors"
 msgstr "モーターの無効化"
@@ -404,9 +440,6 @@ msgstr "基準"
 msgid "Add profile"
 msgstr "プロファイルの追加"
 
-msgid "Calibrate"
-msgstr "校正"
-
 msgid "Clear"
 msgstr "クリア"
 
@@ -416,11 +449,34 @@ msgstr "プロファイル:"
 msgid "Save"
 msgstr "保存"
 
-msgid "Calibrating"
-msgstr "校正中"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "最大"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTCはストリームを試行するバックエンドではサポートされていません"
+
+#, fuzzy
+msgid "Leds"
+msgstr "LED"
 
 msgid "Auto-scroll"
 msgstr "自動スクロール"
@@ -462,12 +518,33 @@ msgstr "距離(mm)"
 msgid "Speed (mm/s)"
 msgstr "速度 (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 #, fuzzy
 msgid "Part Fan"
 msgstr "パーツファン"
 
-msgid "Max"
-msgstr "最大"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 #, fuzzy
 msgid "mm"
@@ -509,6 +586,12 @@ msgstr "ディレクトリを削除しますか?"
 msgid "Start"
 msgstr "開始"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "削除"
 
@@ -521,9 +604,6 @@ msgstr "変更"
 msgid "Layer Height"
 msgstr "レイヤの高さ"
 
-msgid "Filament"
-msgstr "フィラメント"
-
 msgid "Estimated Time"
 msgstr "推定所要時間"
 
@@ -534,8 +614,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "ノズルの直径"
 
-msgid "Last Duration"
-msgstr "最後の持続時間"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 #, fuzzy
 msgid "Rename/Move:"
@@ -552,6 +634,15 @@ msgstr "Y軸を計測する"
 
 msgid "Measure Both"
 msgstr "両方計測する"
+
+msgid "Calibrating"
+msgstr "校正中"
+
+msgid "Klipper will reboot"
+msgstr "Klipperは再起動します"
+
+msgid "Save configuration?"
+msgstr "設定を保存しますか？"
 
 msgid "Check ADXL Wiring"
 msgstr "ADXL Wiring を検査する"
@@ -638,20 +729,16 @@ msgstr "再印刷"
 msgid "Resume"
 msgstr "再開"
 
-msgid "Save Z"
-msgstr "Z軸の保存"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "プロブに{sign}{offset:.3f}オフセットを適用しますか？"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "エンドストップに{sign}{offset:.3f}オフセットを適用しますか？"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "保存しました offset: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "適用する"
@@ -689,6 +776,9 @@ msgstr "一時停止中"
 msgid "Standby"
 msgstr "スタンバイ"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "最大加速度"
 
@@ -698,8 +788,8 @@ msgstr "最小巡航比率"
 msgid "Max Velocity"
 msgstr "最大速度"
 
-msgid "Square Corner Velocity"
-msgstr "四隅の速度"
+msgid "Temp (°C)"
+msgstr "温度 (°C)"
 
 msgid "Unknown Heater"
 msgstr "無効なヒーター"
@@ -713,12 +803,15 @@ msgstr "以下の PID キャリブレーションを開始:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "ヒーターの電力によっては5分以上かかる場合もあります。"
 
-msgid "Temp (°C)"
-msgstr "温度 (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "無効な温度"
+
+msgid "Calibrate"
+msgstr "校正"
 
 msgid "Home"
 msgstr "ホーム"
@@ -803,9 +896,14 @@ msgstr "ホスト名"
 msgid "Notification log empty"
 msgstr "通知ログがありません"
 
-#, fuzzy
-msgid "Pressure advance"
-msgstr "プレッシャーアドバンス"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "カレント"
@@ -821,8 +919,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "プリンターの選択"
 
-msgid "Please wait"
-msgstr "しばらくお待ちください"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "リトラクション長さ"
@@ -1022,11 +1120,17 @@ msgstr "表示"
 msgid "Hide"
 msgstr "隠す"
 
+msgid "Update"
+msgstr "更新"
+
 msgid "Full Update"
 msgstr "フルアップデート"
 
 msgid "Refresh"
 msgstr "最新表示"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "更新を確認しています。しばらくお待ちください..."
@@ -1110,6 +1214,9 @@ msgstr "中止する"
 msgid "Calibration commands not available yet"
 msgstr "キャリブレーションコマンドはまだ利用できません"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "エラー: 調査する位置を取得できませんでした"
 
@@ -1168,6 +1275,20 @@ msgstr "Klipperは起動中です"
 
 msgid "Klipper has shutdown"
 msgstr "Klipperはシャットダウンしました"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

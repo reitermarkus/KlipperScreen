@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2024-08-12 07:09+0000\n"
 "Last-Translator: Hiep Nguyen <tanhiep26@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/klipperscreen/"
@@ -24,11 +24,12 @@ msgstr "Di chuyển"
 msgid "Temperature"
 msgstr "Nhiệt độ"
 
-msgid "Extrude"
-msgstr "Đùn"
+#, fuzzy
+msgid "Filament"
+msgstr "Chỉ filament"
 
-msgid "More"
-msgstr "Thêm"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "In"
@@ -37,47 +38,62 @@ msgstr "In"
 msgid "Gcodes"
 msgstr "Mã G"
 
-msgid "Bed Level"
-msgstr "Cân bằng bàn"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Lưới bàn"
 
-msgid "Z Calibrate"
-msgstr "Hiệu chuẩn Z"
+msgid "Input Shaper"
+msgstr "Bộ định hình đầu vào"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Giới hạn"
 
+msgid "Fine Tuning"
+msgstr "Tinh chỉnh"
+
 msgid "Fan"
 msgstr "Quạt"
 
-msgid "Leds"
-msgstr "Đèn LED"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Các macro"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Chân cắm"
 
-msgid "Power"
-msgstr "Nguồn điện"
-
-msgid "Camera"
-msgstr "Máy ảnh"
+msgid "Macros"
+msgstr "Các macro"
 
 msgid "Console"
 msgstr "Bảng điều khiển"
 
-msgid "Update"
-msgstr "Cập nhật"
-
-msgid "Input Shaper"
-msgstr "Bộ định hình đầu vào"
-
 msgid "Save Config"
 msgstr "Lưu Cấu hình"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Mạng"
@@ -88,8 +104,11 @@ msgstr "Thông báo"
 msgid "System"
 msgstr "Hệ thống"
 
-msgid "Fine Tuning"
-msgstr "Tinh chỉnh"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Home tất cả"
 
 msgid "Home X"
 msgstr "Home trục X"
@@ -100,27 +119,20 @@ msgstr "Home trục Y"
 msgid "Home Z"
 msgstr "Home trục Z"
 
-msgid "Home All"
-msgstr "Home tất cả"
-
 msgid "Home XY"
 msgstr "Home trục X và Y"
-
-msgid "Quad Gantry Level"
-msgstr "Cân chỉnh bốn trục"
-
-msgid "Z Tilt"
-msgstr "Nghiêng Z"
 
 msgid "Print Control"
 msgstr "Điều khiển in"
 
-#, fuzzy
-msgid "Lock"
-msgstr "Khóa"
+msgid "Extrude"
+msgstr "Đùn"
 
-msgid "Menu"
-msgstr "Menu"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Nguồn điện"
 
 msgid "Icon Theme"
 msgstr "Chủ đề biểu tượng"
@@ -176,6 +188,13 @@ msgid "Action bar Shortcut"
 msgstr "Phím tắt thanh hành động"
 
 #, fuzzy
+msgid "Lock"
+msgstr "Khóa"
+
+msgid "Camera"
+msgstr "Máy ảnh"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
 
@@ -218,9 +237,6 @@ msgstr "DPMS Màn hình"
 msgid "Enable screen power management"
 msgstr "Bật quản lý nguồn màn hình"
 
-msgid "Not all screens support this"
-msgstr "Không phải tất cả các màn hình đều hỗ trợ điều này"
-
 msgid "Auto-close notifications"
 msgstr "Tự động đóng thông báo"
 
@@ -239,8 +255,11 @@ msgstr "Hiển thị Nút Thanh cuộn"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Hữu ích cho màn hình cảm ứng không phản hồi"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Tự động mở Extrude Khi Tạm Dừng"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 #, fuzzy
 msgid "Show cursor"
@@ -249,6 +268,12 @@ msgstr "Hiển thị con trỏ"
 #, fuzzy
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Để điều khiển chuột hoặc xác nhận độ chính xác cảm ứng"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -261,6 +286,15 @@ msgstr "Giúp ngăn các chạm không mong muốn khi màn hình đánh thức"
 msgid "second"
 msgid_plural "seconds"
 msgstr[0] "giây"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Đảo ngược trục X"
@@ -292,11 +326,11 @@ msgstr[0] "phút"
 msgid "Temperature too low to extrude"
 msgstr "Nhiệt độ quá thấp để đùn"
 
-msgid "Klipper will reboot"
-msgstr "Klipper sẽ khởi động lại"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Lưu cấu hình?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Bạn có chắc chắn muốn chạy Dừng Khẩn cấp không?"
@@ -370,11 +404,17 @@ msgstr "Mở khóa thất bại"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Bạn có chắc chắn muốn loại bỏ vật này không?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Hoàn thành"
 
 msgid "Updating"
 msgstr "Đang cập nhật"
+
+msgid "Bed Level"
+msgstr "Cân bằng bàn"
 
 msgid "Disable Motors"
 msgstr "Tắt Động cơ"
@@ -400,9 +440,6 @@ msgstr "Tham chiếu"
 msgid "Add profile"
 msgstr "Thêm hồ sơ"
 
-msgid "Calibrate"
-msgstr "Hiệu chuẩn"
-
 msgid "Clear"
 msgstr "Xóa"
 
@@ -412,11 +449,33 @@ msgstr "Tên mô tả:"
 msgid "Save"
 msgstr "Lưu"
 
-msgid "Calibrating"
-msgstr "Đang hiệu chuẩn"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Tối đa"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC không được hỗ trợ bởi backend đang thử Stream"
+
+msgid "Leds"
+msgstr "Đèn LED"
 
 msgid "Auto-scroll"
 msgstr "Tự động cuộn"
@@ -458,11 +517,32 @@ msgstr "Khoảng cách (mm)"
 msgid "Speed (mm/s)"
 msgstr "Tốc độ (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Quạt phần"
 
-msgid "Max"
-msgstr "Tối đa"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -503,6 +583,12 @@ msgstr "Xóa Thư mục?"
 msgid "Start"
 msgstr "Bắt đầu"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Xóa"
 
@@ -517,10 +603,6 @@ msgid "Layer Height"
 msgstr "Chiều cao lớp"
 
 #, fuzzy
-msgid "Filament"
-msgstr "Chỉ filament"
-
-#, fuzzy
 msgid "Estimated Time"
 msgstr "Thời gian ước tính"
 
@@ -532,9 +614,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Đường kính vòi phun"
 
-#, fuzzy
-msgid "Last Duration"
-msgstr "Thời gian cuối cùng"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Đổi tên/Di chuyển:"
@@ -550,6 +633,15 @@ msgstr "Đo trục Y"
 
 msgid "Measure Both"
 msgstr "Đo cả hai"
+
+msgid "Calibrating"
+msgstr "Đang hiệu chuẩn"
+
+msgid "Klipper will reboot"
+msgstr "Klipper sẽ khởi động lại"
+
+msgid "Save configuration?"
+msgstr "Lưu cấu hình?"
 
 msgid "Check ADXL Wiring"
 msgstr "Kiểm tra dây kết nối ADXL"
@@ -633,20 +725,16 @@ msgstr "Khởi động lại"
 msgid "Resume"
 msgstr "Tiếp tục"
 
-msgid "Save Z"
-msgstr "Lưu Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Áp dụng bù lệch {sign}{offset:.3f} cho Probe?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Áp dụng bù lệch {sign}{offset:.3f} cho Endstop?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Đã lưu sai lệch: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Áp dụng"
@@ -685,6 +773,9 @@ msgstr "Đã tạm dừng"
 msgid "Standby"
 msgstr "Chế độ Chờ"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Gia tốc tối đa"
 
@@ -694,8 +785,8 @@ msgstr "Tỉ lệ tối thiểu"
 msgid "Max Velocity"
 msgstr "Vận tốc tối đa"
 
-msgid "Square Corner Velocity"
-msgstr "Tốc độ Góc Vuông"
+msgid "Temp (°C)"
+msgstr "Nhiệt độ (°C)"
 
 msgid "Unknown Heater"
 msgstr "Bộ sưởi không xác định"
@@ -709,12 +800,15 @@ msgstr "Bắt đầu hiệu chỉnh PID cho:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "Có thể mất hơn 5 phút tùy thuộc vào công suất máy sưởi."
 
-msgid "Temp (°C)"
-msgstr "Nhiệt độ (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "Nhiệt độ không hợp lệ"
+
+msgid "Calibrate"
+msgstr "Hiệu chuẩn"
 
 msgid "Home"
 msgstr "Home"
@@ -805,9 +899,14 @@ msgstr "Tên miền máy chủ"
 msgid "Notification log empty"
 msgstr "Nhật ký thông báo trống"
 
-#, fuzzy
-msgid "Pressure advance"
-msgstr "Lùi tiến áp suất"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 #, fuzzy
 msgid "Current"
@@ -824,8 +923,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Chọn máy in"
 
-msgid "Please wait"
-msgstr "Vui lòng đợi"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Chiều dài rút lại"
@@ -1025,11 +1124,17 @@ msgstr "Hiển thị"
 msgid "Hide"
 msgstr "Ẩn"
 
+msgid "Update"
+msgstr "Cập nhật"
+
 msgid "Full Update"
 msgstr "Cập nhật toàn bộ"
 
 msgid "Refresh"
 msgstr "Làm mới"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Đang kiểm tra cập nhật, vui lòng đợi..."
@@ -1107,6 +1212,9 @@ msgstr "Hủy"
 msgid "Calibration commands not available yet"
 msgstr "Các lệnh hiệu chuẩn chưa khả dụng"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Lỗi: Không thể lấy vị trí để thăm dò"
 
@@ -1167,6 +1275,20 @@ msgstr "Klipper đang cố gắng khởi động"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper đã tắt"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

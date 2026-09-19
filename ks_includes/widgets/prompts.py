@@ -35,7 +35,10 @@ class Prompt:
             self.buttons = []
             return
         elif data.startswith("prompt_text"):
-            self.text = data.replace("prompt_text ", "")
+            #self.text = data.replace("prompt_text ", "") # FLSUN Changes
+            if self.text:  # FLSUN Changes
+                self.text += "\n\n"  # FLSUN Changes
+            self.text += data.replace("prompt_text ", "") # FLSUN Changes
             return
         elif data.startswith("prompt_button "):
             data = data.replace("prompt_button ", "")

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2024-11-27 21:00+0000\n"
 "Last-Translator: Sun Zheng <123456789sunzheng@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -28,11 +28,11 @@ msgstr "移动"
 msgid "Temperature"
 msgstr "温度"
 
-msgid "Extrude"
-msgstr "挤出"
+msgid "Filament"
+msgstr "耗材"
 
-msgid "More"
-msgstr "更多设置"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "打印"
@@ -40,47 +40,62 @@ msgstr "打印"
 msgid "Gcodes"
 msgstr "g代码"
 
-msgid "Bed Level"
-msgstr "热床调平"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "床网"
 
-msgid "Z Calibrate"
-msgstr "Z偏移校准"
+msgid "Input Shaper"
+msgstr "共振补偿"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "打印机限制"
 
+msgid "Fine Tuning"
+msgstr "微调"
+
 msgid "Fan"
 msgstr "风扇"
 
-msgid "Leds"
-msgstr "灯珠"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "宏"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "引脚"
 
-msgid "Power"
-msgstr "电源"
-
-msgid "Camera"
-msgstr "摄像头"
+msgid "Macros"
+msgstr "宏"
 
 msgid "Console"
 msgstr "控制台"
 
-msgid "Update"
-msgstr "更新"
-
-msgid "Input Shaper"
-msgstr "共振补偿"
-
 msgid "Save Config"
 msgstr "保存配置"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "网络"
@@ -91,8 +106,11 @@ msgstr "通知"
 msgid "System"
 msgstr "系统"
 
-msgid "Fine Tuning"
-msgstr "微调"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "全部归位"
 
 msgid "Home X"
 msgstr "X轴归位"
@@ -103,26 +121,20 @@ msgstr "Y轴归位"
 msgid "Home Z"
 msgstr "Z轴归位"
 
-msgid "Home All"
-msgstr "全部归位"
-
 msgid "Home XY"
 msgstr "XY轴归位"
-
-msgid "Quad Gantry Level"
-msgstr "龙门架调平"
-
-msgid "Z Tilt"
-msgstr "Z轴倾斜校准"
 
 msgid "Print Control"
 msgstr "打印控制"
 
-msgid "Lock"
-msgstr "锁定"
+msgid "Extrude"
+msgstr "挤出"
 
-msgid "Menu"
-msgstr "菜单"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "电源"
 
 msgid "Icon Theme"
 msgstr "外观"
@@ -176,6 +188,12 @@ msgstr "禁用以使用12小时制 (AM/PM)"
 msgid "Action bar Shortcut"
 msgstr "操作栏快捷方式"
 
+msgid "Lock"
+msgstr "锁定"
+
+msgid "Camera"
+msgstr "摄像头"
+
 #, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
@@ -219,9 +237,6 @@ msgstr "屏幕省电管理系统"
 msgid "Enable screen power management"
 msgstr "启用屏幕电源管理"
 
-msgid "Not all screens support this"
-msgstr "不一定所有屏幕都支持这项功能"
-
 msgid "Auto-close notifications"
 msgstr "自动关闭通知"
 
@@ -240,14 +255,23 @@ msgstr "显示滚动条按钮"
 msgid "Useful for un-responsive touchscreens"
 msgstr "帮助控制触摸响应不良的屏幕"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "暂停打印时自动打开挤出控制面板"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "显示光标"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "用于鼠标控制或验证触摸屏的准确性"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -260,6 +284,15 @@ msgstr "有助于防止屏幕唤醒时的误触"
 msgid "second"
 msgid_plural "seconds"
 msgstr[0] "秒"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "反转X轴"
@@ -290,11 +323,11 @@ msgstr[0] "分钟"
 msgid "Temperature too low to extrude"
 msgstr "温度过低无法挤出"
 
-msgid "Klipper will reboot"
-msgstr "Klipper将重新启动"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "是否保存设置？"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "您确定要紧急停止吗？"
@@ -358,11 +391,17 @@ msgstr "解锁失败"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "您确定要排除该对象吗？"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "结束"
 
 msgid "Updating"
 msgstr "正在更新"
+
+msgid "Bed Level"
+msgstr "热床调平"
 
 msgid "Disable Motors"
 msgstr "关闭电机"
@@ -388,9 +427,6 @@ msgstr "参考"
 msgid "Add profile"
 msgstr "添加配置文件"
 
-msgid "Calibrate"
-msgstr "校准"
-
 msgid "Clear"
 msgstr "清除"
 
@@ -400,11 +436,33 @@ msgstr "配置文件名称："
 msgid "Save"
 msgstr "保存"
 
-msgid "Calibrating"
-msgstr "正在校准"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "最大"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "不支持传送WebRTC至后台"
+
+msgid "Leds"
+msgstr "灯珠"
 
 msgid "Auto-scroll"
 msgstr "自动滚屏"
@@ -445,11 +503,32 @@ msgstr "挤出长度（mm）"
 msgid "Speed (mm/s)"
 msgstr "速度（mm/s）"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "模型风扇"
 
-msgid "Max"
-msgstr "最大"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -490,6 +569,12 @@ msgstr "删除文件夹？"
 msgid "Start"
 msgstr "开始"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "删除"
 
@@ -502,9 +587,6 @@ msgstr "已修改"
 msgid "Layer Height"
 msgstr "层高"
 
-msgid "Filament"
-msgstr "耗材"
-
 msgid "Estimated Time"
 msgstr "预估剩余时间"
 
@@ -514,8 +596,10 @@ msgstr "克"
 msgid "Nozzle diameter"
 msgstr "喷嘴直径"
 
-msgid "Last Duration"
-msgstr "上次用时"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "重命名/移动："
@@ -531,6 +615,15 @@ msgstr "测量Y轴"
 
 msgid "Measure Both"
 msgstr "同时测量"
+
+msgid "Calibrating"
+msgstr "正在校准"
+
+msgid "Klipper will reboot"
+msgstr "Klipper将重新启动"
+
+msgid "Save configuration?"
+msgstr "是否保存设置？"
 
 msgid "Check ADXL Wiring"
 msgstr "请检查加速度计的接线"
@@ -613,20 +706,16 @@ msgstr "重启"
 msgid "Resume"
 msgstr "继续"
 
-msgid "Save Z"
-msgstr "保存Z轴"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "将 {sign}{offset:.3f} 偏移量应用到探测吗？"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "将 {sign}{offset:.3f} 偏移量应用到限位开关吗？"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "保存偏移：%s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "应用"
@@ -664,6 +753,9 @@ msgstr "已暂停"
 msgid "Standby"
 msgstr "待机"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "最大加速度"
 
@@ -673,8 +765,8 @@ msgstr "最小匀速运动比例"
 msgid "Max Velocity"
 msgstr "最大速度"
 
-msgid "Square Corner Velocity"
-msgstr "直角拐弯速度"
+msgid "Temp (°C)"
+msgstr "温度 （°C）"
 
 msgid "Unknown Heater"
 msgstr "未知加热器"
@@ -688,11 +780,14 @@ msgstr "启动PID校准："
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "这可能需要5分钟以上的时间，这取决于加热器的功率。"
 
-msgid "Temp (°C)"
-msgstr "温度 （°C）"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "无效的温度"
+
+msgid "Calibrate"
+msgstr "校准"
 
 msgid "Home"
 msgstr "归位"
@@ -776,8 +871,14 @@ msgstr "主机名"
 msgid "Notification log empty"
 msgstr "通知日志为空"
 
-msgid "Pressure advance"
-msgstr "压力提前"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "当前"
@@ -791,8 +892,8 @@ msgstr "秒"
 msgid "Printer Select"
 msgstr "打印机选择"
 
-msgid "Please wait"
-msgstr "请稍等"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "回抽长度"
@@ -991,11 +1092,17 @@ msgstr "显示"
 msgid "Hide"
 msgstr "隐藏"
 
+msgid "Update"
+msgstr "更新"
+
 msgid "Full Update"
 msgstr "更新全部"
 
 msgid "Refresh"
 msgstr "检查更新"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "正在检查更新，请稍等..."
@@ -1073,6 +1180,9 @@ msgstr "中止"
 msgid "Calibration commands not available yet"
 msgstr "校准命令暂不可用"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "错误: 无法获取用来探测的位置"
 
@@ -1130,6 +1240,20 @@ msgstr "Klipper正在启动"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper已关闭"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

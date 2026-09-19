@@ -1,6 +1,9 @@
 #!/usr/bin/python
 
-import json
+# Start FLSUN Changes
+#import json
+import orjson
+# End FLSUN Changes
 import logging
 import threading
 
@@ -89,7 +92,10 @@ class KlippyWebsocket(threading.Thread):
             on_message=self.on_message,
             on_open=self.on_open,
         )
-        self._wst = threading.Thread(target=self.ws.run_forever, daemon=True)
+        # Start FLSUN Changes
+        #self._wst = threading.Thread(target=self.ws.run_forever, daemon=True)
+        self._wst = threading.Thread(target=self.ws.run_forever, kwargs={'skip_utf8_validation': True}, daemon=True)
+        # End FLSUN Changes
         try:
             logging.debug("Starting websocket thread")
             self._wst.start()
@@ -108,7 +114,10 @@ class KlippyWebsocket(threading.Thread):
 
     def on_message(self, *args):
         message = args[1] if len(args) == 2 else args[0]
-        response = json.loads(message)
+        # Start FLSUN Changes
+        #response = json.loads(message)
+        response = orjson.loads(message)
+        # End FLSUN Changes
         if "id" in response and response["id"] in self.callback_table:
             args = (
                 response,
@@ -141,7 +150,10 @@ class KlippyWebsocket(threading.Thread):
             self.callback_table[self._req_id] = [callback, method, params, [*args]]
 
         data = {"jsonrpc": "2.0", "method": method, "params": params, "id": self._req_id}
-        self.ws.send(json.dumps(data))
+        # Start FLSUN Changes
+        #self.ws.send(json.dumps(data))
+        self.ws.send(orjson.dumps(data))
+        # End FLSUN Changes
         return True
 
     def on_open(self, *args):

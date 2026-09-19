@@ -18,10 +18,12 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.current_extruder = self._printer.get_stat("toolhead", "extruder")
         macros = self._printer.get_config_section_list("gcode_macro ")
-        self.load_filament = any("LOAD_FILAMENT" in macro.upper() for macro in macros)
-        self.unload_filament = any("UNLOAD_FILAMENT" in macro.upper() for macro in macros)
+        self.load_filament = any("_KS_LOAD_FILAMENT" in macro.upper() for macro in macros) # FLSUN Changes
+        self.unload_filament_purge = any("_KS_UNLOAD_FILAMENT_PURGE" in macro.upper() for macro in macros) # FLSUN Changes
+        self.unload_filament_retract = any("_KS_UNLOAD_FILAMENT_RETRACT" in macro.upper() for macro in macros) # FLSUN Changes
 
-        self.speeds = ["1", "2", "5", "25"]
+        #self.speeds = ["1", "2", "5", "25"] # FLSUN Changes
+        self.speeds = ["5", "10", "15", "20"] # FLSUN Changes
         self.distances = ["5", "10", "15", "25"]
         if self.ks_printer_cfg is not None:
             dis = self.ks_printer_cfg.get("extrude_distances", "")
@@ -43,8 +45,8 @@ class Panel(ScreenPanel):
             "retract": self._gtk.Button("retract", _("Retract"), "color1"),
             "temperature": self._gtk.Button("heat-up", _("Temperature"), "color4"),
             "spoolman": self._gtk.Button("spoolman", "Spoolman", "color3"),
-            "pressure": self._gtk.Button("settings", _("Pressure Advance"), "color2"),
-            "retraction": self._gtk.Button("settings", _("Retraction"), "color1"),
+            "pressure": self._gtk.Button("fine-tune", _("Pressure Advance"), "color2"), # FLSUN Changes
+            "retraction": self._gtk.Button("retract", _("Retraction"), "color1"), # FLSUN Changes
         }
         self.buttons["extrude"].connect("clicked", self.check_min_temp, "extrude", "+")
         self.buttons["load"].connect("clicked", self.check_min_temp, "load_unload", "+")
@@ -149,6 +151,8 @@ class Panel(ScreenPanel):
 
         filament_sensors = self._printer.get_filament_sensors()
         sensors = Gtk.Grid(valign=Gtk.Align.CENTER, row_spacing=5, column_spacing=5)
+        sensors.set_margin_top(20) # FLSUN Changes
+        sensors.set_margin_bottom(20) # FLSUN Changes
         with_switches = len(filament_sensors) < 4 and not (
             self._screen.vertical_mode and self._screen.height < 600
         )
@@ -198,10 +202,16 @@ class Panel(ScreenPanel):
             grid.attach(speedbox, 0, 5, 4, 1)
             grid.attach(sensors, 0, 6, 4, 1)
         else:
-            grid.attach(self.buttons["extrude"], 0, 2, 1, 1)
-            grid.attach(self.buttons["load"], 1, 2, 1, 1)
-            grid.attach(self.buttons["unload"], 2, 2, 1, 1)
-            grid.attach(self.buttons["retract"], 3, 2, 1, 1)
+            # Start FLSUN Changes
+            #grid.attach(self.buttons["extrude"], 0, 2, 1, 1)
+            #grid.attach(self.buttons["load"], 1, 2, 1, 1)
+            #grid.attach(self.buttons["unload"], 2, 2, 1, 1)
+            #grid.attach(self.buttons["retract"], 3, 2, 1, 1)
+            grid.attach(self.buttons["retract"], 0, 2, 1, 1)
+            grid.attach(self.buttons["unload"], 1, 2, 1, 1)
+            grid.attach(self.buttons["load"], 2, 2, 1, 1)
+            grid.attach(self.buttons["extrude"], 3, 2, 1, 1)
+            # End FLSUN Changes
             grid.attach(distbox, 0, 3, 2, 1)
             grid.attach(speedbox, 2, 3, 2, 1)
             grid.attach(sensors, 0, 4, 4, 1)
@@ -314,7 +324,7 @@ class Panel(ScreenPanel):
         temp = float(self._printer.get_stat(self.current_extruder, "temperature"))
         target = float(self._printer.get_stat(self.current_extruder, "target"))
         min_extrude_temp = float(
-            self._printer.config[self.current_extruder].get("min_extrude_temp", 170)
+            self._printer.config[self.current_extruder].get("min_extrude_temp", 200) # FLSUN Changes
         )
         if temp < min_extrude_temp:
             if target > min_extrude_temp:
@@ -336,23 +346,21 @@ class Panel(ScreenPanel):
 
     def load_unload(self, widget, direction):
         if direction == "-":
-            if not self.unload_filament:
-                self._screen.show_popup_message("Macro UNLOAD_FILAMENT not found")
+            if not self.unload_filament_purge:
+                self._screen.show_popup_message("Macro _KS_UNLOAD_FILAMENT_PURGE " + _("not found!\nPlease update your configuration files.")) # FLSUN Changes
+            elif not self.unload_filament_retract:
+                self._screen.show_popup_message("Macro _KS_UNLOAD_FILAMENT_RETRACT " + _("not found!\nPlease update your configuration files.")) # FLSUN Changes
             else:
-                self._screen._send_action(
-                    widget,
-                    "printer.gcode.script",
-                    {"script": f"UNLOAD_FILAMENT SPEED={self.speed * 60}"},
-                )
+                self._screen._confirm_unload_action(None, _("TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n\n\n1. Unclip the PTFE tube and press the lower spring clip of the PTFE connector.\n\n2. Remove the PTFE tube from the connector.\n\n3. Cut the filament and press Unload button."), "printer.gcode.script", None) # FLSUN Changes
         if direction == "+":
             if not self.load_filament:
-                self._screen.show_popup_message("Macro LOAD_FILAMENT not found")
+                self._screen.show_popup_message("Macro _KS_LOAD_FILAMENT " + _("not found!\nPlease update your configuration files.")) # FLSUN Changes
             else:
                 self._screen._send_action(
                     widget,
                     "printer.gcode.script",
-                    {"script": f"LOAD_FILAMENT SPEED={self.speed * 60}"},
-                )
+                    {"script": f"_KS_LOAD_FILAMENT"}
+                ) # FLSUN Changes
 
     def enable_disable_fs(self, switch, gparams, name, x):
         if switch.get_active():

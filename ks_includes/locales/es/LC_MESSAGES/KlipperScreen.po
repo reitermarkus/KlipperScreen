@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2026-04-23 21:28+0000\n"
 "Last-Translator: Alfredo Monclus <alfredomonclus@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/klipperscreen/"
@@ -28,11 +28,11 @@ msgstr "Mover"
 msgid "Temperature"
 msgstr "Temperatura"
 
-msgid "Extrude"
-msgstr "Extruir"
+msgid "Filament"
+msgstr "Filamento"
 
-msgid "More"
-msgstr "Más"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Imprimir"
@@ -40,47 +40,62 @@ msgstr "Imprimir"
 msgid "Gcodes"
 msgstr "Gcodes"
 
-msgid "Bed Level"
-msgstr "Nivelar cama"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Malla de cama"
 
-msgid "Z Calibrate"
-msgstr "Calibrar Z"
+msgid "Input Shaper"
+msgstr "Corrección de Resonancias"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Limites"
 
+msgid "Fine Tuning"
+msgstr "Ajuste Preciso"
+
 msgid "Fan"
 msgstr "Ventilador"
 
-msgid "Leds"
-msgstr "Leds"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Macros"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Pines"
 
-msgid "Power"
-msgstr "Energía"
-
-msgid "Camera"
-msgstr "Camara"
+msgid "Macros"
+msgstr "Macros"
 
 msgid "Console"
 msgstr "Consola"
 
-msgid "Update"
-msgstr "Actualizar"
-
-msgid "Input Shaper"
-msgstr "Corrección de Resonancias"
-
 msgid "Save Config"
 msgstr "Guardar Config"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Red"
@@ -91,8 +106,11 @@ msgstr "Notificaciones"
 msgid "System"
 msgstr "Sistema"
 
-msgid "Fine Tuning"
-msgstr "Ajuste Preciso"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Origen XYZ"
 
 msgid "Home X"
 msgstr "Origen X"
@@ -103,26 +121,20 @@ msgstr "Origen Y"
 msgid "Home Z"
 msgstr "Origen Z"
 
-msgid "Home All"
-msgstr "Origen XYZ"
-
 msgid "Home XY"
 msgstr "Origen XY"
-
-msgid "Quad Gantry Level"
-msgstr "Nivelación cuádruple"
-
-msgid "Z Tilt"
-msgstr "Inclinación Z"
 
 msgid "Print Control"
 msgstr "Control de impresión"
 
-msgid "Lock"
-msgstr "Bloquear"
+msgid "Extrude"
+msgstr "Extruir"
 
-msgid "Menu"
-msgstr "Menú"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Energía"
 
 msgid "Icon Theme"
 msgstr "Tema de Iconos"
@@ -178,6 +190,12 @@ msgstr "Desactivar para 12hs con am / pm"
 msgid "Action bar Shortcut"
 msgstr "Acceso directo de la barra de acciones"
 
+msgid "Lock"
+msgstr "Bloquear"
+
+msgid "Camera"
+msgstr "Camara"
+
 #, fuzzy
 msgid "LEDs"
 msgstr "LEDs"
@@ -221,9 +239,6 @@ msgstr "Pantalla DPMS"
 msgid "Enable screen power management"
 msgstr "Activar la gestión de energía de la pantalla"
 
-msgid "Not all screens support this"
-msgstr "No todas las pantallas soportan esto"
-
 msgid "Auto-close notifications"
 msgstr "Auto-cerrar notificaciones"
 
@@ -242,14 +257,23 @@ msgstr "Mostrar botones de desplazamiento"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Útil para pantallas táctiles poco responsivas"
 
-msgid "Auto-open Extrude On Pause"
-msgstr "Auto-abrir Extruir al pausar"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 msgid "Show cursor"
 msgstr "Mostrar cursor"
 
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Para controlar el ratón o verificar la precisión de la pantalla táctil"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -264,6 +288,15 @@ msgid "second"
 msgid_plural "seconds"
 msgstr[0] "segundo"
 msgstr[1] "segundos"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Invertir X"
@@ -296,11 +329,11 @@ msgstr[1] "minutos"
 msgid "Temperature too low to extrude"
 msgstr "Temperatura muy baja para extruir"
 
-msgid "Klipper will reboot"
-msgstr "Klipper se reiniciará"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Guardar Configuración?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "¿Parada de emergencia?"
@@ -365,11 +398,17 @@ msgstr "Desbloqueo fallido"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "¿Está seguro de excluir este objeto?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Finalizar"
 
 msgid "Updating"
 msgstr "Actualizando"
+
+msgid "Bed Level"
+msgstr "Nivelar cama"
 
 msgid "Disable Motors"
 msgstr "Desactivar Motores"
@@ -395,9 +434,6 @@ msgstr "Referencia"
 msgid "Add profile"
 msgstr "Agregar perfil"
 
-msgid "Calibrate"
-msgstr "Calibrar"
-
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -407,11 +443,33 @@ msgstr "Nombre del perfil:"
 msgid "Save"
 msgstr "Guardar"
 
-msgid "Calibrating"
-msgstr "Calibrando"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Max"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC no es soportado por el backend intentando con Stream"
+
+msgid "Leds"
+msgstr "Leds"
 
 msgid "Auto-scroll"
 msgstr "Auto-scroll"
@@ -452,11 +510,32 @@ msgstr "Distancia (mm)"
 msgid "Speed (mm/s)"
 msgstr "Velocidad (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Ventilador de parte"
 
-msgid "Max"
-msgstr "Max"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -497,6 +576,12 @@ msgstr "Borrar Carpeta?"
 msgid "Start"
 msgstr "Iniciar"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 msgid "Delete"
 msgstr "Borrar"
 
@@ -509,9 +594,6 @@ msgstr "Modificado"
 msgid "Layer Height"
 msgstr "Altura de capa"
 
-msgid "Filament"
-msgstr "Filamento"
-
 msgid "Estimated Time"
 msgstr "Tiempo estimado"
 
@@ -521,8 +603,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Diámetro de boquilla"
 
-msgid "Last Duration"
-msgstr "Última Duración"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Renombrar/Mover:"
@@ -538,6 +622,15 @@ msgstr "Medir Y"
 
 msgid "Measure Both"
 msgstr "Medir Ambos"
+
+msgid "Calibrating"
+msgstr "Calibrando"
+
+msgid "Klipper will reboot"
+msgstr "Klipper se reiniciará"
+
+msgid "Save configuration?"
+msgstr "Guardar Configuración?"
 
 msgid "Check ADXL Wiring"
 msgstr "Verificar cableado del ADXL"
@@ -620,20 +713,16 @@ msgstr "Reiniciar"
 msgid "Resume"
 msgstr "Continuar"
 
-msgid "Save Z"
-msgstr "Guardar Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "¿Aplicar un desplazamiento de {sign}{offset:.3f} a la sonda?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "¿Aplicar un desplazamiento de {sign}{offset:.3f} al final?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Desfase Guardado: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Aplicar"
@@ -671,6 +760,9 @@ msgstr "Pausado"
 msgid "Standby"
 msgstr "En espera"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Aceleración Máxima"
 
@@ -680,8 +772,8 @@ msgstr "Mínimo tiempo en Vel. Crucero"
 msgid "Max Velocity"
 msgstr "Max. Velocidad"
 
-msgid "Square Corner Velocity"
-msgstr "Velocidad de esquina"
+msgid "Temp (°C)"
+msgstr "Temp (°C)"
 
 msgid "Unknown Heater"
 msgstr "Calentador Desconocido"
@@ -696,11 +788,14 @@ msgid "It may take more than 5 minutes depending on the heater power."
 msgstr ""
 "Puede tardar más de 5 minutos dependiendo de la potencia del calentador."
 
-msgid "Temp (°C)"
-msgstr "Temp (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 msgid "Invalid temperature"
 msgstr "Temperatura incorrecta"
+
+msgid "Calibrate"
+msgstr "Calibrar"
 
 msgid "Home"
 msgstr "Inicio"
@@ -785,8 +880,14 @@ msgstr "Hostname"
 msgid "Notification log empty"
 msgstr "Registro de notificaciones vacío"
 
-msgid "Pressure advance"
-msgstr "Avance por presión"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 msgid "Current"
 msgstr "Actual"
@@ -800,8 +901,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Seleccionar Impresora"
 
-msgid "Please wait"
-msgstr "Espere, por favor"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Largo de Retracción"
@@ -996,11 +1097,17 @@ msgstr "Mostrar"
 msgid "Hide"
 msgstr "Ocultar"
 
+msgid "Update"
+msgstr "Actualizar"
+
 msgid "Full Update"
 msgstr "Actualizar Todo"
 
 msgid "Refresh"
 msgstr "Recargar"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Buscando actualizaciones, espere por favor..."
@@ -1079,6 +1186,9 @@ msgstr "Cancelar"
 msgid "Calibration commands not available yet"
 msgstr "Comandos de calibración aún no disponibles"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 msgid "Error: Couldn't get a position to probe"
 msgstr "Error: No se pudo obtener una posición para sondear"
 
@@ -1135,6 +1245,22 @@ msgstr "Klipper está intentando iniciar"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper se apagó"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"

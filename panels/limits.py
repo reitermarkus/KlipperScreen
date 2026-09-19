@@ -40,14 +40,16 @@ class Panel(ScreenPanel):
                 "units": _("mm/s"),
                 "value": int(float(conf["max_velocity"])),
             },
-            {
-                "name": _("Square Corner Velocity"),
-                "option": "square_corner_velocity",
-                "units": _("mm/s"),
-                "value": int(float(conf["square_corner_velocity"]))
-                if "square_corner_velocity" in conf
-                else 5,
-            },
+            # Start FLSUN Changes
+            #{
+            #    "name": _("Square Corner Velocity"),
+            #    "option": "square_corner_velocity",
+            #    "units": _("mm/s"),
+            #    "value": int(float(conf["square_corner_velocity"]))
+            #    if "square_corner_velocity" in conf
+            #    else 5,
+            #},
+            # End FLSUN Changes
         ]
 
         for opt in self.options:
@@ -155,5 +157,7 @@ class Panel(ScreenPanel):
             )
         elif opt == "max_velocity":
             self._screen._ws.api.gcode_script(f"SET_VELOCITY_LIMIT VELOCITY={value}")
-        elif opt == "square_corner_velocity":
-            self._screen._ws.api.gcode_script(f"SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY={value}")
+        # Start FLSUN Changes
+        #elif opt == "square_corner_velocity":
+        #    self._screen._ws.api.gcode_script(f"SET_VELOCITY_LIMIT SQUARE_CORNER_VELOCITY={value}")
+        # End FLSUN Changes

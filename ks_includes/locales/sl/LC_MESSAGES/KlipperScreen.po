@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 12:14-0300\n"
+"POT-Creation-Date: 2026-09-20 21:51+0200\n"
 "PO-Revision-Date: 2024-04-13 16:48+0000\n"
 "Last-Translator: Dominik <dominik.sostar@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/klipperscreen/"
@@ -29,11 +29,12 @@ msgstr "Premakni"
 msgid "Temperature"
 msgstr "Temperatura"
 
-msgid "Extrude"
-msgstr "Ekstrudirajte"
+#, fuzzy
+msgid "Filament"
+msgstr "Filament"
 
-msgid "More"
-msgstr "Več"
+msgid "Configurations"
+msgstr ""
 
 msgid "Print"
 msgstr "Natisni"
@@ -42,47 +43,62 @@ msgstr "Natisni"
 msgid "Gcodes"
 msgstr "Gkode"
 
-msgid "Bed Level"
-msgstr "Umerjanje plošče"
+msgid "Calibrations"
+msgstr ""
+
+msgid "Motors Calibration"
+msgstr ""
+
+msgid "Do you want to start motors calibration?"
+msgstr ""
+
+msgid "Z Offset Calibration"
+msgstr ""
 
 msgid "Bed Mesh"
 msgstr "Umerjanje mreže"
 
-msgid "Z Calibrate"
-msgstr "Umeri Z"
+msgid "Input Shaper"
+msgstr "Input Shaper"
+
+msgid "Do you want to start measuring resonances?"
+msgstr ""
+
+msgid "Drying Box"
+msgstr ""
 
 msgid "Limits"
 msgstr "Omejitve"
 
+msgid "Fine Tuning"
+msgstr "Fino umerjanje"
+
 msgid "Fan"
 msgstr "Ventilator"
 
-msgid "Leds"
-msgstr "Led luči"
+msgid "LED"
+msgstr ""
 
-msgid "Macros"
-msgstr "Makri"
+msgid "Brightness"
+msgstr ""
 
 msgid "Pins"
 msgstr "Pini"
 
-msgid "Power"
-msgstr "Vklop"
-
-msgid "Camera"
-msgstr "Kamera"
+msgid "Macros"
+msgstr "Makri"
 
 msgid "Console"
 msgstr "Konzola"
 
-msgid "Update"
-msgstr "Posodobi"
-
-msgid "Input Shaper"
-msgstr "Input Shaper"
-
 msgid "Save Config"
 msgstr "Shrani konfiguracijo"
+
+msgid "Updates"
+msgstr ""
+
+msgid "Printer Setup Wizard"
+msgstr ""
 
 msgid "Network"
 msgstr "Omrežje"
@@ -93,8 +109,11 @@ msgstr "Obvestila"
 msgid "System"
 msgstr "Sistem"
 
-msgid "Fine Tuning"
-msgstr "Fino umerjanje"
+msgid "About"
+msgstr ""
+
+msgid "Home All"
+msgstr "Nuliraj vse"
 
 msgid "Home X"
 msgstr "Nuliraj X"
@@ -105,28 +124,20 @@ msgstr "Nuliraj Y"
 msgid "Home Z"
 msgstr "Nuliraj Z"
 
-msgid "Home All"
-msgstr "Nuliraj vse"
-
 msgid "Home XY"
 msgstr "Nuliraj XY"
-
-#, fuzzy
-msgid "Quad Gantry Level"
-msgstr "Nivoiranje štirikotnega nosilca"
-
-msgid "Z Tilt"
-msgstr "Z nagib"
 
 msgid "Print Control"
 msgstr "Nadzor tiskanja"
 
-#, fuzzy
-msgid "Lock"
-msgstr "Zakleni"
+msgid "Extrude"
+msgstr "Ekstrudirajte"
 
-msgid "Menu"
-msgstr "Meni"
+msgid "System Info"
+msgstr ""
+
+msgid "Power"
+msgstr "Vklop"
 
 msgid "Icon Theme"
 msgstr "Tema ikon"
@@ -186,6 +197,13 @@ msgid "Action bar Shortcut"
 msgstr "Prekratica vrstice dejavnosti"
 
 #, fuzzy
+msgid "Lock"
+msgstr "Zakleni"
+
+msgid "Camera"
+msgstr "Kamera"
+
+#, fuzzy
 msgid "LEDs"
 msgstr "LED"
 
@@ -232,10 +250,6 @@ msgstr "DPMS zaslona"
 msgid "Enable screen power management"
 msgstr "Omogoči upravljanje napajanja zaslona"
 
-#, fuzzy
-msgid "Not all screens support this"
-msgstr "Neki zasloni tega ne podpirajo"
-
 msgid "Auto-close notifications"
 msgstr "Samodejno zapri obvestila"
 
@@ -257,9 +271,11 @@ msgstr "Pokaži gumbe drsnih trakov"
 msgid "Useful for un-responsive touchscreens"
 msgstr "Koristno za neodzivne zasloni na dotik"
 
-#, fuzzy
-msgid "Auto-open Extrude On Pause"
-msgstr "Samodejno odpri Ekstruzijo ob prekinitvi"
+msgid "Auto-open filament management on pause"
+msgstr ""
+
+msgid "Useful for M600 feature"
+msgstr ""
 
 #, fuzzy
 msgid "Show cursor"
@@ -268,6 +284,12 @@ msgstr "Prikaži kazalec"
 #, fuzzy
 msgid "For mouse control or to verify touchscreen accuracy"
 msgstr "Za upravljanje z miško ali preverjanje natančnosti zaslona na dotik"
+
+msgid "Show Spool Weight in Percentage"
+msgstr ""
+
+msgid "Percentage instead of grams"
+msgstr ""
 
 #, fuzzy
 msgid "Screen wake delay"
@@ -284,6 +306,15 @@ msgstr[0] "sekunda"
 msgstr[1] "sekundi"
 msgstr[2] "sekund"
 msgstr[3] "sekund"
+
+msgid "Enable Add-ons"
+msgstr ""
+
+msgid ""
+"Runs third-party code from the addons folder at startup. Add-ons are not "
+"provided or reviewed by the KlipperScreen developers. Takes effect after a "
+"restart."
+msgstr ""
 
 msgid "Invert X"
 msgstr "Zrcali X"
@@ -321,11 +352,11 @@ msgstr[3] "minut"
 msgid "Temperature too low to extrude"
 msgstr "Temperatura prenizka za ekstruzijo"
 
-msgid "Klipper will reboot"
-msgstr "Klipper se bo ponovno zagnal"
+msgid "Please heat the nozzle."
+msgstr ""
 
-msgid "Save configuration?"
-msgstr "Shrani konfiguracijo?"
+msgid "Klipper will reboot to save configurations"
+msgstr ""
 
 msgid "Are you sure you want to run Emergency Stop?"
 msgstr "Ali ste prepričani, da želite zagnati zaustavitev v sili?"
@@ -406,11 +437,17 @@ msgstr "Odklep ni uspel"
 msgid "Are you sure do you want to exclude the object?"
 msgstr "Ali ste prepričani da želite izključiti predmet?"
 
+msgid "Scan this QR Code to access the Wiki"
+msgstr ""
+
 msgid "Finish"
 msgstr "Končaj"
 
 msgid "Updating"
 msgstr "Posodabljam"
+
+msgid "Bed Level"
+msgstr "Umerjanje plošče"
 
 msgid "Disable Motors"
 msgstr "Onemogoči motorje"
@@ -440,9 +477,6 @@ msgstr "Referenca"
 msgid "Add profile"
 msgstr "Dodaj profil"
 
-msgid "Calibrate"
-msgstr "Umerite"
-
 msgid "Clear"
 msgstr "Počisti"
 
@@ -452,12 +486,34 @@ msgstr "Ime profila:"
 msgid "Save"
 msgstr "Shrani"
 
-msgid "Calibrating"
-msgstr "Umerjam"
+msgid ""
+"not found!\n"
+"Please update your configuration files."
+msgstr ""
+
+msgid ""
+"Do you want to start bed calibrations?\n"
+"\n"
+"A Delta Calibration and a Bed Leveling will be performed.\n"
+"\n"
+"Klipper will restart after each action."
+msgstr ""
+
+msgid "Min"
+msgstr ""
+
+msgid "Max"
+msgstr "Maks"
+
+msgid "Failed to set brightness"
+msgstr ""
 
 #, fuzzy
 msgid "WebRTC is not supported by the backend trying Stream"
 msgstr "WebRTC ni podprt s strani strežnika, poskus z Stream"
+
+msgid "Leds"
+msgstr "Led luči"
 
 msgid "Auto-scroll"
 msgstr "Samodejno pomikanje"
@@ -500,11 +556,32 @@ msgstr "Razdalja (mm)"
 msgid "Speed (mm/s)"
 msgstr "Hitrost (mm/s)"
 
+msgid ""
+"TO PREVENT EXTRUDER CLOG, FOLLOW THESE STEPS:\n"
+"\n"
+"\n"
+"1. Unclip the PTFE tube and press the lower spring clip of the PTFE "
+"connector.\n"
+"\n"
+"2. Remove the PTFE tube from the connector.\n"
+"\n"
+"3. Cut the filament and press Unload button."
+msgstr ""
+
 msgid "Part Fan"
 msgstr "Ventilator za dele"
 
-msgid "Max"
-msgstr "Maks"
+msgid "Chamber Fan"
+msgstr ""
+
+msgid "Heat Sink Fan"
+msgstr ""
+
+msgid "Motherboard Fan"
+msgstr ""
+
+msgid "Drying Box Fan"
+msgstr ""
 
 msgid "mm"
 msgstr "mm"
@@ -545,6 +622,12 @@ msgstr "Izbrišem imenik?"
 msgid "Start"
 msgstr "Začni"
 
+msgid "Mesh Settings"
+msgstr ""
+
+msgid "Heating Settings"
+msgstr ""
+
 #, fuzzy
 msgid "Delete"
 msgstr "Izbriši"
@@ -560,10 +643,6 @@ msgid "Layer Height"
 msgstr "Višina plasti"
 
 #, fuzzy
-msgid "Filament"
-msgstr "Filament"
-
-#, fuzzy
 msgid "Estimated Time"
 msgstr "Ocenjen čas"
 
@@ -575,9 +654,10 @@ msgstr "g"
 msgid "Nozzle diameter"
 msgstr "Premer konice"
 
-#, fuzzy
-msgid "Last Duration"
-msgstr "Zadnja trajanja"
+msgid ""
+"\n"
+"Last Duration"
+msgstr ""
 
 msgid "Rename/Move:"
 msgstr "Preimenuj/Premakni:"
@@ -593,6 +673,15 @@ msgstr "Izmeri Y"
 
 msgid "Measure Both"
 msgstr "Izmeri oboje"
+
+msgid "Calibrating"
+msgstr "Umerjam"
+
+msgid "Klipper will reboot"
+msgstr "Klipper se bo ponovno zagnal"
+
+msgid "Save configuration?"
+msgstr "Shrani konfiguracijo?"
 
 msgid "Check ADXL Wiring"
 msgstr "Preverite ožičenje ADXL"
@@ -678,20 +767,16 @@ msgstr "Ponovni zagon"
 msgid "Resume"
 msgstr "Nadaljuj"
 
-msgid "Save Z"
-msgstr "Shrani Z"
-
-#, python-brace-format
-msgid "Apply {sign}{offset:.3f} offset to Probe?"
-msgstr "Uporabi odmik {sign}{offset:.3f} na Preizkuševalnik?"
+msgid "Z Offset"
+msgstr ""
 
 #, python-brace-format
 msgid "Apply {sign}{offset:.3f} offset to Endstop?"
 msgstr "Uporabi odmik {sign}{offset:.3f} na Končni stik?"
 
 #, python-format
-msgid "Saved offset: %s"
-msgstr "Shranjen odmik: %s"
+msgid "Current position_endstop: %s"
+msgstr ""
 
 msgid "Apply"
 msgstr "Uporabi"
@@ -730,6 +815,9 @@ msgstr "Zaustavljeno"
 msgid "Standby"
 msgstr "Ostani v pripravljenosti"
 
+msgid "Presets"
+msgstr ""
+
 msgid "Max Acceleration"
 msgstr "Največji pospešek"
 
@@ -740,9 +828,8 @@ msgstr "Najmanjše razmerje krmarjenja"
 msgid "Max Velocity"
 msgstr "Največja hitrost"
 
-#, fuzzy
-msgid "Square Corner Velocity"
-msgstr "Hitrost pri kotih"
+msgid "Temp (°C)"
+msgstr "Temperatura (°C)"
 
 msgid "Unknown Heater"
 msgstr "Neznan grelec"
@@ -756,12 +843,15 @@ msgstr "Zaženite kalibracijo PID za:"
 msgid "It may take more than 5 minutes depending on the heater power."
 msgstr "Lahko traja več kot 5 minut, odvisno od moči grelnika."
 
-msgid "Temp (°C)"
-msgstr "Temperatura (°C)"
+msgid "Initiate an MPC calibration for:"
+msgstr ""
 
 #, fuzzy
 msgid "Invalid temperature"
 msgstr "Neveljavna temperatura"
+
+msgid "Calibrate"
+msgstr "Umerite"
 
 msgid "Home"
 msgstr "Nuliraj"
@@ -853,9 +943,14 @@ msgstr "Ime gostitelja"
 msgid "Notification log empty"
 msgstr "Dnevnik obvestil je prazen"
 
-#, fuzzy
-msgid "Pressure advance"
-msgstr "Napredek tlaka"
+msgid "Purge More"
+msgstr ""
+
+msgid "Purge Distance (mm)"
+msgstr ""
+
+msgid "Purge Speed (mm/s)"
+msgstr ""
 
 #, fuzzy
 msgid "Current"
@@ -872,9 +967,8 @@ msgstr "s"
 msgid "Printer Select"
 msgstr "Izberi tiskalnik"
 
-#, fuzzy
-msgid "Please wait"
-msgstr "Prosimo, počakajte"
+msgid "Please wait..."
+msgstr ""
 
 msgid "Retraction Length"
 msgstr "Dolžina umika"
@@ -1081,11 +1175,17 @@ msgstr "Pokaži"
 msgid "Hide"
 msgstr "Skrij"
 
+msgid "Update"
+msgstr "Posodobi"
+
 msgid "Full Update"
 msgstr "Polna posodobitev"
 
 msgid "Refresh"
 msgstr "Osveži"
+
+msgid "Update Klipper Configuration Files"
+msgstr ""
 
 msgid "Checking for updates, please wait..."
 msgstr "Preverjanje posodobitev, počakajte ..."
@@ -1172,6 +1272,9 @@ msgstr "Prekini"
 msgid "Calibration commands not available yet"
 msgstr "Kalibracijski ukredi še niso na voljo"
 
+msgid "Do you want to start Z Offset calibration?"
+msgstr ""
+
 #, fuzzy
 msgid "Error: Couldn't get a position to probe"
 msgstr "Napaka: Ni mogoče dobiti položaja za preizkuševanje"
@@ -1234,6 +1337,26 @@ msgstr "Klipper se skuša zagnati"
 
 msgid "Klipper has shutdown"
 msgstr "Klipper se je ugasnil"
+
+msgid "Add-on loaded"
+msgid_plural "Add-ons loaded"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "Add-on failed to load"
+msgid_plural "Add-ons failed to load"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "Unload (Retract)"
+msgstr ""
+
+msgid "Unload (Purge)"
+msgstr ""
 
 #, fuzzy
 msgid "Waiting for Moonraker connection to close"
