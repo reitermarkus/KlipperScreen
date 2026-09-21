@@ -108,10 +108,7 @@ class BasePanel(ScreenPanel):
 
         self.control["time"] = Gtk.Label(label="00:00 AM")
         self.control["time_box"] = Gtk.Box(halign=Gtk.Align.END)
-        # Start FLSUN Changes
-        #self.control["time_box"].pack_end(self.control['time'], True, True, 10)
-        self.control["time_box"].pack_end(self.control['time'], True, True, 5)
-        # End FLSUN Changes
+        self.control["time_box"].pack_end(self.control['time'], True, True, 10)
 
         self.battery_icons = self.load_battery_icons()
         self.labels["battery"] = Gtk.Label()
