@@ -427,7 +427,7 @@ class BasePanel(ScreenPanel):
         self.control["lock"].set_visible(printing) # FLSUN Changes
         self.control["estop"].set_visible(printing)
         self.control["shutdown"].set_visible(not printing)
-        #self.show_shortcut(self.shortcut["panel"]) # FLSUN Changes
+        self.show_shortcut(self.shortcut["panel"])
         self.show_printer_select(len(self._config.get_printers()) > 1)
         for control in ("back", "home"):
             self.set_control_sensitive(len(self._screen._cur_panels) > 1, control=control)
