@@ -448,7 +448,7 @@ class Panel(ScreenPanel):
             {"name": _("Apply"), "response": Gtk.ResponseType.APPLY, "style": "dialog-default"},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": "dialog-error"},
         ]
-        self._gtk.Dialog(_("Save Z"), buttons, label, self.save_confirm, device) # FLSUN Changes
+        self._gtk.Dialog(_("Save Z"), buttons, label, self.save_confirm, device)
 
     def save_confirm(self, dialog, response_id, device):
         self._gtk.remove_dialog(dialog)
