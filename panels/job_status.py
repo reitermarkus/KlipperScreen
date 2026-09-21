@@ -898,11 +898,10 @@ class Panel(ScreenPanel):
             offset = self._printer.get_stat("gcode_move", "homing_origin")
             self.zoffset = float(offset[2]) if offset else 0
             if self.zoffset != 0:
-                # Start FLSUN Changes
                 if "Z_OFFSET_APPLY_ENDSTOP" in self._printer.available_commands:
-                  self.buttons["button_grid"].attach(
-                      self.buttons["save_offset_endstop"], 0, 0, 1, 1
-                  )
+                    self.buttons["button_grid"].attach(
+                        self.buttons["save_offset_endstop"], 0, 0, 1, 1
+                    )
                 else:
                     self.buttons["button_grid"].attach(Gtk.Label(), 0, 0, 1, 1)
                 if "Z_OFFSET_APPLY_PROBE" in self._printer.available_commands:
@@ -911,7 +910,6 @@ class Panel(ScreenPanel):
                     )
                 else:
                     self.buttons["button_grid"].attach(Gtk.Label(), 1, 0, 1, 1)
-                # End FLSUN Changes
             else:
                 self.buttons["button_grid"].attach(Gtk.Label(), 0, 0, 1, 1)
                 self.buttons["button_grid"].attach(Gtk.Label(), 1, 0, 1, 1)
