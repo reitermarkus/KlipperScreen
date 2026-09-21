@@ -15,7 +15,7 @@ class Panel(ScreenPanel):
     distance = distances[-2]
 
     def __init__(self, screen, title):
-        title = title or _("Z Offset Calibration") # FLSUN Changes
+        title = title or _("Z Calibrate")
         super().__init__(screen, title)
         macros = self._printer.get_config_section_list("gcode_macro ") # FLSUN Changes
         self.calibration_z_offset = any("CALIBRATION_Z_OFFSET" in macro.upper() for macro in macros) # FLSUN Changes
@@ -72,7 +72,7 @@ class Panel(ScreenPanel):
 
         if self.probe:
             # Start FLSUN Changes
-            #pos.attach(Gtk.Label(label=_("Probe Offset") + ": "), 0, 2, 2, 1)    
+            #pos.attach(Gtk.Label(label=_("Probe Offset") + ": "), 0, 2, 2, 1)
             label_probe_offset = Gtk.Label(label="<b>" + _("Probe Offset") + "</b>")
             label_probe_offset.set_use_markup(True)
             pos.attach(label_probe_offset, 0, 2, 2, 1)
@@ -228,7 +228,7 @@ class Panel(ScreenPanel):
         else:
             self.buttons['start'].set_sensitive(False)
             script = {"script": "CALIBRATION_Z_OFFSET"}
-            self._screen._confirm_send_action(None, _("Do you want to start Z Offset calibration?"), "printer.gcode.script", script)            
+            self._screen._confirm_send_action(None, _("Do you want to start Z Offset calibration?"), "printer.gcode.script", script)
         # End FLSUN Changes
 
     def _move_to_position(self, x, y):
