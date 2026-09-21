@@ -90,7 +90,7 @@ class BasePanel(ScreenPanel):
         self.action_bar.add(self.control["back"])
         self.action_bar.add(self.control["home"])
         self.action_bar.add(self.control["printer_select"])
-        #self.action_bar.add(self.control["shortcut"]) # FLSUN Changes
+        self.action_bar.add(self.control["shortcut"])
         self.action_bar.add(self.control["led"]) # FLSUN Changes
         self.action_bar.add(self.control["lock"]) # FLSUN Changes
         self.action_bar.add(self.control["estop"])
