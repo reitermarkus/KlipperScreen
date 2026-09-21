@@ -144,6 +144,7 @@ class Panel(ScreenPanel):
         preview_box = Gtk.Box(homogeneous=True)
         preview_box.add(self.preview_label)
         self.preview.set_size_request(-1, self.da_size * 2)
+        self.preview.set_color(self.color_data)
         preview_box.add(self.preview)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.add(preview_box)
