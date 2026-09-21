@@ -124,7 +124,7 @@ class Panel(ScreenPanel):
             scale.set_has_origin(True)
             scale.get_style_context().add_class("fan_slider")
             scale.connect("button-release-event", self.apply_color_data)
-            scale.connect("value_changed", self.update_color_data)
+            scale.connect("value_changed", self.update_color_data, idx)
             self.scales[idx] = scale
             scale_grid.attach(button, 0, idx, 1, 1)
             scale_grid.attach(scale, 1, idx, 3, 1)
@@ -181,9 +181,8 @@ class Panel(ScreenPanel):
         self.color_data = color_data
         self.update_preview()
 
-    def update_color_data(self):
-        for idx in self.scales:
-            self.color_data[idx] = self.scales[idx].get_value() / 255
+    def update_color_data(self, idx):
+        self.color_data[idx] = self.scales[idx].get_value() / 255
         self.update_preview()
 
     def update_preview(self):
@@ -194,7 +193,7 @@ class Panel(ScreenPanel):
         self.update_scales(color_data)
         self.apply_color_data()
 
-    def apply_color_data(self):
+    def apply_color_data(self, *args):
         self.set_led_color(self.color_data)
 
     def set_led_color(self, color_data):
