@@ -421,7 +421,6 @@ class Panel(ScreenPanel):
         self.buttons["save_offset_probe"].connect("clicked", self.save_offset, "probe")
         self.buttons["save_offset_endstop"].connect("clicked", self.save_offset, "endstop")
 
-    # Start FLSUN Changes
     def save_offset(self, widget, device):
         sign = "+" if self.zoffset > 0 else "-"
         label = Gtk.Label(hexpand=True, vexpand=True, wrap=True)
@@ -449,7 +448,7 @@ class Panel(ScreenPanel):
             {"name": _("Apply"), "response": Gtk.ResponseType.APPLY, "style": "dialog-default"},
             {"name": _("Cancel"), "response": Gtk.ResponseType.CANCEL, "style": "dialog-error"},
         ]
-        self._gtk.Dialog(_("Save"), buttons, label, self.save_confirm, device) # FLSUN Changes
+        self._gtk.Dialog(_("Save Z"), buttons, label, self.save_confirm, device) # FLSUN Changes
 
     def save_confirm(self, dialog, response_id, device):
         self._gtk.remove_dialog(dialog)
