@@ -181,7 +181,8 @@ class Panel(ScreenPanel):
         self.color_data = color_data
         self.update_preview()
 
-    def update_color_data(self, idx):
+    def update_color_data(self, idx, *args):
+        logging.info(f"update_color_data idx = {idx}, args = {args}")
         self.color_data[idx] = self.scales[idx].get_value() / 255
         self.update_preview()
 
