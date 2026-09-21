@@ -124,7 +124,6 @@ class Panel(ScreenPanel):
             scale.set_has_origin(True)
             scale.get_style_context().add_class("fan_slider")
             scale.connect("button-release-event", self.apply_scales)
-            scale.connect("value_changed", self.update_preview_label)
             self.scales[idx] = scale
             scale_grid.attach(button, 0, idx, 1, 1)
             scale_grid.attach(scale, 1, idx, 3, 1)
@@ -167,8 +166,6 @@ class Panel(ScreenPanel):
         self._screen._send_action(widget, "printer.gcode.script",{"script": f"_NEOPIXELS_PRESETS"})
     # End FLSUN Changes
 
-    def update_preview_label(self, args):
-        self.preview_label.set_label(rgb_to_hex(rgbw_to_rgb(self.color_data)))
 
     def process_update(self, action, data):
         if action != "notify_status_update":
@@ -186,6 +183,7 @@ class Panel(ScreenPanel):
         for idx in self.scales:
             self.color_data[idx] = self.scales[idx].get_value() / 255
         self.preview.set_color(self.color_data)
+        self.preview_label.set_label(rgb_to_hex(rgbw_to_rgb(self.color_data)))
 
     def apply_preset(self, widget, color_data):
         self.update_scales(color_data)
