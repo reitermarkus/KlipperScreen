@@ -35,7 +35,6 @@ class Panel(ScreenPanel):
         super().__init__(screen, title)
         self.da_size = self._gtk.img_scale * 2
         self.preview = ColorPreviewArea(size=self.da_size)
-        self.preview.set_size_request(-1, self.da_size * 2)
         self.preview_label = Gtk.Label()
         self.preset_list = Gtk.Grid(row_homogeneous=True, column_homogeneous=True)
         self.color_data = [0, 0, 0, 0]
@@ -144,6 +143,7 @@ class Panel(ScreenPanel):
         scroll.add(self.preset_list)
         preview_box = Gtk.Box(homogeneous=True)
         preview_box.add(self.preview_label)
+        self.preview.set_size_request(-1, self.da_size * 2)
         preview_box.add(self.preview)
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.add(preview_box)
@@ -166,7 +166,6 @@ class Panel(ScreenPanel):
     def on_preset_button_clicked(self, widget):
         self._screen._send_action(widget, "printer.gcode.script",{"script": f"_NEOPIXELS_PRESETS"})
     # End FLSUN Changes
-
 
     def process_update(self, action, data):
         if action != "notify_status_update":
