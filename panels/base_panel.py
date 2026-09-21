@@ -72,15 +72,13 @@ class BasePanel(ScreenPanel):
         self.control["printer_select"].connect("clicked", self._screen.show_printer_select)
         self.control["printer_select"].set_no_show_all(True)
 
-        # Start FLUSUN Changes
-        #self.shortcut = {}
-        #self.shortcut["panel"] = self._config.get_main_config().get(
-        #    "side_shortcut_target", fallback="notifications"
-        #)
-        #self.shortcut["icon"] = self._get_shortcut_icon(self.shortcut["panel"])
-        #self.control["shortcut"] = self._gtk.Button(self.shortcut["icon"], scale=self.abscale)
-        #self.control["shortcut"].connect("clicked", self._shortcut_clicked, self.shortcut)
-        # End FLUN Changes
+        self.shortcut = {}
+        self.shortcut["panel"] = self._config.get_main_config().get(
+            "side_shortcut_target", fallback="notifications"
+        )
+        self.shortcut["icon"] = self._get_shortcut_icon(self.shortcut["panel"])
+        self.control["shortcut"] = self._gtk.Button(self.shortcut["icon"], scale=self.abscale)
+        self.control["shortcut"].connect("clicked", self._shortcut_clicked, self.shortcut)
 
         # Any action bar button should close the keyboard
         for item in self.control:
