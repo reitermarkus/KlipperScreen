@@ -418,7 +418,7 @@ class Panel(ScreenPanel):
         self.buttons["pause"].connect("clicked", self.pause)
         self.buttons["restart"].connect("clicked", self.restart)
         self.buttons["resume"].connect("clicked", self.resume)
-        #self.buttons["save_offset_probe"].connect("clicked", self.save_offset, "probe") # FLSUN Changes
+        self.buttons["save_offset_probe"].connect("clicked", self.save_offset, "probe")
         self.buttons["save_offset_endstop"].connect("clicked", self.save_offset, "endstop")
 
     # Start FLSUN Changes
@@ -428,14 +428,22 @@ class Panel(ScreenPanel):
         label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
         saved_z_offset = None
         msg = f"Apply {sign}{abs(self.zoffset)} offset to {device}?"
-        if device == "endstop":
+        if device == "probe":
+            msg = _("Apply {sign}{offset:.3f} offset to Probe?").format(
+                sign=sign, offset=abs(self.zoffset)
+            )
+            if probe := self._printer.get_probe():
+                saved_z_offset = probe["z_offset"]
+        elif device == "endstop":
             msg = _("Apply {sign}{offset:.3f} offset to Endstop?").format(
                 sign=sign, offset=abs(self.zoffset)
             )
-            if "stepper_a" in self._printer.get_config_section_list():
+            if "stepper_z" in self._printer.get_config_section_list():
+                saved_z_offset = self._printer.get_config_section("stepper_z")["position_endstop"]
+            elif "stepper_a" in self._printer.get_config_section_list():
                 saved_z_offset = self._printer.get_config_section("stepper_a")["position_endstop"]
         if saved_z_offset:
-            msg += "\n\n" + _("Current position_endstop: %s") % saved_z_offset
+            msg += "\n\n" + _("Saved offset: %s") % saved_z_offset
         label.set_label(msg)
         buttons = [
             {"name": _("Apply"), "response": Gtk.ResponseType.APPLY, "style": "dialog-default"},
@@ -446,10 +454,11 @@ class Panel(ScreenPanel):
     def save_confirm(self, dialog, response_id, device):
         self._gtk.remove_dialog(dialog)
         if response_id == Gtk.ResponseType.APPLY:
+            if device == "probe":
+                self._screen._ws.api.gcode_script("Z_OFFSET_APPLY_PROBE")
             if device == "endstop":
                 self._screen._ws.api.gcode_script("Z_OFFSET_APPLY_ENDSTOP")
             self._screen._ws.api.gcode_script("SAVE_CONFIG")
-    # End FLSUN Changes
 
     def restart(self, widget):
         buttons = [
